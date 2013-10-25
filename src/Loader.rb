@@ -3,11 +3,10 @@ require 'pp'
 class Loader
   def self.listModules
     modulesDirectories = Array.new
-
+    
     Dir['modules/*/'].each { |directory|
       modulesDirectories.push(directory)
     }
-
     return modulesDirectories
   end
 
@@ -18,7 +17,6 @@ class Loader
     modulesDirectories.each { |directory|
       modulesInfos.push(YAML.load_file(directory + 'module.yml'))
     }
-
     return modulesInfos
   end
 end
