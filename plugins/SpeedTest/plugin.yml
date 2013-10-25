@@ -1,0 +1,22 @@
+# Author
+author: "Victor Bersy"
+mail: "victor.bersy@gmail.com"
+contacts:
+  github: "VictorBersy"
+  twitter: "@VictorBersy"
+
+# plugin
+name: "Speed Test"
+version: "0.1"
+description: "Sample plugin. Reply with UP and DOWNLOAD speed on local network."
+keywords: [speed, network, test, local, up, download]
+homepage: "http://github.com/VictorBersy/Jarvis"
+licences:
+  type: "MIT"
+  url: "http://github.com/VictorBersy/Jarvis/plugins/SpeedTest/LICENSE"
+repository:
+  type: "git"
+  url: "https://github.com/VictorBersy/Jarvis.git"
+
+# Triggers
+triggers: [speedtest]
