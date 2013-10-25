@@ -5,7 +5,7 @@ contacts:
   github: "VictorBersy"
   twitter: "@VictorBersy"
 
-# plugin
+# Plugin
 name: "Hello World"
 version: "0.1"
 description: "Sample plugin. Reply 'Hello back :)' when receives 'hello'"
@@ -20,3 +20,6 @@ repository:
 
 # Triggers
 triggers: [hello, hi, helloworld]
+
+# Gate
+gate: "HelloWorld.rb"

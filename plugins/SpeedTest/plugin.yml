@@ -20,3 +20,6 @@ repository:
 
 # Triggers
 triggers: [speedtest]
+
+# Gate
+gate: "SpeedTest.rb"
