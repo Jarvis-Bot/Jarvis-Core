@@ -1,5 +1,5 @@
 require 'twitter'
-require './config/keys.rb'
+require '../config/keys.rb'
 class Clients
   @keys = Keys.getKeys
   def self.getREST
