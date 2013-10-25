@@ -1,0 +1,1 @@
+* Create method "before", init before clients connections
