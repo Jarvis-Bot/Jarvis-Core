@@ -7,9 +7,9 @@ require './Loader.rb'
 
 # -----------------------------
 
-## Loadings modules
+## Loadings plugins
 loader = Loader.new()
-
+pp loader.getTriggers
 ## Connect REST and Streaming clients
 
 clients = Hash.new()

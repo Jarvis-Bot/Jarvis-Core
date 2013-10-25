@@ -5,15 +5,15 @@ contacts:
   github: "VictorBersy"
   twitter: "@VictorBersy"
 
-# Module
+# plugin
 name: "Hello World"
 version: "0.1"
-description: "Sample module. Reply 'Hello back :)' when receives 'hello'"
+description: "Sample plugin. Reply 'Hello back :)' when receives 'hello'"
 keywords: [sample, hello, world]
 homepage: "http://github.com/VictorBersy/Jarvis"
 licences:
   type: "MIT"
-  url: "http://github.com/VictorBersy/Jarvis/modules/HelloWorld/LICENSE"
+  url: "http://github.com/VictorBersy/Jarvis/plugins/HelloWorld/LICENSE"
 repository:
   type: "git"
   url: "https://github.com/VictorBersy/Jarvis.git"

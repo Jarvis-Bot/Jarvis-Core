@@ -1,34 +1,34 @@
 require 'yaml'
 class Loader
   def initialize
-    @modulesDirectories = self.listModules
-    @modulesInfos       = self.getInfos
+    @pluginsDirectories = self.listplugins
+    @pluginsInfos       = self.getInfos
   end
 
-  def listModules
-    modulesDirectories = Array.new
+  def listplugins
+    pluginsDirectories = Array.new
 
-    Dir['modules/*/'].each { |directory|
-      modulesDirectories.push(directory)
+    Dir['plugins/*/'].each { |directory|
+      pluginsDirectories.push(directory)
     }
-    return modulesDirectories
+    return pluginsDirectories
   end
 
   def getInfos
-    modulesInfos = Array.new
+    pluginsInfos = Array.new
 
-    @modulesDirectories.each { |directory|
-      modulesInfos.push(YAML.load_file(directory + 'module.yml'))
+    @pluginsDirectories.each { |directory|
+      pluginsInfos.push(YAML.load_file(directory + 'plugin.yml'))
     }
-    return modulesInfos
+    return pluginsInfos
   end
 
   def getTriggers
-    modulesTriggers = Array.new
+    pluginsTriggers = Array.new
 
-    modulesInfos.each { |module|
-      modulesTriggers.push(module["triggers"])
+    pluginsInfos.each { |plugin|
+      pluginsTriggers.push(plugin["triggers"])
     }
-    return modulesTriggers
+    return pluginsTriggers
   end
 end

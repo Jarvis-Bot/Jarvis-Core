@@ -13,6 +13,6 @@ You could say "@NAMEBOT download http://fake.link/" and it will be downloaded in
 	@NAMEBOT : next birthday               => Steve Adam will be the next one, on 7th october !
 	@NAMEBOT : reminder buy milk @ 18:00   => I will remind you to buy milk at 18:00
 
-## Modules 
+## Plugins 
 
-You'll be able to create your own modules. I'm still thinking about the architecture. It should be really simple for you, developpers.
+You'll be able to create your own Plugins. I'm still thinking about the architecture. It should be really simple for you, developpers.
