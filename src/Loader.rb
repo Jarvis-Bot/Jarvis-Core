@@ -1,9 +1,8 @@
 require 'yaml'
-require 'pp'
 class Loader
   def self.listModules
     modulesDirectories = Array.new
-    
+
     Dir['modules/*/'].each { |directory|
       modulesDirectories.push(directory)
     }
@@ -20,6 +19,3 @@ class Loader
     return modulesInfos
   end
 end
-
-pp Loader.listModules
-pp Loader.getInfos
