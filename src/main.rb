@@ -8,6 +8,7 @@ require './Loader.rb'
 # -----------------------------
 
 ## Loadings modules
+loader = Loader.new()
 
 ## Connect REST and Streaming clients
 
