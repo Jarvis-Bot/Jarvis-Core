@@ -1,6 +1,11 @@
 require 'yaml'
 class Loader
-  def self.listModules
+  def initialize
+    @modulesDirectories = self.listModules
+    @modulesInfos       = self.getInfos
+  end
+
+  def listModules
     modulesDirectories = Array.new
 
     Dir['modules/*/'].each { |directory|
@@ -9,13 +14,21 @@ class Loader
     return modulesDirectories
   end
 
-  def self.getInfos
-    modulesDirectories = self.listModules
+  def getInfos
     modulesInfos = Array.new
 
-    modulesDirectories.each { |directory|
+    @modulesDirectories.each { |directory|
       modulesInfos.push(YAML.load_file(directory + 'module.yml'))
     }
     return modulesInfos
+  end
+
+  def getTriggers
+    modulesTriggers = Array.new
+
+    modulesInfos.each { |module|
+      modulesTriggers.push(module["triggers"])
+    }
+    return modulesTriggers
   end
 end
