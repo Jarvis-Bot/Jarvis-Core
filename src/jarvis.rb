@@ -1,26 +1,29 @@
+$: << File.dirname(__FILE__)
+
 require 'pp'
 require 'rainbow'
-require './Handler.rb'
-require './Clients.rb'
-require './Answer.rb'
-require './Loader.rb'
+require 'Jarvis/Handler.rb'
+require 'Jarvis/Clients.rb'
+require 'Jarvis/Answer.rb'
+require 'Jarvis/Loader.rb'
 
 # -----------------------------
 
 ## Loadings plugins
 loader = Loader.new()
-pp loader.getTriggers
+pp loader.pluginsDirectories
+pp loader.pluginsTriggers
+
 ## Connect REST and Streaming clients
 
 clients = Hash.new()
 
-  # REST client
+  # REST client, allow us to send reply
   clients[:REST] = Clients.getREST
   answer = Answer.new(clients[:REST])
 
-  # Stream client
+  # Stream client, watching for a new tweet
   clients[:stream] = Clients.getStream
   clients[:stream].user(:replies => 'all') { |tweet|
     Handler.new(tweet, answer)
   }
-

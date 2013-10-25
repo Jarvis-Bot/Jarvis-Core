@@ -1,14 +1,16 @@
 require 'yaml'
 class Loader
+  attr_accessor :pluginsDirectories, :pluginsInfos, :pluginsTriggers
   def initialize
     @pluginsDirectories = self.listplugins
     @pluginsInfos       = self.getInfos
+    @pluginsTriggers    = self.getTriggers
   end
 
   def listplugins
     pluginsDirectories = Array.new
 
-    Dir['plugins/*/'].each { |directory|
+    Dir['../plugins/*/'].each { |directory|
       pluginsDirectories.push(directory)
     }
     return pluginsDirectories
@@ -26,7 +28,7 @@ class Loader
   def getTriggers
     pluginsTriggers = Array.new
 
-    pluginsInfos.each { |plugin|
+    @pluginsInfos.each { |plugin|
       pluginsTriggers.push(plugin["triggers"])
     }
     return pluginsTriggers
