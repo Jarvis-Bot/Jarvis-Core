@@ -1,6 +1,7 @@
 class Handler
-  def initialize(tweet)
-    @tweet = tweet
+  def initialize(tweet, answer)
+    @tweet  = tweet
+    @answer = answer
     self.display
   end
 
@@ -16,7 +17,8 @@ class Handler
   end
 
   def match
-    if @tweet.text.include? 'test'
+    if @tweet.text.include? 'hello'
+      self.sayHello
       return true
     else
       return false
@@ -43,5 +45,9 @@ class Handler
     end
 
     return prefix[:first] + prefix[:second]
+  end
+
+  def sayHello
+    @answer.byMention(@tweet.user.screen_name, 'Hello back :)', @tweet.id)
   end
 end
