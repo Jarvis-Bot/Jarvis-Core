@@ -8,8 +8,7 @@ contacts:
 # Module
 name: "Hello World"
 version: "0.1"
-description: >
-	Sample module. Reply 'Hello back :)' when receives 'hello'
+description: "Sample module. Reply 'Hello back :)' when receives 'hello'"
 keywords: [sample, hello, world]
 homepage: "http://github.com/VictorBersy/Jarvis"
 licences:
