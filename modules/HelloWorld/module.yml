@@ -1,25 +1,22 @@
 # Author
----
 author: "Victor Bersy"
 mail: "victor.bersy@gmail.com"
 contacts:
-  github: VictorBersy
-  twitter: @VictorBersy
+  github: "VictorBersy"
+  twitter: "@VictorBersy"
 
 # Module
----
 name: "Hello World"
 version: "0.1"
 version: "Sample module. Reply 'Hello back :)' when receive 'hello'"
 keywords: [sample, hello, world]
-homepage: http://github.com/VictorBersy/Jarvis
+homepage: "http://github.com/VictorBersy/Jarvis"
 licences:
   type: "MIT"
-  url: http://github.com/VictorBersy/Jarvis/modules/HelloWorld/LICENSE
+  url: "http://github.com/VictorBersy/Jarvis/modules/HelloWorld/LICENSE"
 repository:
   type: "git"
   url: "https://github.com/VictorBersy/Jarvis.git"
 
 # Triggers
----
 triggers: [hello, hi, helloworld]
