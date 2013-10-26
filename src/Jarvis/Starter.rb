@@ -5,9 +5,11 @@ module Jarvis
     end
 
     def start
-      loader = Loader.new
-      @triggers_list = loader.triggers_list
-      
+      # Connect clients
+      clients = Clients.new
+      clients.client_stream.user(:replies => 'all') do |tweet|
+        Handler.new(tweet)
+      end
     end
   end
 end
