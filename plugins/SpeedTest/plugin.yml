@@ -22,4 +22,7 @@ repository:
 triggers: [speedtest]
 
 # Gate
+folder_name: "SpeedTest"
 receiver: "SpeedTest.rb"
+receiver_class_name: "SpeedTest"
+receiver_method_name: "receiver"
