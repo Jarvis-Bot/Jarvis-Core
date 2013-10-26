@@ -10,10 +10,12 @@ require 'Jarvis/Plugins/Scanner'
 require 'Jarvis/Plugins/Lister'
 require 'Jarvis/Plugins/Loader'
 
-require 'Jarvis/Twitter/Answer'
 require 'Jarvis/Twitter/Clients'
 require 'Jarvis/Twitter/Handler'
+require 'Jarvis/Twitter/Answer'
+
+require 'Jarvis/Starter'
 
 module Jarvis
-  loader = Loader.new
+  Starter.new
 end
