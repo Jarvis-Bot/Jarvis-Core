@@ -22,4 +22,4 @@ repository:
 triggers: [hello, hi, helloworld]
 
 # Gate
-gate: "HelloWorld.rb"
+receiver: "HelloWorld.rb"

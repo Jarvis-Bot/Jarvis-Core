@@ -22,4 +22,4 @@ repository:
 triggers: [speedtest]
 
 # Gate
-gate: "SpeedTest.rb"
+receiver: "SpeedTest.rb"
