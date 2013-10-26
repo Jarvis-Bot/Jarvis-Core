@@ -1,36 +1,18 @@
-require 'yaml'
-class Loader
-  attr_accessor :pluginsDirectories, :pluginsInfos, :pluginsTriggers
-  def initialize
-    @pluginsDirectories = self.listplugins
-    @pluginsInfos       = self.getInfos
-    @pluginsTriggers    = self.getTriggers
-  end
+module Jarvis
+  class Scanner
+    attr_accessor :plugins_directories
+    def initialize
+      @plugins_directories = self.scan_plugins_directories
+    end
 
-  def listplugins
-    pluginsDirectories = Array.new
+    def scan_plugins_directories
+      plugins_directories = Array.new
 
-    Dir['../plugins/*/'].each { |directory|
-      pluginsDirectories.push(directory)
-    }
-    return pluginsDirectories
-  end
-
-  def getInfos
-    pluginsInfos = Array.new
-
-    @pluginsDirectories.each { |directory|
-      pluginsInfos.push(YAML.load_file(directory + 'plugin.yml'))
-    }
-    return pluginsInfos
-  end
-
-  def getTriggers
-    pluginsTriggers = Array.new
-
-    @pluginsInfos.each { |plugin|
-      pluginsTriggers.push(plugin["triggers"])
-    }
-    return pluginsTriggers
+      Dir['../plugins/*/'].each { |directory|
+        plugins_directories.push(directory)
+      }
+      return plugins_directories
+    end
   end
 end
+
