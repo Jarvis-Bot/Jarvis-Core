@@ -7,8 +7,15 @@ module Jarvis
     def start
       # Connect clients
       clients = Clients.new
-      clients.client_stream.user(:replies => 'all') do |tweet|
-        Handler.new(tweet)
+      # Give ability to answer
+      answer_instance = Answer.new(clients.client_REST)
+      # Waiting for a tweet...
+      options = {
+        :replies => 'all',
+        :with    => 'followings'
+      }
+      clients.client_stream.user(options) do |tweet|
+        Handler.new(tweet, answer_instance)
       end
     end
   end
