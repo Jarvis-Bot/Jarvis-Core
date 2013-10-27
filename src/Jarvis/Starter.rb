@@ -11,11 +11,12 @@ module Jarvis
       answer_instance = Answer.new(clients.client_REST)
       # Waiting for a tweet...
       options = {
-        :replies => 'all',
-        :with    => 'followings'
+        :with => 'user',
       }
       clients.client_stream.user(options) do |tweet|
-        Handler.new(tweet, answer_instance)
+        handler = Handler.new(tweet, answer_instance)
+        viewer  = Viewer.new(tweet, handler)
+        viewer.display
       end
     end
   end
