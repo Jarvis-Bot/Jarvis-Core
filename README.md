@@ -7,10 +7,15 @@ Jarvis [WIP]
 
 ## Examples
 
-	@NAMEBOT : uptime                      => 6 days, 4 hours, 3 minutes and 45 seconds
-	@NAMEBOT : alarm 6:15                  => Alarm set to 6:15
-	@NAMEBOT : next birthday               => Steve Adam will be the next one, on 7th october !
-	@NAMEBOT : reminder buy milk @ 18:00   => I will remind you to buy milk at 18:00
+	@NAMEBOT : uptime                              => 6 days, 4 hours, 3 minutes and 45 seconds
+	@NAMEBOT : alarm 6:15                          => Alarm set to 6:15
+	@NAMEBOT : download http://domain.tld/file.jpg => Downloaded file.jpg at Jarvis/downloaded_files/
+	@NAMEBOT : next birthday                       => Steve Adam will be the next one, on 7th october !
+	@NAMEBOT : reminder buy milk @ 18:00           => I will remind you to buy milk at 18:00
+
+## Run
+
+`~$ cd Jarvis/bin/ && ruby jarvis.rb`
 
 ## Plugins 
 
