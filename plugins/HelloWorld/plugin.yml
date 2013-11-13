@@ -25,4 +25,3 @@ triggers: [hello, hi, helloworld]
 folder_name: "HelloWorld"
 receiver: "HelloWorld.rb"
 receiver_class_name: "HelloWorld"
-receiver_method_name: "receiver"
