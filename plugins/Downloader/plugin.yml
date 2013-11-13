@@ -1,0 +1,27 @@
+# Author
+author: "Victor Bersy"
+mail: "victor.bersy@gmail.com"
+contacts:
+  github: "VictorBersy"
+  twitter: "@VictorBersy"
+
+# Plugin
+name: "Downloader"
+version: "0.1"
+description: "Sample plugin. Download a file in a default folder or a specific one."
+keywords: [download, file]
+homepage: "http://github.com/VictorBersy/Jarvis"
+licences:
+  type: "MIT"
+  url: "http://github.com/VictorBersy/Jarvis/plugins/HelloWorld/LICENSE"
+repository:
+  type: "git"
+  url: "https://github.com/VictorBersy/Jarvis.git"
+
+# Triggers
+triggers: [download]
+
+# Gate
+folder_name: "Downloader"
+receiver: "Downloader.rb"
+receiver_class_name: "Downloader"
