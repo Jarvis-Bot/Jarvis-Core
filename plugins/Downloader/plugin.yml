@@ -13,7 +13,7 @@ keywords: [download, file]
 homepage: "http://github.com/VictorBersy/Jarvis"
 licences:
   type: "MIT"
-  url: "http://github.com/VictorBersy/Jarvis/plugins/HelloWorld/LICENSE"
+  url: "http://github.com/VictorBersy/Jarvis/plugins/Downloader/LICENSE"
 repository:
   type: "git"
   url: "https://github.com/VictorBersy/Jarvis.git"
