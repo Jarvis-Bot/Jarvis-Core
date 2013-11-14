@@ -1,9 +1,9 @@
 require 'open-uri'
 class Downloader
-  def initialize(answer_instance, tweet, trigger_detected)
-    @answer           = answer_instance
-    @tweet            = tweet
-    @trigger_detected = trigger_detected
+  def initialize(args)
+    @answer           = args[:answer_instance]
+    @tweet            = args[:tweet]
+    @trigger_detected = args[:trigger_detected]
     self.prepare_download
   end
 
