@@ -1,5 +1,9 @@
 $: << File.dirname(__FILE__)
 
+require 'pp'
+require 'rainbow'
+require 'yaml'
+
 JARVIS_HELP = <<-EOS
 Usage: ./jarvis [OPTION]
   -c, --configure          configure Jarvis with Twitter API keys
@@ -10,11 +14,21 @@ case ARGV.first
 when "-h", "--help", "help"
   puts JARVIS_HELP
 when "-c" , "--configure", "configure"
-  puts ""
+  keys = Hash.new
+  puts "Enter your consumer key :"
+  keys["consumer_key"] = $stdin.gets.chomp
+  puts "Enter your consumer secret :"
+  keys["consumer_secret"] = $stdin.gets.chomp
+  puts "Enter your access token :"
+  keys["access_token"] = $stdin.gets.chomp
+  puts "Enter your access token secret :"
+  keys["access_token_secret"] = $stdin.gets.chomp
+
+  File.open("../config/keys.yml", "w") { |f|
+    f.write(keys.to_yaml)
+  }
 when nil
-  require 'pp'
-  require 'rainbow'
-  require 'yaml'
+
   require 'twitter'
   require 'Jarvis/Config/Keys'
   require 'Jarvis/Display/Viewer'
