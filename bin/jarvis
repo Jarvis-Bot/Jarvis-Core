@@ -1,8 +1,2 @@
 #!/bin/sh
-JARVIS_SYSTEM=$(uname -s | tr "[:upper:]" "[:lower:]")
-if [ "$JARVIS_SYSTEM" = "darwin" ]
-then
-        exec "../src/jarvis.rb" "$@"
-else
-        exec ruby -W0 "../src/jarvis.rb" "$@"
-fi
+exec ruby -W0 "../src/jarvis.rb" "$@"
