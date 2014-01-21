@@ -14,7 +14,7 @@ module Jarvis
         color = "blue"
       when "friend_list"
         color = "yellow"
-      when "welcome_message"
+      when "jarvis_talking"
         color = "cyan"
       end
       return '████ '.foreground(color.to_sym)
@@ -23,7 +23,7 @@ module Jarvis
     def self.welcome_message(user)
       # Twitter::User
       # https://dev.twitter.com/docs/api/1.1/get/account/verify_credentials
-      prefix       = self.create_prefix("welcome_message")
+      prefix       = self.create_prefix("jarvis_talking")
       screen_name  = user.screen_name
       nb_followers = user.followers_count.to_s
 
