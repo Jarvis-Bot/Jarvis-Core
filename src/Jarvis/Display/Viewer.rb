@@ -98,5 +98,12 @@ module Jarvis
       # ████ NAME_PLUGIN initialized. Version XX by AUTHOR_NAME
       puts prefix + "\"#{plugin_name}\" initialized. Version #{version} by #{author}."
     end
+
+    def self.plugin_count(nb_plugins)
+      prefix        = self.create_prefix("jarvis_talking")
+
+      # ████ NB_PLUGINS plugins initialized.
+      puts prefix + "#{nb_plugins} plugins initialized."
+    end
   end
 end

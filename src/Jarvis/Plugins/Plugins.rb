@@ -21,6 +21,7 @@ module Jarvis
           Viewer::plugin_init(plugin_specs_yaml)
         end
       end
+      Viewer::plugin_count(@registered_plugins.length)
     end
   end
 end
