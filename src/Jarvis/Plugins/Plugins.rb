@@ -15,8 +15,10 @@ module Jarvis
       @plugins_directories.each do |directory|
         yaml_file = File.join(directory, "plugin.yml")
         if File.exists?(yaml_file)
-          plugin_YAML = YAML.load_file(directory + 'plugin.yml')
-          Viewer::plugin_init(plugin_YAML)
+          plugin_specs_yaml = YAML.load_file(directory + 'plugin.yml')
+          hash_md5_specs    = Digest::MD5.hexdigest(plugin_specs_yaml.to_s)
+          @registered_plugins[hash_md5_specs] = plugin_specs_yaml
+          Viewer::plugin_init(plugin_specs_yaml)
         end
       end
     end
