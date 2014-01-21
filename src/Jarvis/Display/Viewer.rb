@@ -88,5 +88,15 @@ module Jarvis
       message = "You've #{friend_list.length} following."
       puts prefix + message
     end
+
+    def self.plugin_init(yaml_specs)
+      prefix        = self.create_prefix("jarvis_talking")
+      author        = yaml_specs["Author"]["name"]
+      plugin_name   = yaml_specs["Plugin"]["name"]
+      version       = yaml_specs["Plugin"]["version"]
+
+      # ████ NAME_PLUGIN initialized. Version XX by AUTHOR_NAME
+      puts prefix + "\"#{plugin_name}\" initialized. Version #{version} by #{author}."
+    end
   end
 end
