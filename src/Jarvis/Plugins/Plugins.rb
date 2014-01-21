@@ -3,10 +3,6 @@ module Jarvis
     def initialize
       @registered_plugins   = {}
       @plugins_directories  = Array.new
-      scan_directories
-      load_plugins
-      require "pp"
-      pp @registered_plugins
     end
 
     def scan_directories
@@ -17,10 +13,10 @@ module Jarvis
 
     def load_plugins
       @plugins_directories.each do |directory|
-        initializer = File.join(directory, "init.rb")
-        if File.file?(initializer)
-          require initializer
-          pp Test.new.author
+        yaml_file = File.join(directory, "plugin.yml")
+        if File.exists?(yaml_file)
+          plugin_YAML = YAML.load_file(directory + 'plugin.yml')
+          Viewer::plugin_init(plugin_YAML)
         end
       end
     end
