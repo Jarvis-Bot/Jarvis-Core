@@ -15,6 +15,9 @@ module Jarvis
     end
 
     def self.check_plugins
+      plugins = Plugins.new
+      plugins.scan_directories
+      plugins.load_plugins
     end
 
     def self.start_jarvis
