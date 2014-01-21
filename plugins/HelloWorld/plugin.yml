@@ -1,27 +1,24 @@
-# Author
-author: "Victor Bersy"
-mail: "victor.bersy@gmail.com"
-contacts:
-  github: "VictorBersy"
-  twitter: "@VictorBersy"
-
-# Plugin
-name: "Hello World"
-version: "0.1"
-description: "Sample plugin. Reply 'Hello back :)' when receives 'hello'"
-keywords: [sample, hello, world]
-homepage: "http://github.com/VictorBersy/Jarvis"
-licences:
-  type: "MIT"
-  url: "http://github.com/VictorBersy/Jarvis/plugins/HelloWorld/LICENSE"
-repository:
-  type: "git"
-  url: "https://github.com/VictorBersy/Jarvis.git"
-
-# Triggers
-triggers: [hello, hi, helloworld]
-
-# Gate
-folder_name: "HelloWorld"
-receiver: "HelloWorld.rb"
-receiver_class_name: "HelloWorld"
+Author: {
+  name: "Victor Bersy",
+  mail: "victor.bersy@gmail.com",
+  contacts: {
+    github: "VictorBersy",
+    twitter: "VictorBersy",
+  }
+}
+Plugin: {
+  name: "Hello World",
+  version: "0.1",
+  description: "Sample plugin. Reply 'Hello back :)' when receives 'hello'",
+  keywords: [sample, hello, world],
+  homepage: "http://github.com/VictorBersy/Jarvis",
+  licences: {
+    type: "MIT",
+    url: "http://github.com/VictorBersy/Jarvis/plugins/HelloWorld/LICENSE",
+  },
+  repository: {
+    type: "git",
+    url: "https://github.com/VictorBersy/Jarvis.git",
+  },
+  triggers: [hello, hi, helloworld]
+}
