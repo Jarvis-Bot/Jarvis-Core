@@ -22,8 +22,3 @@ module Jarvis
     end
   end
 end
-
-module Jarvis
-  require "pp"
-  plugins = Plugins.new
-end
