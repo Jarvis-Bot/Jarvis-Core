@@ -85,7 +85,7 @@ module Jarvis
       # Twitter::Streaming::FriendList
       # https://dev.twitter.com/docs/streaming-apis/messages#Friends_lists_friends
       prefix  = self.create_prefix("friend_list")
-      message = "You've #{friend_list.friend_ids.length} following."
+      message = "You've #{friend_list.length} following."
       puts prefix + message
     end
   end
