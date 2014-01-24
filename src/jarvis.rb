@@ -3,6 +3,7 @@ $: << File.dirname(__FILE__)
 require 'pp'
 require 'rainbow'
 require 'yaml'
+require 'pathname'
 
 module Jarvis
   unless ARGV.first.nil?
