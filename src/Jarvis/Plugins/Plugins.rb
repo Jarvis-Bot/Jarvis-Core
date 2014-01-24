@@ -23,5 +23,26 @@ module Jarvis
       end
       Viewer::plugin_count(@registered_plugins.length)
     end
+
+    def send_message(message)
+      triggers_match?(message.text)
+    end
+
+    private
+    def triggers_match?(tweet)
+      @registered_plugins.each do |plugin_specs_yaml|
+        plugin_specs_yaml["Plugin"]["triggers"].any? do |trigger_word|
+          call_plugin(plugin_specs_yaml["directory"])
+          return tweet.downcase.include? trigger_word
+        end
+      end
+    end
+
+    def call_plugin(directory)
+      basename = Pathname.new(directory).basename.to_s
+      require "#{directory}init.rb"
+      Object::const_get("#{basename}")::init
+    end
+
   end
 end
