@@ -15,7 +15,10 @@ module Jarvis
     require 'twitter'
     require 'Jarvis/Display/Viewer'
 
+    require 'Jarvis/Infos/Infos'
+
     require 'Jarvis/Plugins/Plugins'
+    require 'Jarvis/Plugins/PluginSkeleton'
 
     require 'Jarvis/Twitter/Clients'
     require 'Jarvis/Twitter/Dispatcher'
