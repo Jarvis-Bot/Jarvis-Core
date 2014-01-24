@@ -26,9 +26,10 @@ module Jarvis
       prefix       = self.create_prefix("jarvis_talking")
       screen_name  = user.screen_name
       nb_followers = user.followers_count.to_s
-
+      version      = $infos.version
+      
       # ████ Jarvis is online on @PSEUDO. You have X follower(s).
-      puts prefix + "Jarvis is online at @#{screen_name}. You have #{nb_followers} follower(s)."
+      puts prefix + "Jarvis #{version} is online at @#{screen_name}. You have #{nb_followers} follower(s)."
     end
 
     def self.tweet(tweet)
