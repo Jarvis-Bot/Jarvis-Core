@@ -1,11 +1,13 @@
 module Jarvis
   class Dispatcher
+    def self.dispatch(message, plugins_instance)
       case message
       when Twitter::Tweet
         if message[:deleted]
           Viewer::deleted_tweet(message)
         else
           Viewer::tweet(message)
+          plugins_instance.send_message(message)
         end
       when Twitter::DirectMessage
         Viewer::direct_message(message)
