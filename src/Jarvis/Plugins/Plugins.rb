@@ -1,8 +1,8 @@
 module Jarvis
   class Plugins
     def initialize
-      @registered_plugins   = {}
-      @plugins_directories  = Array.new
+      @registered_plugins  = Array.new
+      @plugins_directories = Array.new
     end
 
     def scan_directories
