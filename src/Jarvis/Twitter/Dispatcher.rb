@@ -7,7 +7,7 @@ module Jarvis
           Viewer::deleted_tweet(message)
         else
           Viewer::tweet(message)
-          plugins_instance.send_message(message)
+          plugins_instance.receive_message(message)
         end
       when Twitter::DirectMessage
         Viewer::direct_message(message)
