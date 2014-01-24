@@ -11,6 +11,9 @@ module Jarvis
       puts "Enter your access token secret :"
       keys["access_token_secret"] = $stdin.gets.chomp
 
+      unless Dir.exists?("../config/")
+        Dir.mkdir(File.join(Dir.home, "config"), 0700)
+      end
       File.open("../config/keys.yml", "w") { |f|
         f.write(keys.to_yaml)
       }
