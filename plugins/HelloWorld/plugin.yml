@@ -20,5 +20,5 @@ Plugin: {
     type: "git",
     url: "https://github.com/VictorBersy/Jarvis.git",
   },
-  triggers: [hello, hi, helloworld]
-}
+  triggers: [hello, hi, helloworld],
+  auth: [Tweet, DirectMessage, Event, FriendList] }
