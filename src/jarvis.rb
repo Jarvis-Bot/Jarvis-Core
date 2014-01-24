@@ -18,7 +18,7 @@ module Jarvis
     require 'Jarvis/Infos/Infos'
 
     require 'Jarvis/Plugins/Plugins'
-    require 'Jarvis/Plugins/PluginSkeleton'
+    require 'Jarvis/Plugins/Plugin'
 
     require 'Jarvis/Twitter/Clients'
     require 'Jarvis/Twitter/Dispatcher'

@@ -1,5 +1,5 @@
 module Jarvis
-  class PluginSkeleton
+  class Plugin
     def self.rest_client
       Clients::rest
     end
