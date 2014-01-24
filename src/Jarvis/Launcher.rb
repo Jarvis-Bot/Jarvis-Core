@@ -15,9 +15,9 @@ module Jarvis
     end
 
     def self.check_plugins
-      plugins = Plugins.new
-      plugins.scan_directories
-      plugins.load_plugins
+      @plugins = Plugins.new
+      @plugins.scan_directories
+      @plugins.load_plugins
     end
 
     def self.start_jarvis
@@ -25,7 +25,7 @@ module Jarvis
       Viewer::welcome_message(current_user)
 
       Clients::stream.user(:with => 'user') do |message|
-        Dispatcher::dispatch(message)
+        Dispatcher::dispatch(message, @plugins)
       end
     end
   end
