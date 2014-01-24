@@ -1,7 +1,7 @@
 class HelloWorld < Jarvis::Plugin
-  def self.init(message)
-    @tweet   = "@#{message.user.screen_name} Hello back !"
-    @options = {:in_reply_to_status => message}
+  def self.init(args_hash)
+    @tweet   = "@#{args_hash[:message].user.screen_name} Hello back !"
+    @options = {:in_reply_to_status => args_hash[:message]}
 
     self.send_tweet
   end

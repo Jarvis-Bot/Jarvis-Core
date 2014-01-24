@@ -46,7 +46,10 @@ module Jarvis
     def call_plugin
       basename = Pathname.new(@directory).basename.to_s
       require "#{@directory}init.rb"
-      Object::const_get("#{basename}")::init(@message)
+      args_hash = {
+        :message => @message
+      }
+      Object::const_get("#{basename}")::init(args_hash)
     end
 
   end
