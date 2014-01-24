@@ -21,7 +21,8 @@ Jarvis [WIP]
 
 The power of Jarvis belong to you, devs. I tried to make a simple way to create plugins for it.
 
-To create a plugin, you've to : 
+To create a plugin, you've to :
+
 1. Create a folder under `/plugins/`
 2. Create a file called `init.rb`
 3. Write a class with the same name as the previous created folder and inherit it from `Jarvis::Plugin`
