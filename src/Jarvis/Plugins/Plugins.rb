@@ -36,11 +36,14 @@ module Jarvis
     private
     def triggers_match?(message)
       @registered_plugins.each do |plugin_specs_yaml|
-        plugin_specs_yaml["Plugin"]["triggers"].any? do |trigger_word|
-          @directory = plugin_specs_yaml["directory"]
-          return message.text.downcase.include? trigger_word
+        plugin_specs_yaml['Plugin']['triggers'].any? do |trigger_word|
+          @directory = plugin_specs_yaml['directory']
+          if message.text.downcase.include? trigger_word
+            return true
+          end
         end
       end
+      false
     end
 
     def call_plugin
