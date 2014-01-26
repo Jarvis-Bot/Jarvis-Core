@@ -4,18 +4,18 @@ module Jarvis
       # You can use [black,red,green,yellow,blue,magenta,cyan,white,default]
       # See https://github.com/sickill/rainbow for more information
       case type
-      when "tweet"
-        color = "green"
-      when "deleted_tweet"
-        color = "red"
-      when "direct_message"
-        color = "magenta"
-      when "event"
-        color = "blue"
-      when "friend_list"
-        color = "yellow"
-      when "jarvis_talking"
-        color = "cyan"
+      when 'tweet'
+        color = 'green'
+      when 'deleted_tweet'
+        color = 'red'
+      when 'direct_message'
+        color = 'magenta'
+      when 'event'
+        color = 'blue'
+      when 'friend_list'
+        color = 'yellow'
+      when 'jarvis_talking'
+        color = 'cyan'
       end
       return '████ '.foreground(color.to_sym)
     end

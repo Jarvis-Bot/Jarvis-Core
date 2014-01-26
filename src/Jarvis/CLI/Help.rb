@@ -10,8 +10,8 @@ Usage: ./jarvis [OPTION]
     end
 
     def self.display_something_wrong
-      puts "Woops, there is something wrong. Take a look at the help :"
-      self.display_help
+      puts 'Woops, there is something wrong. Take a look at the help :'
+      display_help
     end
   end
 end

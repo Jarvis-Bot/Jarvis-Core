@@ -1,7 +1,7 @@
 module Jarvis
   class Plugin
     def self.rest_client
-      Clients::rest
+      Clients.rest
     end
   end
 end

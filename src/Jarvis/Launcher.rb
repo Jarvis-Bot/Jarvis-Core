@@ -1,17 +1,18 @@
 module Jarvis
   class Launcher
     def self.start
-      self.check_keys
+      check_keys
       $infos = Infos.new
-      self.check_plugins
-      self.start_jarvis
+      check_plugins
+      start_jarvis
     end
 
     def self.check_keys
-      unless File.exist?("../config/keys.yml")
-        puts "You need to configure Twitter API's keys in Jarvis. Go to http://dev.twitter.com/"
+      unless File.exist?('../config/keys.yml')
+        puts "You need to configure Twitter API's keys in Jarvis"
+        puts 'Go to http://dev.twitter.com/'
         require 'Jarvis/CLI/Config'
-        Config::config_keys
+        Config.config_keys
       end
     end
 
@@ -22,10 +23,10 @@ module Jarvis
     end
 
     def self.start_jarvis
-      Viewer::welcome_message($infos.current_user)
+      Viewer.welcome_message($infos.current_user)
 
-      Clients::stream.user(:with => 'user') do |message|
-        Dispatcher::dispatch(message, @plugins)
+      Clients.stream.user(with: 'user') do |message|
+        Dispatcher.dispatch(message, @plugins)
       end
     end
   end

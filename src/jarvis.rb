@@ -1,4 +1,4 @@
-$: << File.dirname(__FILE__)
+$LOAD_PATH << File.dirname(__FILE__)
 
 require 'pp'
 require 'rainbow'
@@ -6,12 +6,7 @@ require 'yaml'
 require 'pathname'
 
 module Jarvis
-  unless ARGV.first.nil?
-    require 'Jarvis/CLI/Config'
-    require 'Jarvis/CLI/Detector'
-    require 'Jarvis/CLI/Help'
-    Detector.new(ARGV)
-  else
+  if ARGV.first.nil?
     require 'twitter'
     require 'Jarvis/Display/Viewer'
 
@@ -24,6 +19,11 @@ module Jarvis
     require 'Jarvis/Twitter/Dispatcher'
 
     require 'Jarvis/Launcher'
-    Launcher::start
+    Launcher.start
+  else
+    require 'Jarvis/CLI/Config'
+    require 'Jarvis/CLI/Detector'
+    require 'Jarvis/CLI/Help'
+    Detector.new(ARGV)
   end
 end

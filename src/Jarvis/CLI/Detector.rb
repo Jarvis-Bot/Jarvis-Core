@@ -3,25 +3,25 @@ module Jarvis
     def initialize(args)
       @args = args
       case args.first
-      when "-h", "--help", "help"
-        self.help
-      when "-c" , "--configure", "configure"
-        self.config
+      when '-h', '--help', 'help'
+        help
+      when '-c' , '--configure', 'configure'
+        config
       else
-        self.something_wrong
+        something_wrong
       end
     end
-    
+
     def config
-      Config::config_keys
+      Config.config_keys
     end
 
     def help
-      Help::display_help
+      Help.display_help
     end
 
     def something_wrong
-      Help::display_something_wrong
+      Help.display_something_wrong
     end
   end
 end
