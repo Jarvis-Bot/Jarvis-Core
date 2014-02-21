@@ -8,4 +8,5 @@ group :test do
   gem 'fuubar'
   gem 'rubocop', '>= 0.18', :platforms => [:ruby_20, :ruby_21]
   gem 'simplecov', :require => false
+  gem 'coveralls', require: false
 end
