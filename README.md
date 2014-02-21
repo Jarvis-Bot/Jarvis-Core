@@ -1,4 +1,4 @@
-Jarvis [WIP] [![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis)
+Jarvis [WIP] [![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis) [![GitHub version](https://badge.fury.io/gh/VictorBersy%2FJarvis.png)](http://badge.fury.io/gh/VictorBersy%2FJarvis)
 ===========================
 
 ## What is it ?
