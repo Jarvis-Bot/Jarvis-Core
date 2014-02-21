@@ -11,12 +11,12 @@ module Jarvis
       puts 'Enter your access token secret :'
       @keys['access_token_secret'] = $stdin.gets.chomp
 
-      write_keys
+      self.write_keys
     end
 
-    def write_keys
+    def self.write_keys
       unless Dir.exists?('../config/')
-        Dir.mkdir(File.join(Dir.home, 'config'), 0700)
+        Dir.mkdir('../config/', 0700)
       end
       File.open('../config/keys.yml', 'w') do |f|
         f.write(@keys.to_yaml)
