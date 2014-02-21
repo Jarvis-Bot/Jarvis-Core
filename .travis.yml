@@ -22,7 +22,3 @@ matrix:
     - rvm: rbx
     - rvm: ruby-head
   fast_finish: true
-branches:
-  only:
-    - master
-    - wip
