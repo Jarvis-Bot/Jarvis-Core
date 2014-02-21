@@ -1,5 +1,5 @@
-Jarvis [WIP]
-=========================== 
+Jarvis [WIP] [![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis)
+===========================
 
 ## What is it ?
 
@@ -17,7 +17,7 @@ Jarvis [WIP]
 
 `~$ cd Jarvis/bin/ && ./jarvis`
 
-## Plugins 
+## Plugins
 
 The power of Jarvis belong to you, devs. I tried to make a simple way to create plugins for it.
 
@@ -31,7 +31,7 @@ To create a plugin, you've to :
 
 Take example on the HelloWorld plugin. I'll create a plugin generator in CLI soon.
 
-Jarvis will send a message(tweet, DM, reply...) to your plugin in a hash if one of your trigger word is detected. 
+Jarvis will send a message(tweet, DM, reply...) to your plugin in a hash if one of your trigger word is detected.
 
 You've to use Jarvis::Plugin if you want to create an update or anything. It's the REST client from the twitter gem by sferik (sferik/twitter)
 
