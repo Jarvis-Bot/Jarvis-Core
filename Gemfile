@@ -7,4 +7,5 @@ group :test do
   gem 'rspec', '>= 2.14'
   gem 'fuubar'
   gem 'rubocop', '>= 0.18', :platforms => [:ruby_20, :ruby_21]
+  gem 'simplecov', :require => false
 end
