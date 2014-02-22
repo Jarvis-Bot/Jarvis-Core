@@ -1,0 +1,19 @@
+AllCops:
+  Excludes:
+    - 'vendor/**'
+
+# Avoid long parameter lists
+ParameterLists:
+  Max: 4
+  CountKeywordArgs: true
+
+# Don't require magic comment at the top of every file
+Encoding:
+  Enabled: false
+
+# Disallow ASCII check in comments
+AsciiComments:
+  Enabled: false
+
+LineLength:
+  Enabled: false
