@@ -1,3 +1,7 @@
+AllCops:
+  Excludes:
+    - 'vendor/**'
+
 # Avoid long parameter lists
 ParameterLists:
   Max: 4
