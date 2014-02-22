@@ -1,5 +1,6 @@
-Jarvis [WIP] [![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis) [![GitHub version](https://badge.fury.io/gh/VictorBersy%2FJarvis.png)](http://badge.fury.io/gh/VictorBersy%2FJarvis) [![Dependency Status](https://gemnasium.com/VictorBersy/Jarvis.png)](https://gemnasium.com/VictorBersy/Jarvis) [![Coverage Status](https://coveralls.io/repos/VictorBersy/Jarvis/badge.png)](https://coveralls.io/r/VictorBersy/Jarvis)
+[![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis) [![GitHub version](https://badge.fury.io/gh/VictorBersy%2FJarvis.png)](http://badge.fury.io/gh/VictorBersy%2FJarvis) [![Dependency Status](https://gemnasium.com/VictorBersy/Jarvis.png)](https://gemnasium.com/VictorBersy/Jarvis) [![Coverage Status](https://coveralls.io/repos/VictorBersy/Jarvis/badge.png)](https://coveralls.io/r/VictorBersy/Jarvis)
 
+Jarvis [WIP]
 ===========================
 
 ## What is it ?
