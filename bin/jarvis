@@ -1,0 +1,3 @@
+#!/bin/sh
+exec ruby -W0 "../src/jarvis.rb" "$@"
+
