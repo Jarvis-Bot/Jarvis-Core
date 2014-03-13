@@ -20,7 +20,7 @@ module Jarvis
 
       def self.write_keys
         folder = '../config/'
-        file   = 'keys.yml'
+        file   = 'twitter_keys.yml'
         unless Dir.exists?(folder)
           Dir.mkdir(folder, 0700)
         end
