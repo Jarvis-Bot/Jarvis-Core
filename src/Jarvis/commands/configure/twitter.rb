@@ -25,7 +25,10 @@ module Jarvis
           Dir.mkdir(folder, 0700)
         end
         File.open(File.join(folder, file), 'w') do |f|
-          f.write(@keys.to_yaml)
+          @length = f.write(@keys.to_yaml)
+        end
+        if @length > 1
+          puts "#{file} has been successfully created!"
         end
       end
     end
