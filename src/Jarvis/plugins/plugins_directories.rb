@@ -4,10 +4,10 @@ module Jarvis
       attr_reader :plugins_directories
       def initialize
         @plugins_directories = []
-        scan_directories
+        scan
       end
 
-      def scan_directories
+      def scan
         Dir['../plugins/*/'].each do |directory|
 
           plugin_yml_exists = File.exist?(File.join(directory, 'plugin.yml'))
