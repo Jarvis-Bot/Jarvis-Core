@@ -8,7 +8,7 @@ module Jarvis
       end
 
       def scan_directories
-        Dir['/media/www-dev/private/ruby/Jarvis/plugins/*/'].each do |directory|
+        Dir['../plugins/*/'].each do |directory|
 
           plugin_yml_exists = File.exist?(File.join(directory, 'plugin.yml'))
           init_rb_exists    = File.exist?(File.join(directory, 'init.rb'))
