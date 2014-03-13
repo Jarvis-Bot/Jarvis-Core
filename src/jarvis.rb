@@ -7,7 +7,7 @@ require 'pathname'
 
 module Jarvis
   unless ARGV.first.nil?
-    require 'Jarvis/commands/commands'
+    require 'Jarvis/commands/arguments_parser'
     Commands.receive(ARGV)
   end
 end
