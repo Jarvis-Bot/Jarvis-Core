@@ -3,8 +3,8 @@ module Jarvis
     def self.receive(args)
       @args = args
       @file_name = "#{@args.pop}"
-      @path = File.join("commands", @args.each { |arg| arg })
-      @path_command_file = File.join(@path, @file_name)
+      @path = File.join(@args.each { |arg| arg })
+      @path_command_file = File.join(File.dirname(__FILE__), @path, @file_name + ".rb")
       exec_command
     end
 
@@ -23,7 +23,7 @@ module Jarvis
         end
       else
         puts 'Woops, there is something wrong. Take a look at the help :'
-        require 'commands/help'
+        require 'Jarvis/commands/help'
         Commands.help
       end
     end

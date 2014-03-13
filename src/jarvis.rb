@@ -1,4 +1,4 @@
-$LOAD_PATH << File.join(File.dirname(__FILE__), "Jarvis")
+$LOAD_PATH << File.dirname(__FILE__)
 
 require 'pp'
 require 'rainbow'
@@ -7,7 +7,7 @@ require 'pathname'
 
 module Jarvis
   unless ARGV.first.nil?
-    require 'commands/commands'
+    require 'Jarvis/commands/commands'
     Commands.receive(ARGV)
   end
 end
