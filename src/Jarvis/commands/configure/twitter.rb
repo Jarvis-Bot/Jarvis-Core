@@ -19,10 +19,12 @@ module Jarvis
       end
 
       def self.write_keys
-        unless Dir.exists?('../config/')
-          Dir.mkdir('../config/', 0700)
+        folder = '../config/'
+        file   = 'keys.yml'
+        unless Dir.exists?(folder)
+          Dir.mkdir(folder, 0700)
         end
-        File.open('../config/keys.yml', 'w') do |f|
+        File.open(File.join(folder, file), 'w') do |f|
           f.write(@keys.to_yaml)
         end
       end
