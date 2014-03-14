@@ -7,7 +7,11 @@ module Jarvis
       class << self
         def add_log_file(log)
           log_file_name = "#{@@time.strftime("%Y-%m-%d %H.%M.%S %z")}.log"
-          File.open(File.join("..", "logs", log_file_name), 'a') do |file|
+          log_folder = File.join('..', 'logs')
+          unless Dir.exists?(log_folder)
+            Dir.mkdir(log_folder, 0755)
+          end
+          File.open(File.join(log_folder, log_file_name), 'a') do |file|
             file.write "#{log}\n"
           end
         end
@@ -15,6 +19,7 @@ module Jarvis
         %w{debug info warning error fatal}.each do |type_log|
           define_method type_log.to_sym do |*args|
             add_log_file("[#{type_log.upcase}] message")
+            Prettylog.const_get(type_log.to_sym)
           end
         end
       end
