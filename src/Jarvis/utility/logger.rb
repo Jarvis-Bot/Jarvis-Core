@@ -19,7 +19,7 @@ module Jarvis
         %w{debug info warning error}.each do |type_log|
           define_method type_log.to_sym do |log|
             add_log_file("[#{type_log.upcase}] #{log}")
-            Log.send(type_log, log)
+            Viewer::Log.send(type_log, log)
           end
         end
       end
