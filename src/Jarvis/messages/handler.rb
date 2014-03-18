@@ -13,7 +13,6 @@ module Jarvis
         if message_match?
           case service_name
           when :twitter
-            puts "hello"
             call_plugin
           end
         end
