@@ -25,6 +25,7 @@ module Jarvis
         puts 'Woops, there is something wrong. Take a look at the help :'
         require 'Jarvis/commands/help'
         Commands.help
+        abort
       end
     end
   end
