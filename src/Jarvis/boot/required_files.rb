@@ -1,14 +1,24 @@
 module Jarvis
   module Boot
     class RequireFiles
+      def self.all
+        self.cli_only
+        self.dependencies
+        self.jarvis_itself
+        self.booting_files
+      end
+
       def self.cli_only
         require 'yaml'
       end
 
-      def self.jarvis_itself
+      def self.dependencies
         require 'rainbow'
         require 'twitter'
         require 'pathname'
+      end
+
+      def self.jarvis_itself
         require 'Jarvis/plugins/plugins_directories'
         require 'Jarvis/plugins/plugins_registered'
         require 'Jarvis/plugins/plugin_base'
