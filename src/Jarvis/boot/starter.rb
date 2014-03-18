@@ -8,10 +8,11 @@ module Jarvis
     Commands.receive(ARGV)
   end
 
+  Boot::RequireFiles.dependencies
   Boot::RequireFiles.jarvis_itself
   Boot::RequireFiles.booting_files
 
-  Boot::Plugins
-  Boot::Sources
+  Boot::Plugins.start
+  Boot::Sources.start
 
 end
