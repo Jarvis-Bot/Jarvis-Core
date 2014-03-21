@@ -19,6 +19,7 @@ module Jarvis
       end
 
       def self.jarvis_itself
+        require 'yaml'
         require 'Jarvis/plugins/plugins_directories'
         require 'Jarvis/plugins/plugins_registered'
         require 'Jarvis/plugins/plugin_base'
