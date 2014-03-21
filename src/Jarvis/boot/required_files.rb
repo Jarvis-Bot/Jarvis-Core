@@ -40,6 +40,7 @@ module Jarvis
 
       def self.booting_files
         require 'Jarvis/boot/plugins'
+        require 'Jarvis/boot/session'
         require 'Jarvis/boot/sources'
       end
     end
