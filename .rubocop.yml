@@ -17,3 +17,6 @@ AsciiComments:
 
 LineLength:
   Enabled: false
+
+Documentation:
+  Enabled: false
