@@ -1,6 +1,5 @@
 JARVIS_HELP = <<-EOS
 Usage: ./jarvis [OPTION]
-  configure twitter        configure jarvis with Twitter API keys
   help                     display this message
   version                  print Jarvis version
 EOS

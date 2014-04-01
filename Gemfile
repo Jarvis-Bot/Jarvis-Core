@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem "twitter", "~> 5.8.x"
 gem "rainbow", "~> 2.x.x"
 gem "rake", "~> 10.1.x"
 

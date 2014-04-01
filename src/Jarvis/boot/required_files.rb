@@ -14,7 +14,6 @@ module Jarvis
 
       def self.dependencies
         require 'rainbow'
-        require 'twitter'
         require 'pathname'
       end
 
@@ -27,11 +26,6 @@ module Jarvis
 
         require 'Jarvis/messages/factory'
         require 'Jarvis/messages/handler'
-        require 'Jarvis/messages/factories/twitter'
-
-        require 'Jarvis/sources/keys'
-        require 'Jarvis/sources/twytter/rest'
-        require 'Jarvis/sources/twytter/streaming'
 
         require 'Jarvis/utility/logger'
         require 'Jarvis/utility/viewer/log'
