@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/VictorBersy/Jarvis.png?branch=master)](https://travis-ci.org/VictorBersy/Jarvis) [![GitHub version](https://badge.fury.io/gh/VictorBersy%2FJarvis.png)](http://badge.fury.io/gh/VictorBersy%2FJarvis) [![Dependency Status](https://gemnasium.com/VictorBersy/Jarvis.png)](https://gemnasium.com/VictorBersy/Jarvis) [![Coverage Status](https://coveralls.io/repos/VictorBersy/Jarvis/badge.png)](https://coveralls.io/r/VictorBersy/Jarvis)
+[![Build Status](https://travis-ci.org/Jarvis-Bot/Jarvis-Core.svg?branch=master)](https://travis-ci.org/Jarvis-Bot/Jarvis-Core) [![GitHub version](https://badge.fury.io/gh/jarvis-Bot%2FJarvis-Core.svg)](http://badge.fury.io/gh/jarvis-Bot%2FJarvis-Core) [![Dependency Status](https://gemnasium.com/Jarvis-Bot/Jarvis-Core.svg)](https://gemnasium.com/Jarvis-Bot/Jarvis-Core) [![Coverage Status](https://coveralls.io/repos/Jarvis-Bot/Jarvis-Core/badge.png)](https://coveralls.io/r/Jarvis-Bot/Jarvis-Core)
 
 Jarvis [WIP]
 ===========================
