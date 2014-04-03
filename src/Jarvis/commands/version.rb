@@ -1,6 +1,6 @@
 module Jarvis
   module Commands
-    def self.version
+    def self.init
       major = 0
       minor = 2
       patch = 1

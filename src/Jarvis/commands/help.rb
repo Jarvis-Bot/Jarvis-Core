@@ -13,8 +13,12 @@ EOS
 
 module Jarvis
   module Commands
-    def self.help
+    def self.init
       puts JARVIS_HELP
+    end
+
+    def self.help
+      self.init
     end
   end
 end
