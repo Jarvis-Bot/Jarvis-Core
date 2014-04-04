@@ -4,8 +4,9 @@ module Jarvis
   Boot::RequireFiles.cli_only
 
   unless ARGV.first.nil?
-    require 'Jarvis/commands/arguments_parser'
-    Commands.receive(ARGV)
+    require 'Jarvis/CLI/arguments_parser'
+    CLI.receive(ARGV)
+    exit
   end
 
   Boot::RequireFiles.dependencies

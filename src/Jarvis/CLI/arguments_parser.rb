@@ -1,6 +1,6 @@
 require 'pp'
 module Jarvis
-  module Commands
+  module CLI
     def self.receive(args)
       @args = args
       @file_name = @args.shift
@@ -12,16 +12,16 @@ module Jarvis
       if File.exist?(@path_command_file)
         begin
           require @path_command_file
-          @args.length > 0 ? Commands.send(:init, @args) : Commands.send(:init)
+          @args.length > 0 ? CLI.send(:init, @args) : CLI.send(:init)
         rescue ArgumentError => e
           puts 'I think you forgot an argument. Take a look at the help:'
-          require 'Jarvis/commands/help'
-          Commands.help
+          require 'Jarvis/CLI/help'
+          CLI.help
         end
       else
         puts 'Woops, there is something wrong. Take a look at the help:'
-        require 'Jarvis/commands/help'
-        Commands.help
+        require 'Jarvis/CLI/help'
+        CLI.help
         abort
       end
     end

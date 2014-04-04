@@ -12,7 +12,7 @@ EOS
 # NOTE The reason the string is at the top is so 25 lines is easy to measure!
 
 module Jarvis
-  module Commands
+  module CLI
     def self.init
       puts JARVIS_HELP
     end

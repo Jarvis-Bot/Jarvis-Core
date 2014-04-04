@@ -1,5 +1,5 @@
 module Jarvis
-  module Commands
+  module CLI
     def self.init
       major = 0
       minor = 2
