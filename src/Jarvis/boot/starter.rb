@@ -5,7 +5,11 @@ module Jarvis
 
   unless ARGV.first.nil?
     require 'Jarvis/CLI/arguments_parser'
-    CLI.receive(ARGV)
+    begin
+      CLI.receive(ARGV)
+    rescue Interrupt => e
+      puts "\n" # do nothing if the user interrupted the programm
+    end
     exit
   end
 
