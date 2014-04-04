@@ -4,7 +4,7 @@ module Jarvis
     def self.receive(args)
       @args = args
       @file_name = @args.shift
-      @path_command_file = File.join(File.dirname(__FILE__), @file_name + ".rb")
+      @path_command_file = File.join(File.dirname(__FILE__), 'commands', @file_name + ".rb")
       exec_command
     end
 
@@ -15,12 +15,12 @@ module Jarvis
           @args.length > 0 ? CLI.send(:init, @args) : CLI.send(:init)
         rescue ArgumentError => e
           puts 'I think you forgot an argument. Take a look at the help:'
-          require 'Jarvis/CLI/help'
+          require 'Jarvis/CLI/commands/help'
           CLI.help
         end
       else
         puts 'Woops, there is something wrong. Take a look at the help:'
-        require 'Jarvis/CLI/help'
+        require 'Jarvis/CLI/commands/help'
         CLI.help
         abort
       end
