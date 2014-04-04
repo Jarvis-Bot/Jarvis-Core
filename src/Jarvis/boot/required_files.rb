@@ -9,6 +9,8 @@ module Jarvis
       end
 
       def self.cli_only
+        require 'open-uri'
+        require 'rainbow'
         require 'yaml'
       end
 
