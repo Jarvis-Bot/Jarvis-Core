@@ -12,6 +12,9 @@ module Jarvis
         require 'open-uri'
         require 'rainbow'
         require 'yaml'
+        require 'Jarvis/utility/logger'
+        require 'Jarvis/utility/viewer/log'
+        require 'Jarvis/utility/viewer/message'
       end
 
       def self.dependencies
