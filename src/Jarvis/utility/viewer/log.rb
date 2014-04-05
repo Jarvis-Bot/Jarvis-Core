@@ -13,6 +13,7 @@ module Jarvis
 
         def self.error
           puts color_factory(:red)
+          abort
         end
 
         def self.info
