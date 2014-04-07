@@ -74,6 +74,9 @@ module Jarvis
         yes_cases.include? input
       end
 
+      def done(text="Done")
+        puts Rainbow("✔  #{text}").green
+      end
     end
   end
 end
