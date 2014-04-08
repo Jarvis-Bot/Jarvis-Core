@@ -13,19 +13,13 @@ module Jarvis
     exit
   end
 
-  require 'Jarvis/plugins/plugins_directories'
-  require 'Jarvis/plugins/plugins_registered'
-  require 'Jarvis/plugins/plugin_base'
-  require 'Jarvis/plugins/plugins'
-
-  require 'Jarvis/messages/factory'
-  require 'Jarvis/messages/handler'
-
   require 'Jarvis/utility/logger'
   require 'Jarvis/utility/viewer/log'
   require 'Jarvis/utility/viewer/message'
 
-  require 'Jarvis/boot/plugins'
-  require 'Jarvis/boot/session'
-  require 'Jarvis/boot/sources'
+  require 'Jarvis/plugins/registered_plugins'
+
+  require 'Jarvis/messages/message'
+  require 'Jarvis/messages/handler'
+
 end
