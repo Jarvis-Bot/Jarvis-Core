@@ -1,9 +1,9 @@
 module Jarvis
-  require 'Jarvis/boot/required_files'
-
-  Boot::RequireFiles.cli_only
 
   unless ARGV.first.nil?
+    require 'Jarvis/utility/logger'
+    require 'Jarvis/utility/viewer/log'
+    require 'Jarvis/utility/viewer/message'
     require 'Jarvis/CLI/arguments_parser'
     begin
       CLI.receive(ARGV)
@@ -13,11 +13,19 @@ module Jarvis
     exit
   end
 
-  Boot::RequireFiles.dependencies
-  Boot::RequireFiles.jarvis_itself
-  Boot::RequireFiles.booting_files
+  require 'Jarvis/plugins/plugins_directories'
+  require 'Jarvis/plugins/plugins_registered'
+  require 'Jarvis/plugins/plugin_base'
+  require 'Jarvis/plugins/plugins'
 
-  Boot::Plugins.start
-  Boot::Sources.start
+  require 'Jarvis/messages/factory'
+  require 'Jarvis/messages/handler'
 
+  require 'Jarvis/utility/logger'
+  require 'Jarvis/utility/viewer/log'
+  require 'Jarvis/utility/viewer/message'
+
+  require 'Jarvis/boot/plugins'
+  require 'Jarvis/boot/session'
+  require 'Jarvis/boot/sources'
 end

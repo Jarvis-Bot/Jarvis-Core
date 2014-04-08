@@ -1,5 +1,7 @@
-require 'Jarvis/CLI/stdio'
 require 'json'
+require 'yaml'
+require 'open-uri'
+require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
