@@ -33,8 +33,8 @@ The repository MUST contains a valid .third-party file!
     def self.splitter(raw_link)
       splitted = raw_link.pop.split('/')
       repo_and_user = splitted.pop(2)
-      @user = repo_and_user[0]
-      @repo = repo_and_user[1]
+      @user = repo_and_user[0].downcase
+      @repo = repo_and_user[1].downcase
 
       if @repo.end_with? '.git' # http://github.com/User/Repository.git
         @repo.chomp!('.git')
