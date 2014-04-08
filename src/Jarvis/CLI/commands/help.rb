@@ -1,14 +1,13 @@
 JARVIS_HELP = <<-EOS
 Usage: ./jarvis [OPTION]
-  install [username/repo_name]  install a plugin / source from github
-  help                          display this message
+  install USERNAME/REPO_NAME    install a plugin / source from github
+  help [command]                display this message / help for this command
   version                       print Jarvis version
 EOS
 
-# NOTE Keep the lenth of vanilla --help less than 25 lines!
+# NOTE Keep the lenth of vanilla help less than 25 lines!
 # This is because the default Terminal height is 25 lines. Scrolling sucks
-# and concision is important. If more help is needed we should start
-# specialising help like the gem command does.
+# and concision is important.
 # NOTE Keep lines less than 80 characters! Wrapping is just not cricket.
 # NOTE The reason the string is at the top is so 25 lines is easy to measure!
 
