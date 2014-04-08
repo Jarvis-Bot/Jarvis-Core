@@ -17,7 +17,7 @@ module Jarvis
   require 'Jarvis/utility/viewer/log'
   require 'Jarvis/utility/viewer/message'
 
-  require 'Jarvis/plugins/registered_plugins'
+  require 'Jarvis/plugins/registered'
 
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
