@@ -27,11 +27,18 @@ module Jarvis
 
     def self.call_long_help
       path_command_file = File.join(File.dirname(__FILE__), ARGV.first + ".rb")
-      begin
-        require path_command_file
-        CLI.send(:long_help)
-      rescue NoMethodError
-        puts "I'm sorry, but this command doesn't provide any further documentation."
+      if File.exist?(@path_command_file)
+        begin
+          require path_command_file
+          CLI.send(:long_help)
+        rescue NoMethodError
+          puts "I'm sorry, but this command doesn't provide any further documentation."
+        end
+      else
+        puts "Hmm, this command doesn't exist. Take a look a the help:"
+        require 'Jarvis/CLI/commands/help'
+        CLI.help
+        abort
       end
     end
   end
