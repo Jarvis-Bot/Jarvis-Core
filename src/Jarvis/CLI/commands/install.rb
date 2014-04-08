@@ -3,6 +3,27 @@ require 'json'
 include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
+    def self.long_help
+      puts <<-EOS
+Usage: ./jarvis install [URL]
+  URL can be something like:
+
+  /User/Repository/
+  /User/Repository
+  User/Repository/
+
+  github.com/User/Repository
+
+  http[s]://github.com/User/Repository
+  http[s]://github.com/User/Repository.git
+
+  git@github.com:User/Repository.git
+
+
+The repository MUST contains a valid .third-party file!
+      EOS
+    end
+
     def self.init(raw_link)
       self.splitter(raw_link)
       @specs_file = self.get_specs_file
