@@ -22,7 +22,7 @@ Usage: ./jarvis install [URL]
   git@github.com:User/Repository.git
 
 
-The repository MUST contains a valid .third-party file!
+The repository MUST contains a valid .specs.yml file!
       EOS
     end
 
@@ -47,7 +47,7 @@ The repository MUST contains a valid .third-party file!
     end
 
     def self.get_specs_file
-      @specs_url = "https://raw.githubusercontent.com/#{@user}/#{@repo}/master/plugin.yml"
+      @specs_url = "https://raw.githubusercontent.com/#{@user}/#{@repo}/master/specs.yml"
       begin
         YAML::load open(@specs_url).read
       rescue OpenURI::HTTPError => e
@@ -56,7 +56,7 @@ The repository MUST contains a valid .third-party file!
     end
 
     def self.ask_install_confirm
-      print "Are you sure to install \"#{Rainbow(@specs_file["Plugin"]["name"]).green}\" created by \"#{Rainbow(@specs_file["Author"]["name"]).green}\"? [Y/n]"
+      print "Are you sure to install \"#{Rainbow(@specs_file["specs"]["name"]).green}\" created by \"#{Rainbow(@specs_file["Author"]["name"]).green}\"? [Y/n]"
       if Stdio.yes?($stdin.gets.chomp.strip)
         self.ask_version_to_install
       end
