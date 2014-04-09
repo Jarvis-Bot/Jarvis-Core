@@ -1,6 +1,6 @@
 require 'yaml'
 module Jarvis
-  module Plugins
+  module Receivers
     class Registered
       attr_reader :registered
       def initialize
@@ -9,7 +9,7 @@ module Jarvis
       end
 
       def register
-        Dir[File.join('..', 'third-party', 'plugins', '*')].each do |directory|
+        Dir[File.join('..', 'third-party', 'receivers', '*')].each do |directory|
           specs_file = File.join(directory, 'specs.yml')
           init_file  = File.join(directory, 'init.rb')
 
@@ -20,14 +20,14 @@ module Jarvis
       end
 
       def sorted
-        sorted_plugins = {}
-        @registered.each do |plugin|
-          plugin['specs']['handle'].each do |service|
-            sorted_plugins[service.to_sym] = [] unless sorted_plugins[service.to_sym].kind_of?(Array)
-            sorted_plugins[service.to_sym].push plugin['specs']['name']
+        sorted_receivers = {}
+        @registered.each do |receiver|
+          receiver['specs']['handle'].each do |service|
+            sorted_receivers[service.to_sym] = [] unless receiver[service.to_sym].kind_of?(Array)
+            sorted_receivers[service.to_sym].push receiver['specs']['name']
           end
         end
-        sorted_plugins
+        sorted_receivers
       end
     end
   end
