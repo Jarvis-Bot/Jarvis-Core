@@ -5,7 +5,7 @@ module Jarvis
         @timestamp = message.timestamp
         @from = message.from
         @message = message.text
-        @sorted_receivers = Receivers::Registered.new.sorted
+        @sorted_receivers = ThirdParty::Receivers::Registered.new.sorted
         dispatcher
       end
 
