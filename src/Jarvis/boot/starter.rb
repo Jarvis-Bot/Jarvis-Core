@@ -13,15 +13,14 @@ module Jarvis
     exit
   end
 
+  require 'Jarvis/boot/session'
+
   require 'Jarvis/utility/logger'
   require 'Jarvis/utility/viewer/log'
   require 'Jarvis/utility/viewer/message'
 
-
-  require 'Jarvis/third-party/thirdparty'
-  require 'Jarvis/third-party/receivers/registered'
-
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
 
+  require 'Jarvis/third-party/thirdparty'
 end
