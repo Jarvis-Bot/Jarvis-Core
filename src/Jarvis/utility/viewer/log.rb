@@ -1,3 +1,4 @@
+require 'rainbow'
 module Jarvis
   module Utility
     module Viewer
