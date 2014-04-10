@@ -5,13 +5,12 @@ module Jarvis
         @timestamp = message.timestamp
         @from = message.from
         @message = message.text
-        @sorted_receivers = ThirdParty::Receivers::Registered.new.sorted
+        @sorted_receivers = Boot::Session.registered_receivers
         dispatcher
       end
 
       def dispatcher
-        require 'pp'
-        pp @from, @sorted_receivers[:all], @sorted_receivers[@from]
+
       end
     end
   end
