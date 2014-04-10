@@ -1,11 +1,26 @@
 require 'yaml'
 module Jarvis
   module ThirdParty
-    def self.is_valid?(directory)
-      specs_file = File.join(directory, 'specs.yml')
-      init_file  = File.join(directory, 'init.rb')
+    class ThirdParty
+      def initialize(type)
+        @directory = File.join('..', 'third-party', type.to_s, '*')
+      end
 
-      File.exist?(specs_file) && File.exist?(init_file)
+      def is_valid?(directory)
+        @specs_file = File.join(directory, 'specs.yml')
+        @init_file  = File.join(directory, 'init.rb')
+        File.exist?(@specs_file) && File.exist?(@init_file)
+      end
+
+      def register
+        registered = []
+        Dir[@directory].each do |directory|
+          if self.is_valid?(directory)
+            registered.push YAML.load_file(@specs_file)
+          end
+        end
+        registered
+      end
     end
   end
 end
