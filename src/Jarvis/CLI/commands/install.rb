@@ -81,7 +81,6 @@ The repository MUST contains a valid .specs.yml file!
     def self.install(version)
       github_link = "https://github.com/#{@user}/#{@repo}/"
       install_path = File.join('..', 'third-party', "#{@user}_#{@repo}")
-      pp install_path
       self.git %|clone -n --branch #{version} #{github_link} #{install_path}|
     end
 
