@@ -5,7 +5,7 @@ module Jarvis
       class << self
         include Memoizable
         def registered_receivers
-          receivers ||= ThirdParty::ThirdParty.new(:receivers)
+          receivers ||= Jarvis::ThirdParty::ThirdParty.new(:receivers)
           registered = receivers.register
         end
         memoize :registered_receivers
@@ -23,7 +23,7 @@ module Jarvis
         memoize :sorted_registered_receivers
 
         def registered_sources
-          sources ||= ThirdParty::ThirdParty.new(:sources)
+          sources ||= Jarvis::ThirdParty::ThirdParty.new(:sources)
           registered = sources.register
         end
         memoize :registered_sources
