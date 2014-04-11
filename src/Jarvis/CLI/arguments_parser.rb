@@ -1,4 +1,3 @@
-require 'pp'
 module Jarvis
   module CLI
     def self.receive(args)

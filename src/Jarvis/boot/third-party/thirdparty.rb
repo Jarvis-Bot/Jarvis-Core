@@ -1,4 +1,3 @@
-require 'pp'
 require 'rainbow'
 module Jarvis
   module Boot
