@@ -12,10 +12,15 @@ module Jarvis
 
         def sorted_registered_receivers
           sorted = {}
+          custom_specs = {}
           registered_receivers.each do |receiver|
             receiver['specs']['handle'].each do |service|
               sorted[service.to_sym] = [] unless sorted[service.to_sym].kind_of?(Array)
-              sorted[service.to_sym].push receiver['specs']['name']
+              custom_specs = {
+                :directory => receiver['directory'],
+                :class_name => receiver['receiver']['class name'],
+              }
+              sorted[service.to_sym].push custom_specs
             end
           end
           sorted
