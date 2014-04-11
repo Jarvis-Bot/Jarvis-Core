@@ -5,12 +5,27 @@ module Jarvis
         @timestamp = message.timestamp
         @from = message.from
         @message = message.text
-        @sorted_receivers = Boot::Session.registered_receivers
+        @sorted_receivers = Boot::Session.sorted_registered_receivers
         dispatcher
       end
 
       def dispatcher
+        call_plugin(:all)
+        unless @sorted_receivers[@from].nil?
+          call_plugin(@from)
+        end
+      end
 
+      def call_plugin(from)
+        @sorted_receivers[from].each do |receiver|
+          args = {
+            :timestamp => @timestamp,
+            :message => @message,
+            :from => @from
+          }
+          require File.join("#{receiver[:directory]}", "init.rb")
+          Object.const_get("#{receiver[:class_name]}").new(args)
+        end
       end
     end
   end
