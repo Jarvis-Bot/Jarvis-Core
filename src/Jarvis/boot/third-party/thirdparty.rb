@@ -1,4 +1,3 @@
-require 'rainbow'
 module Jarvis
   module Boot
     class ThirdParty
