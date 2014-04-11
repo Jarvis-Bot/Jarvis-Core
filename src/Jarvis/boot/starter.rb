@@ -14,6 +14,8 @@ module Jarvis
   end
 
   require 'Jarvis/boot/session'
+  require 'Jarvis/boot/boot'
+  require 'Jarvis/boot/third-party/thirdparty'
 
   require 'Jarvis/utility/logger'
   require 'Jarvis/utility/viewer/log'
