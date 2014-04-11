@@ -22,12 +22,8 @@ module Jarvis
         end
 
         def self.color_factory(color)
-          if @options[:block]
-            prefix = '████ '
-          else
-            prefix = ''
-          end
-            Rainbow("#{prefix}#{@log}").fg(color)
+          prefix = @options[:block] ? '████ ' : ''
+          Rainbow("#{prefix}#{@log}").fg(color)
         end
 
         def self.log_factory(type, log, options)
