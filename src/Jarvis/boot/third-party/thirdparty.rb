@@ -5,6 +5,7 @@ module Jarvis
         @types = [:receivers, :sources]
         counting
         display
+        Jarvis::Boot::Sources.new
       end
 
       def counting
