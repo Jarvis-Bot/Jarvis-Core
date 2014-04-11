@@ -16,7 +16,9 @@ module Jarvis
         registered = []
         Dir[@directory].each do |directory|
           if self.is_valid?(directory)
-            registered.push YAML.load_file(@specs_file)
+            specs = YAML.load_file(@specs_file)
+            specs['directory'] = directory
+            registered.push specs
           end
         end
         registered
