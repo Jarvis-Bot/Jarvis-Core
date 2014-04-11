@@ -25,4 +25,6 @@ module Jarvis
   require 'Jarvis/messages/handler'
 
   require 'Jarvis/third-party/thirdparty'
+
+  Boot::Boot.new
 end
