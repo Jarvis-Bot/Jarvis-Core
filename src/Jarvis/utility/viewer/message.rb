@@ -2,19 +2,41 @@ module Jarvis
   module Utility
     module Viewer
       class Message
-
-        def self.tweet(tweet)
-          # Twitter::Tweet
-          # https://dev.twitter.com/docs/platform-objects/tweets
-          prefix      = Rainbow('████').fg(:green)
-          screen_name = Rainbow("@#{tweet.user.screen_name}").fg(:cyan)
-          name        = '[' + Rainbow("#{tweet.user.name}").fg(:yellow) + ']'
-          text        = Rainbow(tweet.text).bright
-
-          # ████ @PSEUDO [REAL_NAME]: This is a tweet
-          puts "#{prefix} #{screen_name} #{name} #{text}"
+        def initialize(options)
+          @options = options
+          build_message
         end
 
+        def build_message
+          from_color = color(:from, @options[:from])
+          to_color   = color(:to, @options[:to])
+          block_from = Rainbow('██').color(from_color)
+          block_to   = Rainbow('██').color(to_color)
+          timestamp  = @options[:timestamp].strftime("%H:%M:%S")
+          from       = Rainbow(format_service(@options[:from])).color(from_color)
+          to         = Rainbow(format_service(@options[:to])).color(to_color)
+          message    = @options[:message]
+          arrow      = '→'
+
+          puts "#{block_from}#{block_to} #{timestamp} [#{from}]#{arrow}[#{to}] #{message}"
+          # ████ 21:29:34 [TWITTER]→[SAVER] @author incredible tweet much retweeted
+        end
+
+        def format_service(service)
+          service.upcase[0..14].strip
+        end
+
+        def color(type, name)
+          all = Boot::Session.all_sorted
+
+          case type
+          when :from
+            thirdparty_type = :sources
+          when :to
+            thirdparty_type = :receivers
+          end
+          all[thirdparty_type][name.to_sym]['specs']['color message']
+        end
       end
     end
   end
