@@ -26,6 +26,9 @@ module Jarvis
   require 'Jarvis/messages/handler'
 
   require 'Jarvis/third-party/thirdparty'
-
-  Boot::Boot.new
+  begin
+    Boot::Boot.new
+  rescue Interrupt => e
+    puts "\n"
+  end
 end
