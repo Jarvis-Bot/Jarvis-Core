@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'third-party/**'
+    - 'vendor/**'
 
 # Avoid long parameter lists
 ParameterLists:
