@@ -20,9 +20,11 @@ module Jarvis
         @sorted_receivers[from].each do |receiver|
           args = {
             :timestamp => @timestamp,
-            :message => @message,
-            :from => @from
+            :message   => @message,
+            :from      => @from,
+            :to        => receiver[:name],
           }
+          Utility::Viewer::Message.new(args)
           require File.join("#{receiver[:directory]}", "init.rb")
           Object.const_get("#{receiver[:class_name]}").new(args)
         end
