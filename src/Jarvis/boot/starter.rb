@@ -1,5 +1,4 @@
 module Jarvis
-
   unless ARGV.first.nil?
     require 'Jarvis/utility/logger'
     require 'Jarvis/utility/viewer/log'
@@ -7,7 +6,7 @@ module Jarvis
     require 'Jarvis/CLI/arguments_parser'
     begin
       CLI.receive(ARGV)
-    rescue Interrupt => e
+    rescue Interrupt
       puts "\n" # do nothing if the user interrupted the programm
     end
     exit
@@ -28,7 +27,7 @@ module Jarvis
   require 'Jarvis/third-party/thirdparty'
   begin
     Boot::Boot.new
-  rescue Interrupt => e
+  rescue Interrupt
     puts "\n"
   end
 end

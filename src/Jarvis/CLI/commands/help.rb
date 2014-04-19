@@ -13,33 +13,35 @@ EOS
 
 module Jarvis
   module CLI
-    def self.init(name_long_help=nil)
+    def self.init(name_long_help = nil)
       if ARGV.empty? || name_long_help.nil?
         puts JARVIS_HELP
       else
-        self.call_long_help
+        call_long_help
       end
     end
 
     def self.help
-      self.init
+      init
     end
 
     def self.call_long_help
-      path_command_file = File.join(File.dirname(__FILE__), ARGV.first + ".rb")
+      @path_command_file = File.join(File.dirname(__FILE__), ARGV.first + '.rb')
       if File.exist?(@path_command_file)
-        begin
-          require path_command_file
-          CLI.send(:long_help)
-        rescue NoMethodError
-          puts "I'm sorry, but this command doesn't provide any further documentation."
-        end
+        find_long_help
       else
         puts "Hmm, this command doesn't exist. Take a look a the help:"
         require 'Jarvis/CLI/commands/help'
         CLI.help
         abort
       end
+    end
+
+    def self.find_long_help
+      require @path_command_file
+      CLI.send(:long_help)
+    rescue NoMethodError
+      puts "I'm sorry, but this command doesn't provide any further documentation."
     end
   end
 end

@@ -11,21 +11,14 @@ module Jarvis
 
       def dispatcher
         call_plugin(:all)
-        unless @sorted_receivers[@from].nil?
-          call_plugin(@from)
-        end
+        call_plugin(@from) unless @sorted_receivers[@from].nil?
       end
 
       def call_plugin(from)
         @sorted_receivers[from].each do |receiver|
-          args = {
-            :timestamp => @timestamp,
-            :message   => @message,
-            :from      => @from,
-            :to        => receiver[:name],
-          }
+          args = { timestamp: @timestamp, message: @message, from: @from, to: receiver[:name] }
           Utility::Viewer::Message.new(args)
-          require File.join("#{receiver[:directory]}", "init.rb")
+          require File.join("#{receiver[:directory]}", 'init.rb')
           Object.const_get("#{receiver[:class_name]}").new(args)
         end
       end

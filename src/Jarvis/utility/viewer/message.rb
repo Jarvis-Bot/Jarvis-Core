@@ -12,7 +12,7 @@ module Jarvis
           to_color   = color(:to, @options[:to])
           block_from = Rainbow('██').color(from_color)
           block_to   = Rainbow('██').color(to_color)
-          timestamp  = @options[:timestamp].strftime("%H:%M:%S")
+          timestamp  = @options[:timestamp].strftime('%H:%M:%S')
           from       = Rainbow(format_service(@options[:from])).color(from_color)
           to         = Rainbow(format_service(@options[:to])).color(to_color)
           message    = @options[:message]

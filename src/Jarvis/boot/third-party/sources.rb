@@ -12,7 +12,7 @@ module Jarvis
         @registered.each do |source|
           require "#{source['directory']}/init"
           class_name = source['source']['class name']
-          @threads.push Thread.new{Object.const_get(class_name).new}
+          @threads.push Thread.new { Object.const_get(class_name).new }
         end
       end
 

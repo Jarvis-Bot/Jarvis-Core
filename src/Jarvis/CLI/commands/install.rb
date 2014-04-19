@@ -3,10 +3,7 @@ require 'yaml'
 require 'open-uri'
 require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
-module Jarvis
-  module CLI
-    def self.long_help
-      puts <<-EOS
+LONG_HELP = <<-EOS
 Usage: ./jarvis install [URL]
   URL can be something like:
 
@@ -23,13 +20,17 @@ Usage: ./jarvis install [URL]
 
 
 The repository MUST contains a valid .specs.yml file!
-      EOS
+EOS
+module Jarvis
+  module CLI
+    def self.long_help
+      puts LONG_HELP
     end
 
     def self.init(raw_link)
-      self.splitter(raw_link)
-      @specs_file = self.get_specs_file
-      self.ask_install_confirm
+      splitter(raw_link)
+      @specs_file = find_specs_file
+      ask_install_confirm
     end
 
     def self.splitter(raw_link)
@@ -40,54 +41,50 @@ The repository MUST contains a valid .specs.yml file!
 
       if @repo.end_with? '.git' # http://github.com/User/Repository.git
         @repo.chomp!('.git')
-        if @user.include? 'git@github.com' # git@github.com:User/Repository
-          @user.sub!(/git@github.com:/, '')
-        end
+        @user.sub!(/git@github.com:/, '') if @user.include? 'git@github.com' # git@github.com:User/Repository
       end
     end
 
-    def self.get_specs_file
+    def self.find_specs_file
       @specs_url = "https://raw.githubusercontent.com/#{@user}/#{@repo}/master/specs.yml"
       begin
-        YAML::load open(@specs_url).read
+        YAML.load open(@specs_url).read
       rescue OpenURI::HTTPError => e
-        Utility::Logger.error("#{e.io.status.shift} #{e.io.status.shift} : '#{@specs_url}' wasn't found", :block => false)
+        Utility::Logger.error("#{e.io.status.shift} #{e.io.status.shift} : '#{@specs_url}' wasn't found", block: false)
       end
     end
 
     def self.ask_install_confirm
-      print "Are you sure to install \"#{Rainbow(@specs_file["specs"]["name"]).green}\" created by \"#{Rainbow(@specs_file["Author"]["name"]).green}\"? [Y/n]"
-      if Stdio.yes?($stdin.gets.chomp.strip)
-        self.ask_version_to_install
-      end
+      print "Are you sure to install \"#{Rainbow(@specs_file['specs']['name']).green}\" created by \"#{Rainbow(@specs_file['Author']['name']).green}\"? [Y/n]"
+      ask_version_to_install if Stdio.yes?($stdin.gets.chomp.strip)
     end
 
     def self.ask_version_to_install
-      tags_list = JSON::load open("https://api.github.com/repos/#{@user}/#{@repo}/tags").read
+      tags_list = JSON.load open("https://api.github.com/repos/#{@user}/#{@repo}/tags").read
 
       if tags_list.empty?
-        Utility::Logger.error("'#{@repo}' doesn't have any tags.", :block => false)
+        Utility::Logger.error("'#{@repo}' doesn't have any tags.", block: false)
       end
 
       releases = []
       tags_list.shift(10).each do |release|
-        releases.push release["name"]
+        releases.push release['name']
       end
 
-      version_to_install = Stdio.pick("Which version would you like to install?", releases)
-      self.install(version_to_install)
+      version_to_install = Stdio.pick('Which version would you like to install?', releases)
+      install(version_to_install)
     end
 
     def self.install(version)
       github_link = "https://github.com/#{@user}/#{@repo}/"
       install_path = File.join('..', 'third-party', "#{@user}_#{@repo}")
-      self.git %|clone -n --branch #{version} #{github_link} #{install_path}|
+      git %(clone -n --branch #{version} #{github_link} #{install_path})
     end
 
-  private
+    private
 
     def self.git(command)
-      out = %x{git #{command}}
+      %x(git #{command})
       Stdio.done("\"#{@repo}\" has been successfully installed!") if $?.success?
     end
   end

@@ -3,7 +3,6 @@ module Jarvis
   module Utility
     module Viewer
       class Log
-
         def self.debug
           puts color_factory(:cyan)
         end
@@ -29,7 +28,7 @@ module Jarvis
         def self.log_factory(type, log, options)
           @log = log
           @options = options
-          self.send(type)
+          send(type)
         end
       end
     end

@@ -6,7 +6,7 @@ module Jarvis
         include Memoizable
         def registered_receivers
           receivers ||= Jarvis::ThirdParty::ThirdParty.new(:receivers)
-          registered = receivers.register
+          receivers.register
         end
         memoize :registered_receivers
 
@@ -17,9 +17,9 @@ module Jarvis
             receiver['specs']['handle'].each do |service|
               sorted[service.to_sym] = [] unless sorted[service.to_sym].kind_of?(Array)
               custom_specs = {
-                :name => receiver['specs']['name'],
-                :directory => receiver['directory'],
-                :class_name => receiver['receiver']['class name'],
+                name: receiver['specs']['name'],
+                directory: receiver['directory'],
+                class_name: receiver['receiver']['class name']
               }
               sorted[service.to_sym].push custom_specs
             end
@@ -30,7 +30,7 @@ module Jarvis
 
         def registered_sources
           sources ||= Jarvis::ThirdParty::ThirdParty.new(:sources)
-          registered = sources.register
+          sources.register
         end
         memoize :registered_sources
 
@@ -43,10 +43,7 @@ module Jarvis
           registered_receivers.each do |receiver|
             receivers.store(receiver['specs']['name'].to_sym, receiver)
           end
-          all = {
-            :sources => sources,
-            :receivers => receivers,
-          }
+          { sources: sources, receivers: receivers }
         end
         memoize :all_sorted
       end

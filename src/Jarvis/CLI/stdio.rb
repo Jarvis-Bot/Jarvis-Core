@@ -5,10 +5,9 @@ require 'rainbow'
 module Jarvis
   module CLI
     module Stdio
-
       def pick(title, options)
         print Rainbow("#{title}").magenta
-        print Rainbow(" (Use arrows and press Enter)").yellow
+        print Rainbow(' (Use arrows and press Enter)').yellow
 
         puts "\n" * (options.size + 2)
 
@@ -16,8 +15,8 @@ module Jarvis
 
         print_options(options, selected)
 
-        while true
-          case ch = read_key
+        loop do
+          case read_key
           when "\e[A" # UP
             selected -= 1
             selected = options.size - 1 if selected < 0
@@ -38,7 +37,7 @@ module Jarvis
         end
       end
 
-      def print_options(options, selected=0)
+      def print_options(options, selected = 0)
         print "\r\e[#{options.size + 1}A"
 
         options.each_with_index do |option, i|
@@ -70,11 +69,11 @@ module Jarvis
       end
 
       def yes?(input)
-        yes_cases = ["yes", "YES", "y", "Y", ""]
+        yes_cases = ['yes', 'YES', 'y', 'Y', '']
         yes_cases.include? input
       end
 
-      def done(text="Done")
+      def done(text = 'Done')
         puts Rainbow("✔  #{text}").green
       end
     end
