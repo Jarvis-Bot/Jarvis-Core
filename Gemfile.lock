@@ -18,12 +18,12 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.2)
     multi_json (1.9.2)
-    parser (2.1.7)
+    parser (2.1.8)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
     powerpack (0.0.9)
     rainbow (2.0.0)
-    rake (10.2.2)
+    rake (10.3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.14.1)
@@ -61,7 +61,7 @@ DEPENDENCIES
   fuubar
   memoizable (~> 0.4.x)
   rainbow (~> 2.x.x)
-  rake (~> 10.1.x)
+  rake (~> 10.3.x)
   rspec (>= 2.14)
   rubocop (>= 0.18)
   simplecov
