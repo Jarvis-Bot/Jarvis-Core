@@ -17,6 +17,7 @@ module Jarvis
             receiver['specs']['handle'].each do |service|
               sorted[service.to_sym] = [] unless sorted[service.to_sym].kind_of?(Array)
               custom_specs = {
+                :name => receiver['specs']['name'],
                 :directory => receiver['directory'],
                 :class_name => receiver['receiver']['class name'],
               }
@@ -32,6 +33,22 @@ module Jarvis
           registered = sources.register
         end
         memoize :registered_sources
+
+        def all_sorted
+          sources = {}
+          registered_sources.each do |source|
+            sources.store(source['specs']['name'].to_sym, source)
+          end
+          receivers = {}
+          registered_receivers.each do |receiver|
+            receivers.store(receiver['specs']['name'].to_sym, receiver)
+          end
+          all = {
+            :sources => sources,
+            :receivers => receivers,
+          }
+        end
+        memoize :all_sorted
       end
     end
   end
