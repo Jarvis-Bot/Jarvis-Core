@@ -14,7 +14,7 @@ module Jarvis
           sorted = {}
           custom_specs = {}
           registered_receivers.each do |receiver|
-            receiver['specs']['handle'].each do |service|
+            receiver['receiver']['handle'].each do |service|
               sorted[service.to_sym] = [] unless sorted[service.to_sym].kind_of?(Array)
               custom_specs = {
                 name: receiver['specs']['name'],
