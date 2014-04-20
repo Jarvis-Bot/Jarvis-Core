@@ -1,9 +1,9 @@
 module Jarvis
   module CLI
     def self.init
-      major = 0
-      minor = 2
-      patch = 1
+      major = 1
+      minor = 0
+      patch = 0
       pre = nil
 
       version = [major, minor, patch, pre].compact.join('.')
