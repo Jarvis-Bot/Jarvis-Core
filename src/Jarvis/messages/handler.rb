@@ -10,11 +10,11 @@ module Jarvis
       end
 
       def dispatcher
-        call_plugin(:all)
-        call_plugin(@from) unless @sorted_receivers[@from].nil?
+        call_receiver(:all)
+        call_receiver(@from) unless @sorted_receivers[@from].nil?
       end
 
-      def call_plugin(from)
+      def call_receiver(from)
         @sorted_receivers[from].each do |receiver|
           args = { timestamp: @timestamp, message: @message, from: @from, to: receiver[:name] }
           Utility::Viewer::Message.new(args)
