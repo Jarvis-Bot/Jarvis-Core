@@ -19,7 +19,7 @@ Usage: ./jarvis install [URL]
   git@github.com:User/Repository.git
 
 
-The repository MUST contains a valid .specs.yml file!
+The repository MUST contains a valid specs.yml file!
 EOS
 module Jarvis
   module CLI
@@ -55,7 +55,11 @@ module Jarvis
     end
 
     def self.ask_install_confirm
-      print "Are you sure to install \"#{Rainbow(@specs_file['specs']['name']).green}\" created by \"#{Rainbow(@specs_file['Author']['name']).green}\"? [Y/n]"
+      thirdparty_name = Rainbow(@specs_file['specs']['name']).green
+      author_name = Rainbow(@specs_file['author']['name']).green
+      type = Rainbow(@specs_file['specs']['type']).magenta
+
+      print "Are you sure to install this #{type}: \"#{thirdparty_name}\" created by \"#{author_name}\"? [Y/n]"
       ask_version_to_install if Stdio.yes?($stdin.gets.chomp.strip)
     end
 
