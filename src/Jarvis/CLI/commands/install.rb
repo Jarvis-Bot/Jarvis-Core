@@ -1,6 +1,7 @@
 require 'json'
 require 'yaml'
 require 'open-uri'
+require 'rainbow'
 require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
 LONG_HELP = <<-EOS
@@ -29,7 +30,7 @@ module Jarvis
 
     def self.init(raw_link)
       splitter(raw_link)
-      @specs_file = find_specs_file
+      @specs = find_specs_file
       ask_install_confirm
     end
 
@@ -55,9 +56,9 @@ module Jarvis
     end
 
     def self.ask_install_confirm
-      thirdparty_name = Rainbow(@specs_file['specs']['name']).green
-      author_name = Rainbow(@specs_file['author']['name']).green
-      type = Rainbow(@specs_file['specs']['type']).magenta
+      thirdparty_name = Rainbow(@specs['specs']['name']).green
+      author_name = Rainbow(@specs['author']['name']).green
+      type = Rainbow(@specs['specs']['type']).magenta
 
       print "Are you sure to install this #{type}: \"#{thirdparty_name}\" created by \"#{author_name}\"? [Y/n]"
       ask_version_to_install if Stdio.yes?($stdin.gets.chomp.strip)
@@ -81,8 +82,8 @@ module Jarvis
 
     def self.install(version)
       github_link = "https://github.com/#{@user}/#{@repo}/"
-      install_path = File.join('..', 'third-party', "#{@user}_#{@repo}")
-      git %(clone -n --branch #{version} #{github_link} #{install_path})
+      install_path = File.join('..', 'third-party', "#{@specs['specs']['type']}s", "#{@user}_#{@repo}")
+      git %(clone --branch #{version} #{github_link} #{install_path})
     end
 
     private
