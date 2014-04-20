@@ -67,7 +67,7 @@ module Jarvis
       tags_list = JSON.load open("https://api.github.com/repos/#{@user}/#{@repo}/tags").read
 
       if tags_list.empty?
-        Utility::Logger.error("'#{@repo}' doesn't have any tags.", block: false)
+        Utility::Logger.error("'#{@repo}' doesn't have any tags. \nSee https://help.github.com/articles/creating-releases for more information.", block: false)
       end
 
       releases = []
