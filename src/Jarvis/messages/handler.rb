@@ -10,7 +10,7 @@ module Jarvis
       end
 
       def dispatcher
-        call_receiver(:all)
+        call_receiver(:all) unless @sorted_receivers[:all].nil?
         call_receiver(@from) unless @sorted_receivers[@from].nil?
       end
 
