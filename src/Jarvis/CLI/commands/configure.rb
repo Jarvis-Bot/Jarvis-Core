@@ -28,7 +28,7 @@ module Jarvis
     end
 
     def self.add_to_config
-      specs   = YAML::load_file(@specs_file)
+      specs   = YAML.load_file(@specs_file)
       type    = specs['specs']['type']
       name    = specs['specs']['name']
       author  = specs['author']['name']
