@@ -21,8 +21,8 @@ Okay, so imagine, you're connecting **Jarvis** to Twitter via his specific accou
 ```
 But, there's more! You could connect it to Github, Travis-CI, Instagram, Facebook, Email, Tumblr... And it will just execute what you need!
 
-What about publishing every Instagram pic you post on Tumblr, saving them in local, and send it to your mum via mail?
-Or receiving a failed notification from Travis-CI, playing an alarm sound on your computer/homeserver, and blink every Philips Hue in your house/office?
+What about publishing every Instagram pic you post on Tumblr, saving them in local, and sending it to your mum via mail?
+Or receiving a failed notification from Travis-CI, playing an alarm sound on your computer/homeserver, and blinking every Philips Hue in your house/office?
 
 You can define every possible case.
 
