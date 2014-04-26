@@ -1,4 +1,3 @@
-require 'pp'
 require 'yaml'
 require 'rainbow'
 require 'Jarvis/CLI/stdio'
@@ -6,7 +5,6 @@ include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
     def self.init
-      @to_config = { for_user: [], for_computer: [] }
       scan_thirdparty
       choose_configure
     end
@@ -15,7 +13,10 @@ module Jarvis
       Dir.glob(File.join('..', 'third-party', '**')).each do |type_dir|
         Dir[File.join(type_dir, '**')].each do |thirdparty_dir|
           @thirdparty_dir = thirdparty_dir
-          add_to_config if valid?
+           if valid?
+            @to_config ||= { for_user: [], for_computer: [] }
+            add_to_config
+          end
         end
       end
     end
@@ -38,6 +39,7 @@ module Jarvis
     end
 
     def self.choose_configure
+      Jarvis::Utility::Logger.error('No valid plugins to configure found.') if (@to_config == nil)
       to_configure = Stdio.pick('Which plugin would you like to configure?', @to_config[:for_user])
       id_to_configure = @to_config[:for_user].index(to_configure)
       @path_to_configure_file = @to_config[:for_computer][id_to_configure]
