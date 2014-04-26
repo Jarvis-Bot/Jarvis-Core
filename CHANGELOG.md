@@ -1,3 +1,9 @@
+1.0.1
+-----
+* [Add clients folder](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b810e165a32024451654fcb6c460852666b47a6b)
+* [Jarvis/configure don't ask to choose between nothing and nothing anymore](https://github.com/Jarvis-Bot/Jarvis-Core/commit/f562b8aa33a772f427037002f77580a5a815a203)
+* [Logger block option is now false by default](https://github.com/Jarvis-Bot/Jarvis-Core/commit/1ecbfaf3bb7dc7fda30524faf699972f4b7c9bae)
+
 1.0.0
 -----
 * [Split defaults plugins in a different repo](https://github.com/Jarvis-Bot/Jarvis-Core/commit/c8612a17ebeb1260e5f7a95cd36ae898ff775070)
