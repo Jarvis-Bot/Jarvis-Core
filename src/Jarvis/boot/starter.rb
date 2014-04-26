@@ -25,6 +25,7 @@ module Jarvis
   require 'Jarvis/messages/handler'
 
   require 'Jarvis/third-party/thirdparty'
+  require 'Jarvis/third-party/registered'
   begin
     Boot::Boot.new
   rescue Interrupt

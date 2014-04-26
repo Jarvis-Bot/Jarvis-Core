@@ -2,7 +2,7 @@ module Jarvis
   module Boot
     class ThirdParty
       def initialize
-        @types = [:receivers, :sources]
+        @types = [:receivers, :sources, :clients]
         counting
         display
         Jarvis::Boot::Sources.new

@@ -34,16 +34,26 @@ module Jarvis
         end
         memoize :registered_sources
 
+        def registered_clients
+          clients ||= Jarvis::ThirdParty::ThirdParty.new(:clients)
+          clients.register
+        end
+        memoize :registered_clients
+
         def all_sorted
           sources = {}
           registered_sources.each do |source|
             sources.store(source['specs']['name'].downcase.to_sym, source)
           end
+          clients = {}
+          registered_clients.each do |client|
+            clients.store(client['specs']['name'].downcase.to_sym, client)
+          end
           receivers = {}
           registered_receivers.each do |receiver|
             receivers.store(receiver['specs']['name'].downcase.to_sym, receiver)
           end
-          { sources: sources, receivers: receivers }
+          { sources: sources, receivers: receivers, clients: clients }
         end
         memoize :all_sorted
       end
