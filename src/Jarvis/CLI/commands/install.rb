@@ -51,7 +51,7 @@ module Jarvis
       begin
         YAML.load open(@specs_url).read
       rescue OpenURI::HTTPError => e
-        Utility::Logger.error("#{e.io.status.shift} #{e.io.status.shift} : '#{@specs_url}' wasn't found", block: false)
+        Utility::Logger.error("#{e.io.status.shift} #{e.io.status.shift} : '#{@specs_url}' wasn't found")
       end
     end
 
@@ -68,7 +68,7 @@ module Jarvis
       tags_list = JSON.load open("https://api.github.com/repos/#{@user}/#{@repo}/tags").read
 
       if tags_list.empty?
-        Utility::Logger.error("'#{@repo}' doesn't have any tags. \nSee https://help.github.com/articles/creating-releases for more information.", block: false)
+        Utility::Logger.error("'#{@repo}' doesn't have any tags. \nSee https://help.github.com/articles/creating-releases for more information.")
       end
 
       releases = []
