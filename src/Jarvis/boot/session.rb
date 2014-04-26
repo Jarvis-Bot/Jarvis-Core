@@ -37,11 +37,11 @@ module Jarvis
         def all_sorted
           sources = {}
           registered_sources.each do |source|
-            sources.store(source['specs']['name'].to_sym, source)
+            sources.store(source['specs']['name'].downcase.to_sym, source)
           end
           receivers = {}
           registered_receivers.each do |receiver|
-            receivers.store(receiver['specs']['name'].to_sym, receiver)
+            receivers.store(receiver['specs']['name'].downcase.to_sym, receiver)
           end
           { sources: sources, receivers: receivers }
         end

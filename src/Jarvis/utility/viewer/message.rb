@@ -35,7 +35,7 @@ module Jarvis
           when :to
             thirdparty_type = :receivers
           end
-          all[thirdparty_type][name.to_sym]['specs']['color message']
+          all[thirdparty_type][name.downcase.to_sym]['specs']['color message']
         end
       end
     end
