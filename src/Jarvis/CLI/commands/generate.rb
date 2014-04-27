@@ -3,7 +3,8 @@ include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
     def self.init(args = nil)
-      if args.nil?
+      @args = args
+      if @args.nil?
         propose_every_generators
       else
         try_manual_call
@@ -11,7 +12,7 @@ module Jarvis
     end
 
     def self.try_manual_call
-      generator_path = File.join(__dir__, 'generators', "#{args.join('_')}.rb")
+      generator_path = File.join(__dir__, 'generators', "#{@args.join('_')}.rb")
       class_name = path_to_class_name(generator_path)
       start_generator(class_name, generator_path)
     rescue LoadError
@@ -54,6 +55,8 @@ module Jarvis
 
     def self.start_generator(class_name, path)
       require path
+      puts 'Starting generator...'
+      puts '-----------------------------'
       Object.const_get(class_name).new
     end
   end
