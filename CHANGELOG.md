@@ -1,3 +1,8 @@
+1.1.0
+-----
+* [Standardize thirdparty name while registering](https://github.com/Jarvis-Bot/Jarvis-Core/commit/662fb46e85ddb19965257b78a5db54e63ff6af58)
+* [Introducing : CLIENTS :heart_eyes:](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d38c91e561c58f4c2f119daeea55bdccfc9d318a)
+
 1.0.1
 -----
 * [Add clients folder](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b810e165a32024451654fcb6c460852666b47a6b)
