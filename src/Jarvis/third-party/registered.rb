@@ -1,7 +1,7 @@
 module Jarvis
   module ThirdParty
     class Registered
-      def self.client(name, call=false)
+      def self.client(name, call = false)
         @client = Jarvis::Boot::Session.all_sorted[:clients][format_name(name)]
         return_client_object unless call
       end
