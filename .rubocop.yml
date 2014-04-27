@@ -8,6 +8,10 @@ ParameterLists:
   Max: 4
   CountKeywordArgs: true
 
+MethodLength:
+  CountComments: false
+  Max: 14
+
 # Don't require magic comment at the top of every file
 Encoding:
   Enabled: false
@@ -20,4 +24,7 @@ LineLength:
   Enabled: false
 
 Documentation:
+  Enabled: false
+
+EndOfLine:
   Enabled: false
