@@ -17,12 +17,12 @@ class ProfileDeveloper
 
   def questions
     @author = Questions.new(:author, 'This is about you, the author.')
-    @author.question(:full_name, "What's your full name?")
+    @author.ask(:full_name, "What's your full name?")
 
     @contacts = Questions.new(:contacts, 'Now, I need to know how people can contact you.')
-    @contacts.question(:email, 'Your email plz')
-    @contacts.question(:github, 'Your Github account name plz')
-    @contacts.question(:twitter, 'Your pseudo on twitter ? (without the @)')
+    @contacts.ask(:email, 'Your email plz')
+    @contacts.ask(:github, 'Your Github account name plz')
+    @contacts.ask(:twitter, 'Your pseudo on twitter ? (without the @)')
 
     correct_informations?
   end

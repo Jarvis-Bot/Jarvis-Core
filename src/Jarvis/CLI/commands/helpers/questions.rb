@@ -6,7 +6,7 @@ class Questions
     @theme = theme.to_s
   end
 
-  def question(var, question)
+  def ask(var, question)
     print Rainbow("#{question} : ").color(:magenta)
     @answers[var.to_s] = $stdin.gets.chomp.strip
   end
