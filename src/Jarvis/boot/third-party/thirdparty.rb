@@ -15,7 +15,7 @@ module Jarvis
           registered = Session.send("registered_#{type}")
           type.chomp!('s') if registered.count <= 1
           if registered.count == 0
-            Utility::Logger.error("You must have one #{type} at least to start Jarvis.")
+            Utility::Logger.error("You must have one #{type} at least to start Jarvis.", log: false)
           end
           @counted[type.to_sym] = { count: registered.count, registered: registered }
         end

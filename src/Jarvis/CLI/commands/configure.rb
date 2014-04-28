@@ -39,7 +39,7 @@ module Jarvis
     end
 
     def self.choose_configure
-      Jarvis::Utility::Logger.error('No valid plugins to configure found.') if @to_config.nil?
+      Jarvis::Utility::Logger.error('No valid plugins to configure found.', log: false) if @to_config.nil?
       to_configure = Stdio.pick('Which plugin would you like to configure?', @to_config[:for_user])
       id_to_configure = @to_config[:for_user].index(to_configure)
       @path_to_configure_file = @to_config[:for_computer][id_to_configure]
