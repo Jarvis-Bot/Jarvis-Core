@@ -65,15 +65,15 @@ module Jarvis
     end
 
     def self.ask_version_to_install
-      tags_list = JSON.load open("https://api.github.com/repos/#{@user}/#{@repo}/tags").read
+      releases_list = JSON.load open("https://api.github.com/repos/#{@user}/#{@repo}/releases").read
 
-      if tags_list.empty?
-        Utility::Logger.error("'#{@repo}' doesn't have any tags. \nSee https://help.github.com/articles/creating-releases for more information.")
+      if releases_list.empty?
+        Utility::Logger.error("'#{@repo}' doesn't have any releases. \nSee https://help.github.com/articles/creating-releases for more information.")
       end
 
       releases = []
-      tags_list.shift(10).each do |release|
-        releases.push release['name']
+      releases_list.shift(10).each do |release|
+        releases.push release['tag_name']
       end
 
       version_to_install = Stdio.pick('Which version would you like to install?', releases)
