@@ -41,7 +41,8 @@ class ProfileDeveloper
   end
 
   def save_informations
-    to_save = [@author.results, @contacts.results].to_yaml
+    to_save = @author.results
+    to_save = to_save.merge(@contacts.results.to_hash)
 
     folder = File.expand_path(File.join('..', 'config', 'profiles'))
     file   = 'developer.yml'
