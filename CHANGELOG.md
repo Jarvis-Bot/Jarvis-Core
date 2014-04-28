@@ -1,3 +1,10 @@
+1.2.0
+-----
+* [[Rubocop] Extend MethodLenght to 14 LoC max](https://github.com/Jarvis-Bot/Jarvis-Core/commit/49c2236d3bdf1d3828c28c107046e0fb2ac59576)
+* [Add generators, to generate profile, config files...](https://github.com/Jarvis-Bot/Jarvis-Core/commit/173b8d3121852cb1b524593e4b46e8b1051c486b)
+* [Add helpers to ask questions in CLI](https://github.com/Jarvis-Bot/Jarvis-Core/commit/56bfd513fbc5ea2ba3694737ec1daff6f06da988)
+* [Add developer profile generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/fa281ceb21161aff12bd8251d99956333f760baf)
+
 1.1.0
 -----
 * [Standardize thirdparty name while registering](https://github.com/Jarvis-Bot/Jarvis-Core/commit/662fb46e85ddb19965257b78a5db54e63ff6af58)
