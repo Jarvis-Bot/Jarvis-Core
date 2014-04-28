@@ -13,6 +13,10 @@ class Questions
     @answers[var.to_s] = $stdin.gets.chomp.strip
   end
 
+  def add(var, answer)
+    @answers[var.to_s] = answer
+  end
+
   def results
     { @theme => @answers }
   end
