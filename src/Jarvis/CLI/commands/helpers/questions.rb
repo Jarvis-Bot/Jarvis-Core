@@ -6,8 +6,10 @@ class Questions
     @theme = theme.to_s
   end
 
-  def ask(var, question)
-    print Rainbow("#{question} : ").color(:magenta)
+  def ask(var, question, hint = nil)
+    print Rainbow("#{question} ").color(:magenta)
+    print Rainbow("(#{hint})").color(:cyan) unless hint.nil?
+    print Rainbow(': ').color(:magenta)
     @answers[var.to_s] = $stdin.gets.chomp.strip
   end
 
