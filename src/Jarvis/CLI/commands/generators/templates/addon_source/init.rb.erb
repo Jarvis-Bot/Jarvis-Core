@@ -1,0 +1,20 @@
+# Require your library if you need to
+# require 'your_library_name'
+class <%= @infos[1]['specs']['class_name'] %>
+  def initialize
+  	# This method will be called by Jarvis on boot. It will be executed in a thread
+  	# You can connect your source to a streaming API for example, and create a message
+  	# when the source receive one.
+  end
+
+  def create_message
+  # you can rename it, or remove it. But you must create a message with jarvis::Message::Message.new
+
+  	# To communicate with Jarvis, you've to send him a message like this :
+  	# Jarvis::Messages::Message.new('<%= @infos[1]['specs']['name'] %>', 'Hello Jarvis!', object)
+  	# object is not required, but I'm pretty sure you receive a message, or you can build
+  	# one. This object is used by receivers to read some useful data. For example,
+  	# you can send an tweet object, and the receiver will know who tweet it, the message,
+  	# and the creation date.
+  end
+end
