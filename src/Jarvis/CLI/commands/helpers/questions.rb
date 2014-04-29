@@ -1,3 +1,4 @@
+require 'rainbow'
 class Questions
   def initialize(theme, announce = nil)
     print "\n"
@@ -14,6 +15,11 @@ class Questions
   end
 
   def add(var, answer)
+    @answers[var.to_s] = answer
+  end
+
+  def modify(var, &block)
+    answer = yield @answers[var.to_s]
     @answers[var.to_s] = answer
   end
 
