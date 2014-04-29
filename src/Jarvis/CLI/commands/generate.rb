@@ -44,7 +44,7 @@ module Jarvis
         file_name = file_name.split('_').each { |part| part.capitalize! }
         file_name.join
       else
-        fpfile_name
+        file_name
       end
     end
 
