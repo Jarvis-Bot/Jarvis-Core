@@ -83,7 +83,7 @@ class AddonGenerator
     specs = specs.merge(@repository.results)
     specs = specs.merge(@specific.results)
 
-    @full_specs = [Profile.new(:developer).load, specs] # FIX format
+    @full_specs = [Profile.new(:developer).load, specs] # FIX format (here and templates)
     puts YAML.dump(@full_specs)
 
     ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
@@ -99,7 +99,7 @@ class AddonGenerator
     template_path = File.expand_path(File.join(__dir__, '..', 'generators', 'templates', "addon_#{@type}"))
 
     to_generate.each do |filename|
-      FilesGenerator.new(template_path, filename, path).generate
+      FilesGenerator.new(template_path, filename, path, @full_specs).generate
     end
   end
 end
