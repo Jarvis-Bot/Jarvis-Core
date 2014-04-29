@@ -28,10 +28,7 @@ class ProfileDeveloper
   end
 
   def correct_informations?
-    puts Rainbow('These informations are correct? [Y/n]').color(:green)
-    confirmation = $stdin.gets.chomp.strip
-
-    if Jarvis::CLI::Stdio.yes?(confirmation)
+    if Jarvis::CLI::Stdio.yes?('These informations are correct?')
       save_informations
     else
       puts Rainbow('Be careful, young typer!').color(:red)

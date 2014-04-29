@@ -60,8 +60,7 @@ module Jarvis
       author_name = Rainbow(@specs['author']['name']).green
       type = Rainbow(@specs['specs']['type']).magenta
 
-      print "Are you sure to install this #{type}: \"#{thirdparty_name}\" created by \"#{author_name}\"? [Y/n]"
-      ask_version_to_install if Stdio.yes?($stdin.gets.chomp.strip)
+      ask_version_to_install if Stdio.yes?("Are you sure to install this #{type}: \"#{thirdparty_name}\" created by \"#{author_name}\"?", color: false)
     end
 
     def self.ask_version_to_install
