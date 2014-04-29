@@ -1,3 +1,35 @@
+1.3.0
+-----
+### New Features
+* [[Addons] Sources can send object to receivers](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d0f4dd1b7c264994a41c36d5c440c8506c6d7731)
+* [[Questions Helper] You can pass an hint to ask method](https://github.com/Jarvis-Bot/Jarvis-Core/commit/4b05f21c6a1dc591d8e1a54a7c5376b01881b59e)
+* [[Questions Helper] You can now add answer without asking anything, by guessing for example](https://github.com/Jarvis-Bot/Jarvis-Core/commit/9a3ce6f40fe6f642bf6ba456555e3a573c405597)
+* [[Questions Helper] Question helper can modify an answer](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d70a976422c2a4523c934c3c45bc18227015e790)
+* [[Questions Helper] Questions methods are chainable](https://github.com/Jarvis-Bot/Jarvis-Core/commit/4b157fa5a547f8a77e5c3e5d8bcc8324e9fc797c)
+* [[Helpers] Add profile helper](https://github.com/Jarvis-Bot/Jarvis-Core/commit/adc69da078e5b49c56bdb531331798545b2493d2)
+* [[Files Generator] Add files generator helper](https://github.com/Jarvis-Bot/Jarvis-Core/commit/aceac61c4aa912e0cc0b771fb1530eb6a5d71666)
+* [[Addons Generator] Add addon generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/a0f3fa8e282e73636250bd17ba32167cb258cddf)
+* [[Addons Generator] Add addon client generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/fe21a7f68ec93a3d668d654cc57fb5d81fc45140)
+
+### Improvements
+* [[Install Module] Retrieve releases instead of tags from Github](https://github.com/Jarvis-Bot/Jarvis-Core/commit/668766edf283e85d58982cff7dfa7b6af6773731)
+* [[Logger] Avoid logging for just one line](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b855c859c9f455c8f9cbb0abbe098326bce432f5)
+* [[Questions helper] Rename question in ask](https://github.com/Jarvis-Bot/Jarvis-Core/commit/a417096d3d54891beb733456082dfa4f158a8fef)
+* [[Questions helper] Rename variables last_var to last_entry](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b76b61bccd540f7005e7a127e0c7f5c214dbe4d2)
+* [[Stdio] Yes method ask directly the question](https://github.com/Jarvis-Bot/Jarvis-Core/commit/e70292ec6dd23fdc359f28676ee070012563a873)
+* [[Typo] Fix typo](https://github.com/Jarvis-Bot/Jarvis-Core/commit/02f150c153041a274a2bbc046cd4816fe6836f2a)
+* [[CLI Generate] Index only .rb files](https://github.com/Jarvis-Bot/Jarvis-Core/commit/3a142cb015f9d6d3e95b643c077462aa196bbb62)
+* [[Files Generator] Give informations to file generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/cb54b3d61e631aa1d6cba2dd7045540c9c1a8469)
+* [[Files Generator] Get informations and bind with ERB templates](https://github.com/Jarvis-Bot/Jarvis-Core/commit/2fb45400a500f62d3433a46b55a6224800b05637)
+* [[Addons Generator] Add client templates](https://github.com/Jarvis-Bot/Jarvis-Core/commit/36fb4c3fec7f4304c9ee4996f5ba9ab6eb6f9eba)
+* [[Addons Generator] Add source templates](https://github.com/Jarvis-Bot/Jarvis-Core/commit/7b3273fbfdce4128afa54872e0c59ac36b59eca8)
+* [[Addons Generator] Add receiver templates](https://github.com/Jarvis-Bot/Jarvis-Core/commit/45fbfcdec00958ce7c57f00ad534dad56af3af97)
+
+### Bug Fixes
+* [[Bug Fixes] Fix void array creation](https://github.com/Jarvis-Bot/Jarvis-Core/commit/0582b224ad61a3a6759b9d5aa577ca712cbd3447)
+
+----------
+
 1.2.0
 -----
 * [[Rubocop] Extend MethodLenght to 14 LoC max](https://github.com/Jarvis-Bot/Jarvis-Core/commit/49c2236d3bdf1d3828c28c107046e0fb2ac59576)
@@ -5,16 +37,22 @@
 * [Add helpers to ask questions in CLI](https://github.com/Jarvis-Bot/Jarvis-Core/commit/56bfd513fbc5ea2ba3694737ec1daff6f06da988)
 * [Add developer profile generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/fa281ceb21161aff12bd8251d99956333f760baf)
 
+----------
+
 1.1.0
 -----
 * [Standardize thirdparty name while registering](https://github.com/Jarvis-Bot/Jarvis-Core/commit/662fb46e85ddb19965257b78a5db54e63ff6af58)
 * [Introducing : CLIENTS :heart_eyes:](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d38c91e561c58f4c2f119daeea55bdccfc9d318a)
+
+----------
 
 1.0.1
 -----
 * [Add clients folder](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b810e165a32024451654fcb6c460852666b47a6b)
 * [Jarvis/configure don't ask to choose between nothing and nothing anymore](https://github.com/Jarvis-Bot/Jarvis-Core/commit/f562b8aa33a772f427037002f77580a5a815a203)
 * [Logger block option is now false by default](https://github.com/Jarvis-Bot/Jarvis-Core/commit/1ecbfaf3bb7dc7fda30524faf699972f4b7c9bae)
+
+----------
 
 1.0.0
 -----
@@ -48,6 +86,8 @@
 * [Handle spec only is for receivers](https://github.com/Jarvis-Bot/Jarvis-Core/commit/81d7fa6498da991d290dde01c629b9217029353a)
 * [Update README](https://github.com/Jarvis-Bot/Jarvis-Core/commit/defad0d1b87346edaf1ad4c965d674fd67a16d47)
 
+----------
+
 0.2.0
 -----
 * [Add version option](https://github.com/Jarvis-Bot/Jarvis-Core/commit/92b860b87a93ccd5963d3903aa0b85adc3c40334)
@@ -67,6 +107,8 @@ Jarvis is more stable and flexible, but it's still messy.
 I'm writing a new version coming soon.
 I will split Jarvis in core, and different modules/plugins.
 
+----------
+
 0.1.1
 -----
 * [Fix overwriting plugins while register](https://github.com/VictorBersy/Jarvis/commit/c76301332442995b17b0a4838f50ce9897487c5b)
@@ -74,6 +116,8 @@ I will split Jarvis in core, and different modules/plugins.
 * [Fix config folder creation](https://github.com/VictorBersy/Jarvis/commit/c8130a3746450e91028b2cd5da6f7e442cc6b1c0)
 * [Update to Twitter 5.7.1](https://github.com/VictorBersy/Jarvis/commit/a35cdf8437642b6bcf41af822939e4230890acae)
 * [Add Travis-CI](https://github.com/Jarvis-Bot/Jarvis-Core/commit/f67f11ce77f43a398c45c08fadf490dfb09c5e7f)
+
+----------
 
 0.1.0
 -----
