@@ -21,7 +21,7 @@ module Jarvis
     end
 
     def self.propose_every_generators
-      Dir[File.join(__dir__, 'generators', '*')].each do |generator_path|
+      Dir[File.join(__dir__, 'generators', '*.rb')].each do |generator_path|
         @choices ||= { for_user: [], for_computer: [] }
 
         class_name = path_to_class_name(generator_path)
