@@ -1,3 +1,14 @@
+1.4.0
+-----
+### New Features
+* [[Addons Generator] Add source generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/89492e8e7f0a49e7e687530cb7eb385d8941794c)
+* [[Addons Generator] Add receiver generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/2d9a3ff0f2ed67bd6621437a157ac892809a6e7f)
+
+### Improvements
+* [[Generators / Helpers] Generators and helpers are now under Jarvis::CLI](https://github.com/Jarvis-Bot/Jarvis-Core/commit/f3866d23ad49abd3196a2ec61a46a3dd16264b78)
+
+----------
+
 1.3.0
 -----
 ### New Features

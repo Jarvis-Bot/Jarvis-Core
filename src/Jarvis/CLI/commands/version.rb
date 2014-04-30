@@ -2,7 +2,7 @@ module Jarvis
   module CLI
     def self.init
       major = 1
-      minor = 3
+      minor = 4
       patch = 0
       pre = nil
 
