@@ -1,6 +1,6 @@
 # Require your library if you need to
 # require 'your_library_name'
-class <%= @infos[1]['specs']['class_name'] %>
+class <%= @infos[1]['specs']['class_name'].capitalize %>
   def initialize
   	# This method will be called by Jarvis on boot. It will be executed in a thread
   	# You can connect your source to a streaming API for example, and create a message

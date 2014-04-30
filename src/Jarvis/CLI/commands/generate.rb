@@ -57,7 +57,7 @@ module Jarvis
       require path
       puts 'Starting generator...'
       puts '-----------------------------'
-      Object.const_get(class_name).new
+      Object.const_get("Jarvis::CLI::#{class_name}").new
     end
   end
 end
