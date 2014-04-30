@@ -1,5 +1,4 @@
 require 'erb'
-require 'fileutils'
 module Jarvis
   module CLI
     class FilesGenerator
@@ -21,7 +20,7 @@ module Jarvis
       end
 
       def create_folder
-        FileUtils.mkdir(@path)
+        Dir.mkdir(@path)
       end
     end
   end
