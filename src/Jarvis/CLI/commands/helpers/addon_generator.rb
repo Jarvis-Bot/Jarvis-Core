@@ -85,7 +85,8 @@ module Jarvis
         specs = specs.merge(@repository.results)
         specs = specs.merge(@specific.results)
 
-        @full_specs = [Profile.new(:developer).load, specs] # FIX format (here and templates)
+        author = Profile.new(:developer).load
+        @full_specs = {specs: specs['specs'], author: author}
         puts YAML.dump(@full_specs)
 
         ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
