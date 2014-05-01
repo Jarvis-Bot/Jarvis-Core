@@ -1,3 +1,16 @@
+1.4.1
+-----
+### Bug Fixes
+* [[Generator] Fix author & specs format](https://github.com/Jarvis-Bot/Jarvis-Core/commit/a3f70ca6e77e5e7a79d805e3cbe66c4184cf4ea1)
+* [[Generator] Fix addon 'reiceiver' to 'receiver' (don't laugh)](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b4dc0adc267d61a6f94fdcc932f8cebcc7d98d60)
+* [[Generator] Don't break previous specs compatiblity with author and specs](https://github.com/Jarvis-Bot/Jarvis-Core/commit/b8d78b9039747708ce6f8fd69fbc2b0fa39b0ca3)
+* [[Files Generator] Use Dir instead of FileUtils](https://github.com/Jarvis-Bot/Jarvis-Core/commit/2cba60bb95b3a6906be20a99f9224bd01aac1823)
+* [[Generate CLI] Generate choices are now sorted](https://github.com/Jarvis-Bot/Jarvis-Core/commit/c698ae69a09bdc7bda1b6f471ef14041c4d1ae20)
+* [[Travis-CI] Fix Ruby 2.1 build](https://github.com/Jarvis-Bot/Jarvis-Core/commit/2d05fd35c4f7f40cfc25eb9b89885a3fc0d0cd4d)
+* [[Help] Add generate short and long help to generate](https://github.com/Jarvis-Bot/Jarvis-Core/commit/013b242a8e2058eca0c59ec0f28eed1dfd24ccca)
+
+----------
+
 1.4.0
 -----
 ### New Features
