@@ -1,7 +1,26 @@
 require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
+LONG_HELP = <<-EOS
+Usage: ./jarvis generate [THEME TYPE]
+
+  If you only type generate, a pick-up menu will popup where you'll be able
+  to choose what you want to generate.
+
+  However, you can also specify what you want to generate.
+  It can be something like :
+
+    addon client
+    addon receiver
+    addon source
+    profile developer
+    profile user
+EOS
 module Jarvis
   module CLI
+    def self.long_help
+      puts LONG_HELP
+    end
+
     def self.init(args = nil)
       @args = args
       if @args.nil?

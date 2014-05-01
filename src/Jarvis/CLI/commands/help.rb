@@ -1,6 +1,7 @@
 JARVIS_HELP = <<-EOS
 Usage: ./jarvis [OPTION]
   install USERNAME/REPO_NAME    install a receiver / source from github
+  generate [THEME TYPE]           generate what an addon / profile
   help [command]                display this message / help for this command
   version                       print Jarvis version
 EOS
