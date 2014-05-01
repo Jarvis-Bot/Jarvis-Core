@@ -32,7 +32,7 @@ module Jarvis
         @choices[:for_computer].push for_computer
       end
 
-      to_generate = Stdio.pick('What do you want to generate?', @choices[:for_user])
+      to_generate = Stdio.pick('What do you want to generate?', @choices[:for_user].sort)
       id_to_generate = @choices[:for_user].index(to_generate)
       generator_infos = @choices[:for_computer][id_to_generate]
       start_generator(generator_infos[:class_name], generator_infos[:path])
