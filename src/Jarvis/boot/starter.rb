@@ -12,15 +12,19 @@ module Jarvis
     exit
   end
 
-  require 'Jarvis/boot/session'
-  require 'Jarvis/boot/boot'
+  require 'Jarvis/addons/addons'
+  require 'Jarvis/addons/types/clients'
+  require 'Jarvis/addons/types/receivers'
+  require 'Jarvis/addons/types/sources'
 
-  require 'Jarvis/utility/logger'
-  require 'Jarvis/utility/viewer/log'
-  require 'Jarvis/utility/viewer/message'
+  require 'Jarvis/boot/boot'
 
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
+
+  require 'Jarvis/utility/viewer/log'
+  require 'Jarvis/utility/viewer/message'
+  require 'Jarvis/utility/logger'
   begin
     Boot::Boot.new
   rescue Interrupt
