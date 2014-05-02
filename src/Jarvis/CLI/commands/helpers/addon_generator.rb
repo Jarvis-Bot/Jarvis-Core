@@ -42,8 +42,8 @@ module Jarvis
         specs.ask(:description, "Enter a description of this #{@type}")
         specs.ask(:keywords, 'Enter some keywords about it, separate by a space')
           .modify do |keywords|
-            keywords.split ' '
             keywords.downcase
+            keywords.split ' '
           end
         specs.ask(:homepage, 'Link to the homepage ?', 'a link to your Github repository is a good idea')
         specs.ask(:version, 'Number of your first version ?', '0.1.0 is a good choice')
