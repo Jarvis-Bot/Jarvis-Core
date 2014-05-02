@@ -14,7 +14,7 @@ module Jarvis
       def intro
         puts Rainbow("Welcome in the addon #{@type} generator!").color(:green)
         puts Rainbow("I will ask you some questions about this #{@type} and also about you, if you haven't yet run the developer profile generator.").color(:green)
-        puts Rainbow("This #{@type} will be generated under third-party/#{@type}/{YOUR-ADDON}/.").color(:green)
+        puts Rainbow("This #{@type} will be generated under addons/#{@type}/{YOUR-ADDON}/.").color(:green)
         print "\n"
 
         dev_profile_exists?
@@ -92,7 +92,7 @@ module Jarvis
       end
 
       def generate_files
-        @path = "../third-party/#{@type}s/#{@specs.retrieve(:name)}/"
+        @path = "../addons/#{@type}s/#{@specs.retrieve(:name)}/"
         generate_from_templates
         generate_from_specs
       end

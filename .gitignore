@@ -23,5 +23,4 @@ $RECYCLE.BIN/
 coverage/*
 
 logs/*
-third-party/*
 config/*

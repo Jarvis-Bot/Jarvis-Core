@@ -56,11 +56,11 @@ module Jarvis
     end
 
     def self.ask_install_confirm
-      thirdparty_name = Rainbow(@specs['specs']['name']).green
+      addon_name = Rainbow(@specs['specs']['name']).green
       author_name = Rainbow(@specs['author']['name']).green
       type = Rainbow(@specs['specs']['type']).magenta
 
-      ask_version_to_install if Stdio.yes?("Are you sure to install this #{type}: \"#{thirdparty_name}\" created by \"#{author_name}\"?", color: false)
+      ask_version_to_install if Stdio.yes?("Are you sure to install this #{type}: \"#{addon_name}\" created by \"#{author_name}\"?", color: false)
     end
 
     def self.ask_version_to_install
@@ -81,7 +81,7 @@ module Jarvis
 
     def self.install(version)
       github_link = "https://github.com/#{@user}/#{@repo}/"
-      install_path = File.join('..', 'third-party', "#{@specs['specs']['type']}s", "#{@user}_#{@repo}")
+      install_path = File.join('..', 'addons', "#{@specs['specs']['type']}s", "#{@user}_#{@repo}")
       git %(clone --branch #{version} #{github_link} #{install_path})
     end
 

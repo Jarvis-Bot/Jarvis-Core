@@ -14,8 +14,6 @@ module Jarvis
 
   require 'Jarvis/boot/session'
   require 'Jarvis/boot/boot'
-  require 'Jarvis/boot/third-party/thirdparty'
-  require 'Jarvis/boot/third-party/sources'
 
   require 'Jarvis/utility/logger'
   require 'Jarvis/utility/viewer/log'
@@ -23,9 +21,6 @@ module Jarvis
 
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
-
-  require 'Jarvis/third-party/thirdparty'
-  require 'Jarvis/third-party/registered'
   begin
     Boot::Boot.new
   rescue Interrupt

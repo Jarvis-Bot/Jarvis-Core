@@ -31,11 +31,11 @@ module Jarvis
 
           case type
           when :from
-            thirdparty_type = :sources
+            addon_type = :sources
           when :to
-            thirdparty_type = :receivers
+            addon_type = :receivers
           end
-          all[thirdparty_type][name.downcase.to_sym]['specs']['color message']
+          all[addon_type][name.downcase.to_sym]['specs']['color_message']
         end
       end
     end

@@ -1,6 +1,6 @@
 AllCops:
   Exclude:
-    - 'third-party/**'
+    - 'addons/**'
     - 'vendor/**'
 
 # Avoid long parameter lists
