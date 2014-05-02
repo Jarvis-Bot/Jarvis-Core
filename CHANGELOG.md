@@ -1,3 +1,17 @@
+1.4.2
+-----
+### Bug Fixes
+* [[Generator] Now *really* generate correct specs.yml file](https://github.com/Jarvis-Bot/Jarvis-Core/commit/120c8444326a11d9aa758c11faf1b7c98242c7cf)
+* [[Generator] Fix multiple huge issues with addons generator](https://github.com/Jarvis-Bot/Jarvis-Core/commit/75d20b76d40c269aea2fa1d87cb91f4dd61e5af5)
+* [[Generator] Keywords should be an array](https://github.com/Jarvis-Bot/Jarvis-Core/commit/f9ddc6f3d5331b79e72186d2352060abbf46ceb5)
+* [[Generator] Receiver handle services, not use them](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d7f9724e063f2a9e3d1deb3b8b8699c8defd1dd7)
+
+Generators can't be use with `Jarvis 1.x`.
+I will soon release `Jarvis 2.x`. It will break compatibility with previous addons.
+However, it will be easy to fix them for `Jarvis 2.x`
+
+----------
+
 1.4.1
 -----
 ### Bug Fixes

@@ -3,7 +3,7 @@ module Jarvis
     def self.init
       major = 1
       minor = 4
-      patch = 1
+      patch = 2
       pre = nil
 
       version = [major, minor, patch, pre].compact.join('.')
