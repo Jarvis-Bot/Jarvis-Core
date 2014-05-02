@@ -93,16 +93,25 @@ module Jarvis
       end
 
       def generate_files
+        @path = "../third-party/#{@type}s/#{@specs.retrieve(:name)}/"
+        puts Rainbow("Generating files in '#{@path}'").color(:green)
+
+        generate_from_templates
+        generate_from_specs
+      end
+
+      def generate_from_templates
         to_generate = ['init.rb']
         to_generate.push 'configure.rb' if Jarvis::CLI::Stdio.yes?('Does the user need to configure your addon before using it?')
-
-        path = "../third-party/#{@type}s/#{@specs.retrieve(:name)}/"
-        puts Rainbow("Generating files in '#{path}'").color(:green)
-
         template_path = File.expand_path(File.join(__dir__, '..', 'generators', 'templates', "addon_#{@type}"))
-
         to_generate.each do |filename|
-          FilesGenerator.new(template_path, filename, path, @full_specs).generate
+          FilesGenerator.new(template_path, filename, @path, @full_specs).generate
+        end
+      end
+
+      def generate_from_specs
+        File.open(File.join(@path, 'specs.yml'), 'w') do |f|
+          f.write(@full_specs.to_yaml)
         end
       end
     end
