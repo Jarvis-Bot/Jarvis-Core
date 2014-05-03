@@ -17,7 +17,10 @@ module Jarvis
   require 'Jarvis/addons/types/receivers'
   require 'Jarvis/addons/types/sources'
 
+  require 'Jarvis/API/addons'
+
   require 'Jarvis/boot/boot'
+  require 'Jarvis/boot/session'
 
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
