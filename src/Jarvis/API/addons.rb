@@ -23,9 +23,3 @@ module Jarvis
     end
   end
 end
-
-# Jarvis::API::Addons.specs(:client, :test) # Retourne seulement les specs
-# Jarvis::API::Addons.specs(:source, :test) # Retourne seulement les specs
-# Jarvis::API::Addons.specs(:receiver, :test) # Retourne seulement les specs
-# Jarvis::API::Addons.client(:test) # Retourne l'object client sans l'instancier
-# Jarvis::API::Addons.call_receivers_for(:twitter) # Appelle les receveurs qui répondent à Twitter
