@@ -68,15 +68,19 @@ module Jarvis
 
       if releases_list.empty?
         Utility::Logger.error("'#{@repo}' doesn't have any releases. \nSee https://help.github.com/articles/creating-releases for more information.", log: false)
-      end
+      elsif releases_list.count == 1
+        version_to_install = releases_list[0]['tag_name']
+        Utility::Logger.info("Only one version detected, installing... #{version_to_install}")
+        install(version_to_install)
+      else
+        releases = []
+        releases_list.shift(10).each do |release|
+          releases.push release['tag_name']
+        end
 
-      releases = []
-      releases_list.shift(10).each do |release|
-        releases.push release['tag_name']
+        version_to_install = Stdio.pick('Which version would you like to install?', releases)
+        install(version_to_install)
       end
-
-      version_to_install = Stdio.pick('Which version would you like to install?', releases)
-      install(version_to_install)
     end
 
     def self.install(version)
