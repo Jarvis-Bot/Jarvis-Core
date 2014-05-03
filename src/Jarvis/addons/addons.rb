@@ -46,6 +46,7 @@ module Jarvis
           version = addon[:informations]['specs']['version']
           Utility::Logger.info("#{tree_char}───[#{name}][#{version}] by #{author}.")
         end
+        count
       end
     end
   end
