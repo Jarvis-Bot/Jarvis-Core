@@ -48,6 +48,9 @@ module Jarvis
         specs.ask(:homepage, 'Link to the homepage ?', 'a link to your Github repository is a good idea')
         specs.ask(:version, 'Number of your first version ?', '0.1.0 is a good choice')
         specs.ask(:class_name, 'I need to know the name of your class in the init.rb file', "#{specs.retrieve(:name).capitalize}#{@type.capitalize} is a good idea")
+          .modify do |class_name|
+            class_name[0].capitalize + class_name[1..-1]
+          end
         specs.add(:type, @type)
         @specs = specs
       end
