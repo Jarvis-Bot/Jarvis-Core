@@ -1,13 +1,12 @@
 require 'yaml'
 module Jarvis
-	module Addons
+  module Addons
     class Addons
     attr_reader :type, :path, :validated
       def initialize(type)
         @type = type
         @path = File.join(JARVIS[:root], 'addons', @type.to_s)
         @validated = validated
-        display
       end
 
       def validated
@@ -38,16 +37,14 @@ module Jarvis
         @validated.count
       end
 
-      def display
+      def display_count
         Jarvis::Utility::Logger.info("#{count} #{type.capitalize} installed.")
         @validated.each_with_index  do |addon, index|
-
           tree_char = (index + 1 == count) ? '└' : '├'
-
           author = addon[:informations]['author']['name']
           name = addon[:informations]['specs']['name']
-
-          Utility::Logger.info("#{tree_char}───[#{author}] #{name}.")
+          version = addon[:informations]['specs']['version']
+          Utility::Logger.info("#{tree_char}───[#{name}][#{version}] by #{author}.")
         end
       end
     end

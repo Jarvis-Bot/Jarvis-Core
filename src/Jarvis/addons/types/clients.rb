@@ -1,8 +1,8 @@
 module Jarvis
   module Addons
     class Clients
-      def initialize
-        clients = Jarvis::Addons::Addons.new(:clients)
+      def initialize(addons_object)
+        @clients = addons_object
       end
     end
   end

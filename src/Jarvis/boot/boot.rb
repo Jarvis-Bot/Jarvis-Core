@@ -2,15 +2,21 @@ module Jarvis
   module Boot
     class Boot
       def initialize
-        addons
+        @sources = Jarvis::Boot::Session.every_addons[:sources]
+        @clients = Jarvis::Boot::Session.every_addons[:clients]
+        @receivers = Jarvis::Boot::Session.every_addons[:receivers]
+        display_count
+        start_sources
       end
 
-      def addons
-        sources = Jarvis::Addons::Sources.new
-        clients = Jarvis::Addons::Clients.new
-        receivers = Jarvis::Addons::Receivers.new
+      def display_count
+        @sources.display_count
+        @clients.display_count
+        @receivers.display_count
+      end
 
-        sources.launch
+      def start_sources
+        Jarvis::Addons::Sources.new(@sources).launch
       end
     end
   end

@@ -1,9 +1,8 @@
 module Jarvis
   module Addons
     class Sources
-      def initialize
-        @sources = Jarvis::Addons::Addons.new(:sources)
-        self
+      def initialize(addons_object)
+        @sources = addons_object
       end
 
       def load

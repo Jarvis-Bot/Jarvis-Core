@@ -1,8 +1,8 @@
 module Jarvis
   module Addons
     class Receivers
-      def initialize
-        receivers = Jarvis::Addons::Addons.new(:receivers)
+      def initialize(addons_object)
+        @receivers = addons_object
       end
     end
   end
