@@ -75,8 +75,19 @@ module Jarvis
         yes_cases.include? answer
       end
 
-      def done(text = 'Done')
+      def no?(question, options = {color: true})
+        print options[:color] ? Rainbow("#{question} [N/y]").color(:red) : "#{question} [N/y]"
+        answer = $stdin.gets.chomp.strip
+        no_cases = ['no', 'NO', 'n', 'N', '']
+        no_cases.include? answer
+      end
+
+      def done(text = 'Done.')
         puts Rainbow("✔  #{text}").green
+      end
+
+      def not_done(text = 'Not done.')
+        puts Rainbow("✘  #{text}").red
       end
     end
   end
