@@ -11,11 +11,9 @@ module Jarvis
         Object.const_get(infos['specs']['class_name'])
       end
 
-      def self.call_receivers_for(*services)
-        services.each do |service|
-          receivers = Jarvis::Boot::Session.receivers_sort_by_services[service]
-          return [] if receivers == nil
-        end
+      def self.call_receivers_for(service)
+        receivers = Jarvis::Boot::Session.receivers_sort_by_services[format(service)]
+        return receivers.nil? ? [] : receivers
       end
 
       def self.format(word, suffix='')
