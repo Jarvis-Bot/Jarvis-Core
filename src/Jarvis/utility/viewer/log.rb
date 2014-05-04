@@ -17,7 +17,7 @@ module Jarvis
         end
 
         def self.info
-          puts color_factory(:blue)
+          puts color_factory(:blue) if @options[:view]
         end
 
         def self.color_factory(color)
