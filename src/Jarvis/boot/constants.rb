@@ -7,7 +7,7 @@ module Jarvis
       end
 
       def root
-        File.expand_path(File.join('..'))
+        File.expand_path(File.join(__dir__, '..', '..', '..'))
       end
 
       def debug

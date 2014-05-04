@@ -7,7 +7,7 @@ module Jarvis
       class << self
         def add_log_file(log)
           log_file_name = "#{@@time.strftime('%Y-%m-%d %H.%M.%S')}.log"
-          log_folder = File.join('..', 'logs')
+          log_folder = File.join(JARVIS[:root], 'logs')
           Dir.mkdir(log_folder, 0755) unless Dir.exist?(log_folder)
           File.open(File.join(log_folder, log_file_name), 'a') do |file|
             file.write "#{log}\n"
