@@ -1,2 +1,2 @@
-#!/bin/sh
-exec ruby -W0 "../src/jarvis.rb" "$@"
+#!/usr/bin/env ruby
+require File.join(__dir__, '..', 'src', 'jarvis.rb')
