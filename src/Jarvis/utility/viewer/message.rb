@@ -10,11 +10,11 @@ module Jarvis
         def build_message
           from_color = color(:from, @options[:from])
           to_color   = color(:to, @options[:to])
-          block_from = Rainbow('██').color(from_color)
-          block_to   = Rainbow('██').color(to_color)
+          block_from = Rainbow('██').color("#{from_color}")
+          block_to   = Rainbow('██').color("#{to_color}")
           timestamp  = @options[:timestamp].strftime('%H:%M:%S')
-          from       = Rainbow(format_service(@options[:from])).color(from_color)
-          to         = Rainbow(format_service(@options[:to])).color(to_color)
+          from       = Rainbow(format_service(@options[:from])).color("#{from_color}")
+          to         = Rainbow(format_service(@options[:to])).color("#{to_color}")
           message    = @options[:message]
           arrow      = '→'
 
@@ -27,15 +27,13 @@ module Jarvis
         end
 
         def color(type, name)
-          all = Boot::Session.all_sorted
-
           case type
           when :from
-            addon_type = :sources
+            addon_type = :source
           when :to
-            addon_type = :receivers
+            addon_type = :receiver
           end
-          all[addon_type][name.downcase.to_sym]['specs']['color_message']
+          Jarvis::API::Addons.specs(addon_type, name)[addon_type.to_s]['color_message']
         end
       end
     end
