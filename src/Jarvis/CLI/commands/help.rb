@@ -1,9 +1,11 @@
 JARVIS_HELP = <<-EOS
-Usage: ./jarvis [OPTION]
+Usage: ./jarvis [OPTION] [--debug]
   install USERNAME/REPO_NAME    install a receiver / source from github
-  generate [THEME TYPE]           generate what an addon / profile
+  generate [THEME TYPE]         generate what an addon / profile
   help [command]                display this message / help for this command
   version                       print Jarvis version
+
+  --debug                       launch Jarvis in debug mode
 EOS
 
 # NOTE Keep the lenth of vanilla help less than 25 lines!
