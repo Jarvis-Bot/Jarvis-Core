@@ -20,7 +20,7 @@ module Jarvis
         @source_generator.ask_specific do
           source = Questions.new(:source, 'Now, I have some specific questions about your source.')
           source.ask(:service_name, "What's the name of the service used ?", "If it's a website, type the domain name without the extension, e.g: www.twitter.com = twitter")
-          source.ask(:color_message, "Your message need some color. What's yours?", "If the service used have some designer guideline, enter the primary color")
+          source.ask(:color_message, "Your message need some color. What's yours?", 'If the service used have some designer guideline, enter the primary color')
         end
       end
 

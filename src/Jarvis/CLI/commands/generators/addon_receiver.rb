@@ -19,7 +19,7 @@ module Jarvis
         @receiver_generator.default_specs
         @receiver_generator.ask_specific do
           receiver = Questions.new(:receiver, 'Now, I have some specific questions about your receiver.')
-          receiver.ask(:handle, "Which services this receiver can handle?", "Separate them by a space")
+          receiver.ask(:handle, 'Which services this receiver can handle?', 'Separate them by a space')
             .modify do |handle|
               handle.downcase
               handle.split ' '

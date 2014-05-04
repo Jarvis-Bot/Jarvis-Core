@@ -4,7 +4,7 @@ module Jarvis
     class Profile
       def initialize(type)
         @type = type
-        @file = "#{@type.to_s}.yml"
+        @file = "#{@type}.yml"
         @path = File.expand_path(File.join('..', 'config', 'profiles', @file))
       end
 
@@ -13,7 +13,7 @@ module Jarvis
       end
 
       def exists?
-        File.exists?(@path)
+        File.exist?(@path)
       end
 
       def load

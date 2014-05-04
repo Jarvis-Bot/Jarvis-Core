@@ -91,7 +91,7 @@ module Jarvis
         author = Profile.new(:developer).load
         puts YAML.dump(specs.to_h)
         ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
-        @full_specs =  {'author' => author.to_h}.merge(specs.to_h)
+        @full_specs =  { 'author' => author.to_h }.merge(specs.to_h)
       end
 
       def generate_files

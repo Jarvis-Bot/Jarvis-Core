@@ -19,7 +19,7 @@ module Jarvis
           arrow      = '→'
 
           puts "#{block_from}#{block_to} #{timestamp} [#{from}]#{arrow}[#{to}] #{message}"
-          Jarvis::Utility::Logger.info("[#{@options[:from]}]#{arrow}[#{@options[:to]}] #{message}", { log: true, view: false })
+          Jarvis::Utility::Logger.info("[#{@options[:from]}]#{arrow}[#{@options[:to]}] #{message}", log: true, view: false)
           # ████ 21:29:34 [TWITTER]→[SAVER] @author incredible tweet much retweeted
         end
 

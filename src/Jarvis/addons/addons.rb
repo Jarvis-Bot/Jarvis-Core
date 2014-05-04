@@ -3,7 +3,7 @@ require 'digest'
 module Jarvis
   module Addons
     class Addons
-    attr_reader :type, :path, :validated
+      attr_reader :type, :path, :validated
       def initialize(type)
         @type = type
         @path = File.join(JARVIS[:root], 'addons', @type.to_s)
@@ -29,9 +29,9 @@ module Jarvis
       def valid?
         File.exist?(File.join(@addon_dir, 'specs.yml')) &&
         File.exist?(File.join(@addon_dir, 'init.rb')) &&
-        !full_specs['specs']['name'].nil? &&
-        !full_specs['specs']['class_name'].nil? &&
-        !full_specs['specs']['type'].nil?
+        full_specs['specs']['name'] &&
+        full_specs['specs']['class_name'] &&
+        full_specs['specs']['type']
       end
 
       def full_specs
@@ -43,7 +43,7 @@ module Jarvis
         md5_name = Digest::MD5.hexdigest name
         color = "#{md5_name[0..5].upcase}"
         addon[:informations][@type.to_s.chomp('s')]['color_message'] = color
-        return addon
+        addon
       end
 
       def color_undefined_in(addon)

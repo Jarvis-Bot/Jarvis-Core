@@ -68,14 +68,14 @@ module Jarvis
         `stty #{old_state}`
       end
 
-      def yes?(question, options = {color: true})
+      def yes?(question, options = { color: true })
         print options[:color] ? Rainbow("#{question} [Y/n]").color(:green) : "#{question} [Y/n]"
         answer = $stdin.gets.chomp.strip
         yes_cases = ['yes', 'YES', 'y', 'Y', '']
         yes_cases.include? answer
       end
 
-      def no?(question, options = {color: true})
+      def no?(question, options = { color: true })
         print options[:color] ? Rainbow("#{question} [N/y]").color(:red) : "#{question} [N/y]"
         answer = $stdin.gets.chomp.strip
         no_cases = ['no', 'NO', 'n', 'N', '']

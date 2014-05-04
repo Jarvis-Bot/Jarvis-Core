@@ -11,12 +11,12 @@ module Jarvis
       end
 
       def display_count
-        count = {}
-        count[:sources] = @sources.display_count
-        count[:clients] = @clients.display_count
-        count[:receivers] = @receivers.display_count
+        to_count = {}
+        to_count[:sources] = @sources.display_count
+        to_count[:clients] = @clients.display_count
+        to_count[:receivers] = @receivers.display_count
         @abort_message = ''
-        count.each do |type, count|
+        to_count.each do |type, count|
           @addon_missing = count == 0 || @addon_missing
           type = type.to_s.chomp('s')
           @abort_message <<  "I'm sorry, I can't start with #{count} #{type}. \n" if count == 0
