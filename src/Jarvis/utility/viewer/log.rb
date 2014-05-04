@@ -4,7 +4,7 @@ module Jarvis
     module Viewer
       class Log
         def self.debug
-          puts color_factory(:cyan)
+          puts color_factory(:cyan) if JARVIS[:debug]
         end
 
         def self.warning
