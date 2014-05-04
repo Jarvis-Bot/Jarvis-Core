@@ -28,7 +28,10 @@ module Jarvis
 
       def valid?
         File.exist?(File.join(@addon_dir, 'specs.yml')) &&
-        File.exist?(File.join(@addon_dir, 'init.rb'))
+        File.exist?(File.join(@addon_dir, 'init.rb')) &&
+        !full_specs['specs']['name'].nil? &&
+        !full_specs['specs']['class_name'].nil? &&
+        !full_specs['specs']['type'].nil?
       end
 
       def full_specs
