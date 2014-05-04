@@ -1,4 +1,5 @@
 require 'yaml'
+require 'digest'
 module Jarvis
   module Addons
     class Addons
@@ -17,6 +18,7 @@ module Jarvis
             addon = {}
             addon[:path] = @addon_dir
             addon[:informations] = full_specs
+            add_color_to addon if color_undefined_in addon
             addon[:informations]['directory'] = @addon_dir
             @validated.push addon
           end
@@ -31,6 +33,18 @@ module Jarvis
 
       def full_specs
         YAML.load_file(File.join(@addon_dir, 'specs.yml'))
+      end
+
+      def add_color_to(addon)
+        name = addon[:informations]['specs']['name']
+        md5_name = Digest::MD5.hexdigest name
+        color = "#{md5_name[0..5].upcase}"
+        addon[:informations][@type.to_s.chomp('s')]['color_message'] = color
+        return addon
+      end
+
+      def color_undefined_in(addon)
+        addon[:informations][@type.to_s.chomp('s')]['color_message'].nil?
       end
 
       def count
