@@ -1,7 +1,8 @@
 $LOAD_PATH << File.dirname(__FILE__)
 
 module Jarvis
+  require 'Jarvis/boot/constants'
   JARVIS = {}
-  JARVIS[:root] = File.expand_path(File.join('..'))
+  Boot::Constants.new
   require 'Jarvis/boot/starter'
 end
