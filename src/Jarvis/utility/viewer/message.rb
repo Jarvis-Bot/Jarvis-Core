@@ -4,23 +4,46 @@ module Jarvis
       class Message
         def initialize(options)
           @options = options
-          build_message
+          @built_messsage = {}
+          @options[:found] ? receiver_found : receiver_not_found
         end
 
-        def build_message
-          from_color = color(:from, @options[:from])
-          to_color   = color(:to, @options[:to])
-          block_from = Rainbow('██').color("#{from_color}")
-          block_to   = Rainbow('██').color("#{to_color}")
-          timestamp  = @options[:timestamp].strftime('%H:%M:%S')
-          from       = Rainbow(format_service(@options[:from])).color("#{from_color}")
-          to         = Rainbow(format_service(@options[:to])).color("#{to_color}")
-          message    = @options[:message]
-          arrow      = '→'
+        def receiver_not_found
+          overwrite = {
+            to_color: '000000',
+            to: '',
+            prefix: Rainbow('✘').color(:red),
+            arrow: ''
+          }
+          factory(overwrite)
+          b = @built_messsage
+          puts "#{b[:prefix]} #{b[:block_from]}#{b[:block_to]} #{b[:timestamp]} [#{b[:from]}] #{b[:message]}"
+          log("[Receiver Not Found] [#{@options[:from]}] #{@options[:message]}")
+        end
 
-          puts "#{block_from}#{block_to} #{timestamp} [#{from}]#{arrow}[#{to}] #{message}"
-          Jarvis::Utility::Logger.info("[#{@options[:from]}]#{arrow}[#{@options[:to]}] #{message}", log: true, view: false)
-          # ████ 21:29:34 [TWITTER]→[SAVER] @author incredible tweet much retweeted
+        def receiver_found
+          factory
+          b = @built_messsage
+          puts "#{b[:prefix]} #{b[:block_from]}#{b[:block_to]} #{b[:timestamp]} [#{b[:from]}]#{b[:arrow]}[#{b[:to]}] #{b[:message]}"
+          log("[Receiver Found] [#{@options[:from]}] #{@options[:message]}")
+        end
+
+        def factory(overwrite = {})
+          @built_messsage[:from_color]  = overwrite[:from_color] ||= color(:from, @options[:from])
+          @built_messsage[:to_color]    = overwrite[:to_color]   ||= color(:to, @options[:to])
+          @built_messsage[:prefix]      = overwrite[:prefix]     ||= Rainbow('✔').color(:green)
+          @built_messsage[:block_from]  = overwrite[:block_from] ||= Rainbow('██').color("#{@built_messsage[:from_color]}")
+          @built_messsage[:block_to]    = overwrite[:block_to]   ||= Rainbow('██').color("#{@built_messsage[:to_color]}")
+          @built_messsage[:timestamp]   = overwrite[:timestamp]  ||= @options[:timestamp].strftime('%H:%M:%S')
+          @built_messsage[:from]        = overwrite[:from]       ||= Rainbow(format_service(@options[:from])).color("#{@built_messsage[:from_color]}")
+          @built_messsage[:to]          = overwrite[:to]         ||= Rainbow(format_service(@options[:to])).color("#{@built_messsage[:to_color]}")
+          @built_messsage[:message]     = overwrite[:message]    ||= @options[:message]
+          @built_messsage[:arrow]       = overwrite[:arrow]      ||= '→'
+          @built_messsage
+        end
+
+        def log(message)
+          Jarvis::Utility::Logger.message(message, log: true, view: false)
         end
 
         def format_service(service)
