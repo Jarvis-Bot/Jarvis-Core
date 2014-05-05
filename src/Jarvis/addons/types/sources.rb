@@ -11,6 +11,7 @@ module Jarvis
           require "#{source[:path]}/init"
           class_name = source[:informations]['specs']['class_name']
           @threads.push Thread.new { Object.const_get(class_name).new }
+          sleep 0.1
         end
       end
 
