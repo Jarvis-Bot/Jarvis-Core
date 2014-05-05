@@ -27,7 +27,7 @@ module Jarvis
         def self.log_factory(type, log, options)
           @log = log
           @options = options
-          send(type)
+          send(type) if self.respond_to?(type)
         end
       end
     end
