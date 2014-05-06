@@ -11,10 +11,7 @@ module Jarvis
       end
 
       def debug
-        if ARGV.include? '--debug'
-          ARGV.delete('--debug')
-          true
-        end
+        ARGV.include? '--debug'
       end
     end
   end
