@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
-gem "rainbow", "~> 2.x.x"
-gem "rake", "~> 10.3.x"
-gem 'memoizable', '~> 0.4.x'
+gem 'rainbow', '~> 2.0.0'
+gem 'rake', '~> 10.3.0'
+gem 'memoizable', '~> 0.4.0'
+gem 'octokit', '~> 2.0'
 
 group :test do
   gem 'rspec', '>= 2.14'
