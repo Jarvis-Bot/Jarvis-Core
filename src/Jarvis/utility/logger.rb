@@ -15,7 +15,7 @@ module Jarvis
         end
 
         %w(debug message info warning error).each do |type_log|
-          define_method type_log.to_sym do |log, options = { log: true, view: true }|
+          define_method type_log.to_sym do |log, options = { log: true, view: true, color: nil }|
             add_log_file("#{Time.new.strftime('%d/%m/%Y %H.%M.%S')} [#{type_log.upcase}] #{log}") if options[:log]
             Viewer::Log.log_factory(type_log, log, options)
           end
