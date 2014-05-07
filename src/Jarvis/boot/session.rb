@@ -37,6 +37,15 @@ module Jarvis
           sorted
         end
         memoize :receivers_sort_by_services
+
+        def profile
+          require 'Jarvis/CLI/commands/helpers/profile'
+          profiles = {}
+          profiles.store(:developer, Jarvis::CLI::Profile.new(:developer))
+          profiles.store(:user, Jarvis::CLI::Profile.new(:user))
+          profiles
+        end
+        memoize :profile
       end
     end
   end

@@ -18,6 +18,7 @@ module Jarvis
   require 'Jarvis/addons/types/sources'
 
   require 'Jarvis/API/addons'
+  require 'Jarvis/API/profile'
 
   require 'Jarvis/boot/boot'
   require 'Jarvis/boot/session'
