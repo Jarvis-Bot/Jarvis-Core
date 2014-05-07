@@ -1,4 +1,3 @@
-require 'Jarvis/CLI/commands/helpers/addonsfile'
 require 'open-uri'
 require 'octokit'
 require 'open3'
