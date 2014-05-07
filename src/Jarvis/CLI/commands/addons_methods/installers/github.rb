@@ -1,3 +1,4 @@
+require 'Jarvis/API/profile'
 require 'open-uri'
 require 'octokit'
 require 'open3'
@@ -7,11 +8,17 @@ module Jarvis
     module Installers
       class Github
         def initialize(addon)
+          @octokit_client = octokit_client
           @repo = addon[:name]
           @version = addon[:version]
           @options = addon[:options]
           retrieve_data
           install(@version_to_install) if release_more_recent?
+        end
+
+        def octokit_client
+          token = Jarvis::API::Profile.developer.profile['tokens']['github']
+          return token.nil? ? Octokit::Client.new : Octokit::Client.new(:access_token => token)
         end
 
         def retrieve_data
