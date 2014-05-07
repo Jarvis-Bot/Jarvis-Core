@@ -1,3 +1,4 @@
+require 'Jarvis/boot/session'
 module Jarvis
   module API
     class Profile
