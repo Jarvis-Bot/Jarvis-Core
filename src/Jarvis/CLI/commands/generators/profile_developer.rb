@@ -46,7 +46,7 @@ module Jarvis
         to_save = @author.results['author']
         to_save = to_save.merge(@contacts.results.to_hash)
 
-        folder = File.expand_path(File.join('..', 'config', 'profiles'))
+        folder = @profile_dev.path
         file   = 'developer.yml'
         Dir.mkdir(folder, 0755) unless Dir.exist?(folder)
         File.open(File.join(folder, file), 'w') do |f|
