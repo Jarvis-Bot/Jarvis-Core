@@ -34,8 +34,7 @@ module Jarvis
         end
 
         def releases
-          client = Octokit::Client.new(:access_token => '504775c737b333d600ced465c5bdb792858e9ffb')
-          client.releases(@repo)
+          Octokit::Client.new.releases(@repo)
         end
 
         def normalize_version(version)
