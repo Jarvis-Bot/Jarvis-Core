@@ -13,7 +13,7 @@ module Jarvis
           @version = addon[:version]
           @options = addon[:options]
           retrieve_data
-          install(@version_to_install) if release_more_recent?
+          install(@version_to_install) if release_matched?
         end
 
         def octokit_client
@@ -47,11 +47,13 @@ module Jarvis
           version.gsub(/^\D+/, '')
         end
 
-        def release_more_recent?
+        def release_matched?
           @releases.each do |release|
             release_version = release[:tag_name]
-            @version_to_install = release_version
-            Gem::Dependency.new(@repo, @version).match?(@repo, normalize_version(release_version))
+            if Gem::Dependency.new(@repo, @version).match?(@repo, normalize_version(release_version))
+              @version_to_install = release_version
+              return true
+            end
           end
         end
 
