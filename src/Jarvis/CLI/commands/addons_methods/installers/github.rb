@@ -13,7 +13,11 @@ module Jarvis
           @version = addon[:version]
           @options = addon[:options]
           retrieve_data
-          install(@version_to_install) if release_matched?
+          if release_matched?
+            install(@version_to_install)
+          else
+            warn_version_doesnt_exist
+          end
         end
 
         def octokit_client
@@ -48,13 +52,21 @@ module Jarvis
         end
 
         def release_matched?
+          @found_versions = []
           @releases.each do |release|
             release_version = release[:tag_name]
+            @found_versions.push normalize_version(release_version)
             if Gem::Dependency.new(@repo, @version).match?(@repo, normalize_version(release_version))
               @version_to_install = release_version
               return true
             end
           end
+          false
+        end
+
+        def warn_version_doesnt_exist
+          Jarvis::Utility::Logger.warning("This release version (#{normalize_version(@version)}) doesn't exist in #{@repo}.")
+          Jarvis::Utility::Logger.warning("I only found those versions : #{@found_versions}")
         end
 
         def install(version)
