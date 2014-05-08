@@ -2,6 +2,10 @@ require 'Jarvis/boot/session'
 module Jarvis
   module API
     class Addons
+      def self.all
+         Jarvis::Boot::Session.addons
+      end
+
       def self.specs(type, name)
         Jarvis::Boot::Session.addons_sort_by_name[format(type, 's')][format(name)]
       end
