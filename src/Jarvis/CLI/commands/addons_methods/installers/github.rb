@@ -40,7 +40,7 @@ module Jarvis
         end
 
         def releases
-          Octokit::Client.new.releases(@repo)
+          @octokit_client.releases(@repo)
         end
 
         def normalize_version(version)
