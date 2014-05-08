@@ -31,7 +31,8 @@ module Jarvis
         File.exist?(File.join(@addon_dir, 'init.rb')) &&
         full_specs['specs']['name'] &&
         full_specs['specs']['class_name'] &&
-        full_specs['specs']['type']
+        full_specs['specs']['type'] &&
+        full_specs[@type.to_s.chomp('s')]
       end
 
       def full_specs
