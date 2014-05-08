@@ -72,7 +72,7 @@ module Jarvis
               Stdio.done("'#{@repo}' has been successfully installed!")
             else
               Stdio.not_done("'#{@repo}' hasn't been installed!")
-              Jarvis::Utility::Logger.error(e.read.strip)
+              Jarvis::Utility::Logger.warning(e.read.strip)
             end
           end
         end
