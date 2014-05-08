@@ -6,6 +6,20 @@ module Jarvis
          Jarvis::Boot::Session.addons
       end
 
+      def self.count(type = :total)
+        counted = 0
+        if type == :total
+          Jarvis::Boot::Session.addons.each do |type, addons|
+            counted += addons.validated.count
+          end
+        else
+          Jarvis::Boot::Session.addons[type.to_sym].validated.each do |addons|
+            counted += 1
+          end
+        end
+        counted
+      end
+
       def self.specs(type, name)
         Jarvis::Boot::Session.addons_sort_by_name[format(type, 's')][format(name)]
       end
