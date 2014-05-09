@@ -2,6 +2,7 @@ module Jarvis
   module Boot
     class Boot
       def initialize
+        Jarvis::Boot::Update.new
         @sources = Jarvis::Boot::Session.addons[:sources]
         @clients = Jarvis::Boot::Session.addons[:clients]
         @receivers = Jarvis::Boot::Session.addons[:receivers]
