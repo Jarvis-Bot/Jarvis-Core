@@ -1,7 +1,23 @@
+LONG_HELP = <<-EOS
+Usage: jarvis addons [METHOD]
+
+  If you only type addons, a pick-up menu will popup where you'll be able
+  to choose what you want to do.
+
+  However, you can also specify the method.
+  It can be something like :
+
+    install
+    remove
+EOS
 require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
+    def self.long_help
+      puts LONG_HELP
+    end
+
     def self.init(args = nil)
       @args = args
       if @args.nil?

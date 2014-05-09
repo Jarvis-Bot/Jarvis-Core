@@ -1,7 +1,7 @@
 require 'Jarvis/CLI/stdio'
 include Jarvis::CLI::Stdio
 LONG_HELP = <<-EOS
-Usage: ./jarvis generate [THEME TYPE]
+Usage: jarvis generate [THEME TYPE]
 
   If you only type generate, a pick-up menu will popup where you'll be able
   to choose what you want to generate.
