@@ -72,9 +72,9 @@ module Jarvis
 
       def ask_dependencies
         dependencies = Questions.new(:dependencies, 'Does this addon have some dependencies?')
-        dependencies.ask(:jarvis, 'Enter the version as major.minor.patch[.pre]', "If this field is empty, it will required the current major version, v#{JARVIS[:version][:major]}.#{JARVIS[:version][:minor]}")
+        dependencies.ask(:jarvis, 'Enter the version as major.minor.patch[.pre]', "If this field is empty, it will required the current major version, v#{JARVIS[:version_splitted][:major]}.#{JARVIS[:version_splitted][:minor]}")
         .modify do |jarvis|
-          jarvis = "~> #{JARVIS[:version][:major]}.#{JARVIS[:version][:minor]}"
+          jarvis = "~> #{JARVIS[:version_splitted][:major]}.#{JARVIS[:version_splitted][:minor]}"
         end
         @dependencies = dependencies
       end

@@ -4,6 +4,7 @@ module Jarvis
       def initialize
         JARVIS[:root] = root
         JARVIS[:debug] = debug
+        JARVIS[:version_splitted] = version_splitted
         JARVIS[:version] = version
       end
 
@@ -15,13 +16,21 @@ module Jarvis
         ARGV.delete '--debug' if ARGV.include? '--debug'
       end
 
+      def version_splitted
+        v = {
+          major: 1,
+          minor: 4,
+          patch: 2,
+          pre: nil }
+      end
+
       def version
-        v = {}
-        v[:major] = 1
-        v[:minor] = 4
-        v[:patch] = 2
-        v[:pre] = nil
-        v
+        [
+          JARVIS[:version_splitted][:major],
+          JARVIS[:version_splitted][:minor],
+          JARVIS[:version_splitted][:patch],
+          JARVIS[:version_splitted][:pre]
+        ].compact.join('.')
       end
     end
   end
