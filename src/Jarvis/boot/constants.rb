@@ -12,7 +12,7 @@ module Jarvis
       end
 
       def debug
-        ARGV.include? '--debug'
+        ARGV.delete '--debug' if ARGV.include? '--debug'
       end
 
       def version
