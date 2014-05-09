@@ -15,7 +15,7 @@ module Jarvis
         Dir.glob(File.join(@path, '*')) do |addon_dir|
           @addon_dir = addon_dir
           @full_specs = full_specs
-          if valid?
+          if valid? && check_dependencies
             addon = {}
             addon[:path] = @addon_dir
             addon[:informations] = @full_specs
@@ -34,6 +34,19 @@ module Jarvis
         @full_specs['specs']['class_name'] &&
         @full_specs['specs']['type'] &&
         @full_specs[@type.to_s.chomp('s')]
+      end
+
+      def check_dependencies
+        if defined? @full_specs['specs']['dependencies']['jarvis']
+          require_version = @full_specs['specs']['dependencies']['jarvis']
+          current_version = JARVIS[:version]
+          Gem::Dependency.new('jarvis', require_version).match?('jarvis', current_version)
+        else
+          name = @full_specs['specs']['name']
+          type = @full_specs['specs']['type']
+          author = @full_specs['author']['name']
+          Jarvis::Utility::Logger.debug("Dependencies not specified for #{name} (#{type}) by #{author}")
+        end
       end
 
       def full_specs
