@@ -6,6 +6,7 @@ module Jarvis
         JARVIS[:debug] = debug
         JARVIS[:version_splitted] = version_splitted
         JARVIS[:version] = version
+        JARVIS[:repo] = 'Jarvis-Bot/Jarvis-Core'
       end
 
       def root
