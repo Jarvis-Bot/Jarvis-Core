@@ -21,7 +21,9 @@ module Jarvis
 
       def questions
         @user = Questions.new(:user, 'This is about you.')
-        @user.ask(:name, "What's your full name?")
+        @user.ask(:first_name, "What's your first name?")
+        @user.ask(:last_name, "What's your last name?")
+        @user.add(:full_name, "#{@user.retrieve(:first_name)} #{@user.retrieve(:last_name)}")
 
         @tokens = Questions.new(:tokens, 'Jarvis-Core use some API. So if you can, provide some tokens.')
         @tokens.ask(:github,
