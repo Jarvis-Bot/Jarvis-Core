@@ -1,10 +1,10 @@
 module Jarvis
   module CLI
     def self.init
-      major = 1
-      minor = 4
-      patch = 2
-      pre = nil
+      major = JARVIS[:version][:major]
+      minor = JARVIS[:version][:minor]
+      patch = JARVIS[:version][:patch]
+      pre = JARVIS[:version][:pre]
 
       version = [major, minor, patch, pre].compact.join('.')
       puts "Jarvis #{version}"

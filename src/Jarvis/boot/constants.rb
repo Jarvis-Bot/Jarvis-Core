@@ -4,6 +4,7 @@ module Jarvis
       def initialize
         JARVIS[:root] = root
         JARVIS[:debug] = debug
+        JARVIS[:version] = version
       end
 
       def root
@@ -12,6 +13,15 @@ module Jarvis
 
       def debug
         ARGV.include? '--debug'
+      end
+
+      def version
+        v = {}
+        v[:major] = 1
+        v[:minor] = 4
+        v[:patch] = 2
+        v[:pre] = nil
+        v
       end
     end
   end
