@@ -1,4 +1,10 @@
 module Jarvis
+  if JARVIS[:debug]
+    puts 'Jarvis is running in debug mode.'
+
+    puts 'pp is activated.' if require 'pp'
+    puts 'pry is activated.' if require 'pry'
+  end
   unless ARGV.first.nil?
     require 'Jarvis/utility/logger'
     require 'Jarvis/utility/viewer/log'
