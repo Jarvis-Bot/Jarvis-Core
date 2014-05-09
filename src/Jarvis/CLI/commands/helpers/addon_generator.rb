@@ -34,6 +34,7 @@ module Jarvis
         ask_specs
         ask_license
         ask_repository
+        ask_dependencies
       end
 
       def ask_specs
@@ -69,6 +70,15 @@ module Jarvis
         @repository = repository
       end
 
+      def ask_dependencies
+        dependencies = Questions.new(:dependencies, 'Does this addon have some dependencies?')
+        dependencies.ask(:jarvis, 'Enter the version as major.minor.patch[.pre]', "If this field is empty, it will required the current major version, v#{JARVIS[:version][:major]}.#{JARVIS[:version][:minor]}")
+        .modify do |jarvis|
+          jarvis = "~> #{JARVIS[:version][:major]}.#{JARVIS[:version][:minor]}"
+        end
+        @dependencies = dependencies
+      end
+
       def ask_specific(&block)
         @specific_block ||= block
         @specific = @specific_block.call
@@ -86,6 +96,7 @@ module Jarvis
         specs = @specs.results
         specs = specs.merge(@license.results)
         specs = specs.merge(@repository.results)
+        specs = specs.merge(@dependencies.results)
         specs = specs.merge(@specific.results)
 
         author = Profile.new(:developer).load
