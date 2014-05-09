@@ -21,7 +21,7 @@ module Jarvis
         end
 
         def octokit_client
-          token = Jarvis::API::Profile.developer.profile['tokens']['github']
+          token = Jarvis::API::Profile.user.profile['tokens']['github']
           return token.nil? ? Octokit::Client.new : Octokit::Client.new(:access_token => token)
         end
 

@@ -28,14 +28,6 @@ module Jarvis
         @contacts.ask(:github, 'Your Github account name plz')
         @contacts.ask(:twitter, 'Your pseudo on twitter ? (without the @)')
 
-        @tokens = Questions.new(:tokens, 'Jarvis-Core use some API. So if you can, provide some tokens.')
-        @tokens.ask(:github,
-          "Github's API is rate limited at 60 requests / hour.\n" +
-          "It's probably not enough for install / update addons from Github.\n" +
-          "So you can provide a personnal token to be rate limit to 5000.\n" +
-          "Visit https://github.com/settings/tokens/new, untick everything, enter what you want for 'Token Description' and click 'Generate Token'.\n" +
-          "Enter your token here:")
-
         correct_informations?
       end
 
@@ -53,7 +45,6 @@ module Jarvis
         confirm_overwrite if @profile_dev.exists?
         to_save = @author.results['author']
         to_save = to_save.merge(@contacts.results.to_hash)
-        to_save = to_save.merge(@tokens.results.to_hash)
 
         folder = @profile_dev.path
         file   = 'developer.yml'
