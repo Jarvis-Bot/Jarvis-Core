@@ -93,16 +93,17 @@ module Jarvis
       end
 
       def summary
-        specs = @specs.results
-        specs = specs.merge(@license.results)
-        specs = specs.merge(@repository.results)
-        specs = specs.merge(@dependencies.results)
-        specs = specs.merge(@specific.results)
-
+        specs = {}
+        @specs.results['specs'].each { |key, value| specs.store(key, value) }
+        specs = specs.merge({
+          'license' => @license.results['license'],
+          'repository' => @repository.results['repository'],
+          'dependencies' => @dependencies.results['dependencies']
+        })
         author = Profile.new(:developer).load
-        puts YAML.dump(specs.to_h)
+        @full_specs =  { 'author' => author.to_h }.merge({ 'specs' => specs }).merge({@specific.results.keys[0] => @specific.results.values[0]})
+        puts YAML.dump(@full_specs)
         ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
-        @full_specs =  { 'author' => author.to_h }.merge(specs.to_h)
       end
 
       def generate_files
