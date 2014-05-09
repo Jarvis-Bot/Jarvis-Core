@@ -14,10 +14,11 @@ module Jarvis
         @validated = []
         Dir.glob(File.join(@path, '*')) do |addon_dir|
           @addon_dir = addon_dir
+          @full_specs = full_specs
           if valid?
             addon = {}
             addon[:path] = @addon_dir
-            addon[:informations] = full_specs
+            addon[:informations] = @full_specs
             add_color_to addon if color_undefined_in addon
             addon[:informations]['directory'] = @addon_dir
             @validated.push addon
@@ -29,10 +30,10 @@ module Jarvis
       def valid?
         File.exist?(File.join(@addon_dir, 'specs.yml')) &&
         File.exist?(File.join(@addon_dir, 'init.rb')) &&
-        full_specs['specs']['name'] &&
-        full_specs['specs']['class_name'] &&
-        full_specs['specs']['type'] &&
-        full_specs[@type.to_s.chomp('s')]
+        @full_specs['specs']['name'] &&
+        @full_specs['specs']['class_name'] &&
+        @full_specs['specs']['type'] &&
+        @full_specs[@type.to_s.chomp('s')]
       end
 
       def full_specs
