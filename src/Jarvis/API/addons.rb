@@ -27,7 +27,7 @@ module Jarvis
       def self.client(name)
         infos = Jarvis::Boot::Session.addons_sort_by_name[:clients][format(name)]
         require "#{infos['directory']}/init"
-        Object.const_get(infos['specs']['class_name'])
+        Object.const_get(infos['specs']['class_name']).new.client
       end
 
       def self.call_receivers_for(service)
