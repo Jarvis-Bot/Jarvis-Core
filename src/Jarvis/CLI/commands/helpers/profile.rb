@@ -2,10 +2,13 @@ require 'yaml'
 module Jarvis
   module CLI
     class Profile
+      attr_reader :type, :file, :path, :path_to_file, :profile
       def initialize(type)
         @type = type
-        @file = "#{@type.to_s}.yml"
-        @path = File.expand_path(File.join('..', 'config', 'profiles', @file))
+        @file = "#{@type}.yml"
+        @path = File.expand_path(File.join(JARVIS[:root], 'config', 'profiles'))
+        @path_to_file = File.expand_path(File.join(JARVIS[:root], 'config', 'profiles', @file))
+        load if exists?
       end
 
       def display
@@ -13,11 +16,11 @@ module Jarvis
       end
 
       def exists?
-        File.exists?(@path)
+        File.exist?(@path_to_file)
       end
 
       def load
-        @profile = YAML.load_file(@path)
+        @profile = YAML.load_file(@path_to_file)
         rescue Errno::ENOENT => e
           Jarvis::Utility::Logger.error(e, log: false)
       end

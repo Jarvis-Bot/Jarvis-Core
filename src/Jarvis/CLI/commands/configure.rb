@@ -5,14 +5,14 @@ include Jarvis::CLI::Stdio
 module Jarvis
   module CLI
     def self.init
-      scan_thirdparty
+      scan_addons
       choose_configure
     end
 
-    def self.scan_thirdparty
-      Dir.glob(File.join('..', 'third-party', '**')).each do |type_dir|
-        Dir[File.join(type_dir, '**')].each do |thirdparty_dir|
-          @thirdparty_dir = thirdparty_dir
+    def self.scan_addons
+      Dir.glob(File.join(JARVIS[:root], 'addons', '**')).each do |type_dir|
+        Dir[File.join(type_dir, '**')].each do |addons_dir|
+          @addons_dir = addons_dir
           if valid?
             @to_config ||= { for_user: [], for_computer: [] }
             add_to_config
@@ -22,9 +22,9 @@ module Jarvis
     end
 
     def self.valid?
-      @specs_file      = File.join(@thirdparty_dir, 'specs.yml')
-      @init_file       = File.join(@thirdparty_dir, 'init.rb')
-      @configure_file  = File.join(@thirdparty_dir, 'configure.rb')
+      @specs_file      = File.join(@addons_dir, 'specs.yml')
+      @init_file       = File.join(@addons_dir, 'init.rb')
+      @configure_file  = File.join(@addons_dir, 'configure.rb')
       File.exist?(@specs_file) && File.exist?(@init_file) && File.exist?(@configure_file)
     end
 

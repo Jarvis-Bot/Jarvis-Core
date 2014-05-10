@@ -1,22 +1,22 @@
 module Jarvis
-  module Boot
+  module Addons
     class Sources
-      def initialize
-        @registered = Session.registered_sources
-        load
-        launch
+      def initialize(addons_object)
+        @sources = addons_object
       end
 
       def load
         @threads = []
-        @registered.each do |source|
-          require "#{source['directory']}/init"
-          class_name = source['source']['class name']
+        @sources.validated.each do |source|
+          require "#{source[:path]}/init"
+          class_name = source[:informations]['specs']['class_name']
           @threads.push Thread.new { Object.const_get(class_name).new }
+          sleep 0.1
         end
       end
 
       def launch
+        load
         @threads.each do |thread|
           thread.join
         end

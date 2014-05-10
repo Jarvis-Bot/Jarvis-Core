@@ -1,11 +1,13 @@
 require 'rainbow'
 require 'yaml'
 require 'Jarvis/CLI/commands/helpers/questions'
+require 'Jarvis/CLI/commands/helpers/profile'
 require 'Jarvis/CLI/stdio'
 module Jarvis
   module CLI
     class ProfileDeveloper
       def initialize
+        @profile_dev = Jarvis::CLI::Profile.new(:developer)
         intro
         questions
       end
@@ -40,10 +42,11 @@ module Jarvis
       end
 
       def save_informations
+        confirm_overwrite if @profile_dev.exists?
         to_save = @author.results['author']
         to_save = to_save.merge(@contacts.results.to_hash)
 
-        folder = File.expand_path(File.join('..', 'config', 'profiles'))
+        folder = @profile_dev.path
         file   = 'developer.yml'
         Dir.mkdir(folder, 0755) unless Dir.exist?(folder)
         File.open(File.join(folder, file), 'w') do |f|
@@ -51,6 +54,13 @@ module Jarvis
         end
 
         Jarvis::CLI::Stdio.done("#{file} has been successfully created!") if @length > 1
+      end
+
+      def confirm_overwrite
+        if Jarvis::CLI::Stdio.no?('A developer profile already exists. Are you sure to overwrite it?')
+          Jarvis::CLI::Stdio.not_done
+          abort
+        end
       end
     end
   end

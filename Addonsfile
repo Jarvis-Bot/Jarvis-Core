@@ -1,0 +1,3 @@
+addon 'Jarvis-Bot/HelloWorld-receiver', '~> 2.0'
+addon 'Jarvis-Bot/twitter-source', '~> 2.0'
+addon 'Jarvis-Bot/twitter-client', '~> 2.0'

@@ -14,7 +14,7 @@ module Jarvis
       def intro
         puts Rainbow("Welcome in the addon #{@type} generator!").color(:green)
         puts Rainbow("I will ask you some questions about this #{@type} and also about you, if you haven't yet run the developer profile generator.").color(:green)
-        puts Rainbow("This #{@type} will be generated under third-party/#{@type}/{YOUR-ADDON}/.").color(:green)
+        puts Rainbow("This #{@type} will be generated under addons/#{@type}/{YOUR-ADDON}/.").color(:green)
         print "\n"
 
         dev_profile_exists?
@@ -34,6 +34,7 @@ module Jarvis
         ask_specs
         ask_license
         ask_repository
+        ask_dependencies
       end
 
       def ask_specs
@@ -48,6 +49,7 @@ module Jarvis
         specs.ask(:homepage, 'Link to the homepage ?', 'a link to your Github repository is a good idea')
         specs.ask(:version, 'Number of your first version ?', '0.1.0 is a good choice')
         specs.ask(:class_name, 'I need to know the name of your class in the init.rb file', "#{specs.retrieve(:name).capitalize}#{@type.capitalize} is a good idea")
+          .modify { |class_name| class_name[0].capitalize + class_name[1..-1] }
         specs.add(:type, @type)
         @specs = specs
       end
@@ -66,6 +68,18 @@ module Jarvis
         @repository = repository
       end
 
+      def ask_dependencies
+        dependencies = Questions.new(:dependencies, 'Does this addon have some dependencies?')
+        dependencies.ask(:jarvis, 'Enter the version as major.minor.patch[.pre]', "If this field is empty, it will required the current major version (~> #{JARVIS[:version_splitted][:major]}.#{JARVIS[:version_splitted][:minor]}")
+        .modify do |jarvis|
+          if jarvis.empty?
+            jarvis = "~> #{JARVIS[:version_splitted][:major]}.#{JARVIS[:version_splitted][:minor]}"
+          end
+          jarvis
+        end
+        @dependencies = dependencies
+      end
+
       def ask_specific(&block)
         @specific_block ||= block
         @specific = @specific_block.call
@@ -73,26 +87,28 @@ module Jarvis
       end
 
       def ask_again
-        picked = Jarvis::CLI::Stdio.pick('Where did you make a mistake?', ['Specs', 'License', 'Repository', "Specific #{@type}"])
+        picked = Jarvis::CLI::Stdio.pick('Where did you make a mistake?', ['Specs', 'License', 'Repository', 'Dependencies', "Specific #{@type}"])
         picked.slice!(@type)
         send("ask_#{picked.downcase.strip}")
         summary
       end
 
       def summary
-        specs = @specs.results
-        specs = specs.merge(@license.results)
-        specs = specs.merge(@repository.results)
-        specs = specs.merge(@specific.results)
-
+        specs = {}
+        @specs.results['specs'].each { |key, value| specs.store(key, value) }
+        specs = specs.merge(
+          'license' => @license.results['license'],
+          'repository' => @repository.results['repository'],
+          'dependencies' => @dependencies.results['dependencies']
+        )
         author = Profile.new(:developer).load
-        puts YAML.dump(specs.to_h)
+        @full_specs =  { 'author' => author.to_h }.merge('specs' => specs).merge(@specific.results.keys[0] => @specific.results.values[0])
+        puts YAML.dump(@full_specs)
         ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
-        @full_specs =  {'author' => author.to_h}.merge(specs.to_h)
       end
 
       def generate_files
-        @path = "../third-party/#{@type}s/#{@specs.retrieve(:name)}/"
+        @path = "../addons/#{@type}s/#{@specs.retrieve(:name)}/"
         generate_from_templates
         generate_from_specs
       end

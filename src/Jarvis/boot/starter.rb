@@ -1,8 +1,19 @@
 module Jarvis
+  if JARVIS[:debug]
+    puts 'Jarvis is running in debug mode.'
+    puts 'pp is activated.' if require 'pp'
+    puts 'pry is activated.' if require 'pry'
+  end
+  if ARGV.include? '--update'
+    ARGV.delete '--update'
+    require 'Jarvis/utility/logger'
+    require 'Jarvis/utility/viewer/log'
+    require 'Jarvis/boot/update'
+    Jarvis::Boot::Update.new(true)
+  end
   unless ARGV.first.nil?
     require 'Jarvis/utility/logger'
     require 'Jarvis/utility/viewer/log'
-    require 'Jarvis/utility/viewer/message'
     require 'Jarvis/CLI/arguments_parser'
     begin
       CLI.receive(ARGV)
@@ -12,20 +23,24 @@ module Jarvis
     exit
   end
 
-  require 'Jarvis/boot/session'
-  require 'Jarvis/boot/boot'
-  require 'Jarvis/boot/third-party/thirdparty'
-  require 'Jarvis/boot/third-party/sources'
+  require 'Jarvis/addons/addons'
+  require 'Jarvis/addons/types/clients'
+  require 'Jarvis/addons/types/receivers'
+  require 'Jarvis/addons/types/sources'
 
-  require 'Jarvis/utility/logger'
-  require 'Jarvis/utility/viewer/log'
-  require 'Jarvis/utility/viewer/message'
+  require 'Jarvis/API/addons'
+  require 'Jarvis/API/profile'
+
+  require 'Jarvis/boot/boot'
+  require 'Jarvis/boot/session'
+  require 'Jarvis/boot/update'
 
   require 'Jarvis/messages/message'
   require 'Jarvis/messages/handler'
 
-  require 'Jarvis/third-party/thirdparty'
-  require 'Jarvis/third-party/registered'
+  require 'Jarvis/utility/viewer/log'
+  require 'Jarvis/utility/viewer/message'
+  require 'Jarvis/utility/logger'
   begin
     Boot::Boot.new
   rescue Interrupt

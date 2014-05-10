@@ -1,7 +1,12 @@
 # Require your library if you need to
 # require 'your_library_name'
 class <%= @infos['specs']['class_name'] %>
-  def self.init
-  	# This method will be called by receivers when they need to communicate with your client
+  def initialize
+  	# Create your variables and stuff here
+  	# This class will be called like this : <%= @infos['specs']['class_name'] %>.new.client
+  end
+
+  def client
+  	# This method must return a client usable by the receiver
   end
 end

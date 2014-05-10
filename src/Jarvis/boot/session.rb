@@ -4,58 +4,48 @@ module Jarvis
     class Session
       class << self
         include Memoizable
-        def registered_receivers
-          receivers ||= Jarvis::ThirdParty::ThirdParty.new(:receivers)
-          receivers.register
+        def addons
+          { sources: Jarvis::Addons::Addons.new(:sources),
+            clients: Jarvis::Addons::Addons.new(:clients),
+            receivers: Jarvis::Addons::Addons.new(:receivers) }
         end
-        memoize :registered_receivers
+        memoize :addons
 
-        def sorted_registered_receivers
+        def addons_sort_by_name
           sorted = {}
-          custom_specs = {}
-          registered_receivers.each do |receiver|
-            receiver['receiver']['handle'].each do |service|
-              sorted[service.to_sym] = [] unless sorted[service.to_sym].kind_of?(Array)
-              custom_specs = {
-                name: receiver['specs']['name'],
-                directory: receiver['directory'],
-                class_name: receiver['receiver']['class name']
-              }
-              sorted[service.to_sym].push custom_specs
+          addons.each do |type, addons|
+            sorted[type.to_sym] = {} unless sorted[type.to_sym].is_a? Hash
+            addons.validated.each do |specs|
+              informations = specs[:informations]
+              sorted[type.to_sym].store(informations['specs']['name'].downcase.to_sym, informations)
             end
           end
           sorted
         end
-        memoize :sorted_registered_receivers
+        memoize :addons_sort_by_name
 
-        def registered_sources
-          sources ||= Jarvis::ThirdParty::ThirdParty.new(:sources)
-          sources.register
+        def receivers_sort_by_services
+          sorted = {}
+          addons[:receivers].validated.each do |receiver|
+            informations = receiver[:informations]
+            informations['receiver']['handle'].each do |service|
+              sorted[service.to_sym] = [] unless sorted[service.to_sym].is_a? Array
+              to_push = { informations['specs']['name'] => informations }
+              sorted[service.to_sym].push to_push
+            end
+          end
+          sorted
         end
-        memoize :registered_sources
+        memoize :receivers_sort_by_services
 
-        def registered_clients
-          clients ||= Jarvis::ThirdParty::ThirdParty.new(:clients)
-          clients.register
+        def profile
+          require 'Jarvis/CLI/commands/helpers/profile'
+          profiles = {}
+          profiles.store(:developer, Jarvis::CLI::Profile.new(:developer))
+          profiles.store(:user, Jarvis::CLI::Profile.new(:user))
+          profiles
         end
-        memoize :registered_clients
-
-        def all_sorted
-          sources = {}
-          registered_sources.each do |source|
-            sources.store(source['specs']['name'].downcase.to_sym, source)
-          end
-          clients = {}
-          registered_clients.each do |client|
-            clients.store(client['specs']['name'].downcase.to_sym, client)
-          end
-          receivers = {}
-          registered_receivers.each do |receiver|
-            receivers.store(receiver['specs']['name'].downcase.to_sym, receiver)
-          end
-          { sources: sources, receivers: receivers, clients: clients }
-        end
-        memoize :all_sorted
+        memoize :profile
       end
     end
   end
