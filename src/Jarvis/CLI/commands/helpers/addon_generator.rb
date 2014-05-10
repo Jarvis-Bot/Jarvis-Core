@@ -89,7 +89,7 @@ module Jarvis
       end
 
       def ask_again
-        picked = Jarvis::CLI::Stdio.pick('Where did you make a mistake?', ['Specs', 'License', 'Repository', "Specific #{@type}"])
+        picked = Jarvis::CLI::Stdio.pick('Where did you make a mistake?', ['Specs', 'License', 'Repository', 'Dependencies', "Specific #{@type}"])
         picked.slice!(@type)
         send("ask_#{picked.downcase.strip}")
         summary
