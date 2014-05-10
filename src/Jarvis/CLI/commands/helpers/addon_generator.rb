@@ -49,9 +49,7 @@ module Jarvis
         specs.ask(:homepage, 'Link to the homepage ?', 'a link to your Github repository is a good idea')
         specs.ask(:version, 'Number of your first version ?', '0.1.0 is a good choice')
         specs.ask(:class_name, 'I need to know the name of your class in the init.rb file', "#{specs.retrieve(:name).capitalize}#{@type.capitalize} is a good idea")
-          .modify do |class_name|
-            class_name[0].capitalize + class_name[1..-1]
-          end
+          .modify { |class_name| class_name[0].capitalize + class_name[1..-1] }
         specs.add(:type, @type)
         @specs = specs
       end
@@ -98,13 +96,13 @@ module Jarvis
       def summary
         specs = {}
         @specs.results['specs'].each { |key, value| specs.store(key, value) }
-        specs = specs.merge({
+        specs = specs.merge(
           'license' => @license.results['license'],
           'repository' => @repository.results['repository'],
           'dependencies' => @dependencies.results['dependencies']
-        })
+        )
         author = Profile.new(:developer).load
-        @full_specs =  { 'author' => author.to_h }.merge({ 'specs' => specs }).merge({@specific.results.keys[0] => @specific.results.values[0]})
+        @full_specs =  { 'author' => author.to_h }.merge('specs' => specs).merge(@specific.results.keys[0] => @specific.results.values[0])
         puts YAML.dump(@full_specs)
         ask_again unless Jarvis::CLI::Stdio.yes?('These informations are correct?')
       end

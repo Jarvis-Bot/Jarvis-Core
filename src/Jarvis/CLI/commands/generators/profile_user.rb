@@ -26,12 +26,14 @@ module Jarvis
         @user.add(:full_name, "#{@user.retrieve(:first_name)} #{@user.retrieve(:last_name)}")
 
         @tokens = Questions.new(:tokens, 'Jarvis-Core use some API. So if you can, provide some tokens.')
-        @tokens.ask(:github,
-          "Github's API is rate limited at 60 requests / hour.\n" +
-          "It's probably not enough for install / update addons from Github.\n" +
-          "So you can provide a personnal token to be rate limit to 5000.\n" +
-          "Visit https://github.com/settings/tokens/new, untick everything, enter what you want for 'Token Description' and click 'Generate Token'.\n" +
-          "Enter your token here:")
+        @tokens.ask(
+          :github,
+          "Github's API is rate limited at 60 requests / hour.\n" \
+          "It's probably not enough for install / update addons from Github.\n" \
+          "So you can provide a personnal token to be rate limit to 5000.\n" \
+          "Visit https://github.com/settings/tokens/new, untick everything, enter what you want for 'Token Description' and click 'Generate Token'.\n" \
+          'Enter your token here:'
+        )
 
         correct_informations?
       end

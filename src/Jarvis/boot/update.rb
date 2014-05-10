@@ -7,21 +7,25 @@ module Jarvis
     class Update
       def initialize(manual_start = false)
         @path_last_update_at = File.join(JARVIS[:root], 'config', '.last_check_update_at')
-        if Time.now > Time.at(last_check) + (60*60*12) || manual_start
+        if Time.now > Time.at(last_check) + (60 * 60 * 12) || manual_start
           @manual_start = manual_start
           @octokit_client = octokit_client
           @current_version = JARVIS[:version]
           @last_stable_release = last_stable_release
-          if manual_start && new_version_available?
-            announce_new_version
-            ask_confirm
-            update_jarvis
-          else
-            Jarvis::Utility::Logger.info('Checking for Jarvis update...')
-            announce_new_version if new_version_available?
-          end
-          save_update_at_file
+          check_update
         end
+      end
+
+      def check_update
+        if manual_start && new_version_available?
+          announce_new_version
+          ask_confirm
+          update_jarvis
+        else
+          Jarvis::Utility::Logger.info('Checking for Jarvis update...')
+          announce_new_version if new_version_available?
+        end
+        save_update_at_file
       end
 
       def save_update_at_file
@@ -35,7 +39,7 @@ module Jarvis
       end
 
       def last_stable_release
-        @octokit_client.releases(JARVIS[:repo], :per_page => 5).each do |release|
+        @octokit_client.releases(JARVIS[:repo], per_page: 5).each do |release|
           return release if release[:prerelease] == false
         end
       end
@@ -43,7 +47,7 @@ module Jarvis
       def octokit_client
         if defined? Jarvis::API::Profile.user.profile['tokens']['github']
           token = Jarvis::API::Profile.user.profile['tokens']['github']
-          Octokit::Client.new(:access_token => token)
+          Octokit::Client.new(access_token: token)
         else
           Octokit::Client.new
         end
@@ -78,7 +82,7 @@ module Jarvis
       def git(command)
         %x(git #{command})
         if $?.success?
-          Jarvis::CLI::Stdio.done("Jarvis has been successfully updated!")
+          Jarvis::CLI::Stdio.done('Jarvis has been successfully updated!')
         else
           Jarvis::CLI::Stdio.not_done("Jarvis hasn't been updated!")
         end

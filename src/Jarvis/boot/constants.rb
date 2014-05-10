@@ -18,8 +18,7 @@ module Jarvis
       end
 
       def version_splitted
-        v = {
-          major: 2,
+        { major: 2,
           minor: 0,
           patch: 0,
           pre: nil }

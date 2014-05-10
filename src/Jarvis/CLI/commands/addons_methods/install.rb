@@ -24,7 +24,7 @@ module Jarvis
       end
 
       def install_via(type, addon)
-        require File.join(__dir__, 'installers', "#{type.to_s}.rb")
+        require File.join(__dir__, 'installers', "#{type}.rb")
         Object.const_get("Jarvis::CLI::Installers::#{type.capitalize}").new(addon)
       end
     end

@@ -3,21 +3,15 @@ module Jarvis
   module API
     class Addons
       def self.all
-         Jarvis::Boot::Session.addons
+        Jarvis::Boot::Session.addons
       end
 
       def self.count(type = :total)
-        counted = 0
         if type == :total
-          Jarvis::Boot::Session.addons.each do |type, addons|
-            counted += addons.validated.count
-          end
+          Jarvis::Boot::Session.addons.values.size
         else
-          Jarvis::Boot::Session.addons[type.to_sym].validated.each do |addons|
-            counted += 1
-          end
+          Jarvis::Boot::Session.addons[type.to_sym].validated.size
         end
-        counted
       end
 
       def self.specs(type, name)

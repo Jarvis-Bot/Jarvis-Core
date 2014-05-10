@@ -24,7 +24,7 @@ module Jarvis
         self
       end
 
-      def modify(var_name = nil, &block)
+      def modify(var_name = nil)
         if var_name.nil?
           answer = @answers[@last_entry]
           answer = yield answer

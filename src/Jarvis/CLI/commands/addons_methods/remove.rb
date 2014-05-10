@@ -13,11 +13,11 @@ module Jarvis
       end
 
       def none_to_remove?
-        Jarvis::Utility::Logger.error("No addons installed.", log: false) if Jarvis::API::Addons.count == 0
+        Jarvis::Utility::Logger.error('No addons installed.', log: false) if Jarvis::API::Addons.count == 0
       end
 
       def create_menu_options
-        menu_options = {for_user: [], for_computer: []}
+        menu_options = { for_user: [], for_computer: [] }
         Jarvis::API::Addons.all.each do |type, addons|
           addons.validated.each do |addon|
             type        = type.to_s.chomp('s')

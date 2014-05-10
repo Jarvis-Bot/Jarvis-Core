@@ -2,8 +2,7 @@
 require 'rspec/core/rake_task'
 desc 'Run RSpec'
 RSpec::Core::RakeTask.new(:spec)
-task :test => :spec
-
+task test: :spec
 
 # Rubocop
 begin
@@ -18,6 +17,5 @@ rescue LoadError
   end
 end
 
-
 # Rake default
-task :default => [:spec, :rubocop]
+task default: [:spec, :rubocop]

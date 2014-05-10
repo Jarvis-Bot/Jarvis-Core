@@ -1,6 +1,6 @@
 # Based on https://github.com/ninefold/cli/blob/master/lib/ninefold/services/stdio.rb by Ninefold
 #   Released under MIT License.
-#   Copyright (c) 2013 Yehuda Katz, Ninefold
+#   (Partially) Copyrighted by Yehuda Katz, Ninefold. 2013
 require 'rainbow'
 module Jarvis
   module CLI
@@ -69,14 +69,16 @@ module Jarvis
       end
 
       def yes?(question, options = { color: :green, colored: true })
-        print (options[:colored] || options[:colored].nil?)  ? Rainbow("#{question} [Y/n]").color(options[:color].to_sym) : "#{question} [Y/n]"
+        colored = (options[:colored] || options[:colored].nil?)
+        print colored ? Rainbow("#{question} [Y/n]").color(options[:color].to_sym) : "#{question} [Y/n]"
         answer = $stdin.gets.chomp.strip
         yes_cases = ['yes', 'YES', 'y', 'Y', '']
         yes_cases.include? answer
       end
 
       def no?(question, options = { color: :red, colored: true })
-        print (options[:colored] || options[:colored].nil?)  ? Rainbow("#{question} [N/y]").color(options[:color].to_sym) : "#{question} [N/y]"
+        colored = (options[:colored] || options[:colored].nil?)
+        print colored ? Rainbow("#{question} [N/y]").color(options[:color].to_sym) : "#{question} [N/y]"
         answer = $stdin.gets.chomp.strip
         no_cases = ['no', 'NO', 'n', 'N', '']
         no_cases.include? answer

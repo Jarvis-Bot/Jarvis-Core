@@ -23,7 +23,7 @@ module Jarvis
         def octokit_client
           if defined? Jarvis::API::Profile.user.profile['tokens']['github']
             token = Jarvis::API::Profile.user.profile['tokens']['github']
-            Octokit::Client.new(:access_token => token)
+            Octokit::Client.new(access_token: token)
           else
             Octokit::Client.new
           end
@@ -85,7 +85,7 @@ module Jarvis
         private
 
         def git(command)
-          Open3.popen3("git #{command}") do |i, o, e, t|
+          Open3.popen3("git #{command}") do |_i, _o, e, t|
             if t.value == 0
               Stdio.done("'#{@repo}' has been successfully installed!")
             else
