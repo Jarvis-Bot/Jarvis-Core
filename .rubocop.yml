@@ -1,7 +1,7 @@
 AllCops:
   Exclude:
-    - 'addons/'
-    - 'vendor/'
+    - 'addons/**/*'
+    - 'vendor/**/*'
 
 # Avoid long parameter lists
 ParameterLists:
