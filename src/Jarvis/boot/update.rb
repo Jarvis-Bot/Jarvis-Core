@@ -17,7 +17,7 @@ module Jarvis
       end
 
       def check_update
-        if manual_start && new_version_available?
+        if @manual_start && new_version_available?
           announce_new_version
           ask_confirm
           update_jarvis
@@ -36,6 +36,8 @@ module Jarvis
 
       def last_check
         File.read(@path_last_update_at).to_i
+      rescue Errno::ENOENT # If the file doesn't exist
+        Time.at(0)
       end
 
       def last_stable_release
