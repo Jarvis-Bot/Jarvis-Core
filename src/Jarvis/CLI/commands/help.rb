@@ -9,6 +9,8 @@ Usage: jarvis [OPTIONS] [ARGS]
     generate                      Open the generator menu
     generate [THEME TYPE]         Launch generator for a specific theme & type
 
+    configure                     Open addons configuration menu
+
     help                          Display this message
     help [command]                Display the help for the specified command
 
