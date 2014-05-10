@@ -10,7 +10,7 @@ module Jarvis
     end
 
     def self.scan_addons
-      Dir.glob(File.join('..', 'addons', '**')).each do |type_dir|
+      Dir.glob(File.join(JARVIS[:root], 'addons', '**')).each do |type_dir|
         Dir[File.join(type_dir, '**')].each do |addons_dir|
           @addons_dir = addons_dir
           if valid?
