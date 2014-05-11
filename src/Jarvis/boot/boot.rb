@@ -14,7 +14,7 @@ module Jarvis
       def display_count
         to_count = {}
         to_count[:sources] = @sources.display_count
-        to_count[:clients] = @clients.display_count
+        @clients.display_count
         to_count[:receivers] = @receivers.display_count
         @abort_message = ''
         to_count.each do |type, count|
