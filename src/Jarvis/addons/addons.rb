@@ -19,7 +19,7 @@ module Jarvis
             addon = {}
             addon[:path] = @addon_dir
             addon[:informations] = @full_specs
-            add_color_to addon if color_undefined_in addon
+            add_color_to addon unless color_defined? addon
             addon[:informations]['directory'] = @addon_dir
             @validated.push addon
           end
@@ -61,8 +61,9 @@ module Jarvis
         addon
       end
 
-      def color_undefined_in(addon)
-        addon[:informations][@type.to_s.chomp('s')]['color_message'].nil?
+      def color_defined?(addon)
+        color = addon[:informations][@type.to_s.chomp('s')]['color_message']
+        /(\A[0-9A-F]{6}\z)|(\A[0-9A-F]{3}\z)/ =~ color
       end
 
       def count
