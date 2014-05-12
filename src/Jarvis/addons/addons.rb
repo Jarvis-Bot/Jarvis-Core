@@ -63,7 +63,7 @@ module Jarvis
 
       def color_defined?(addon)
         color = addon[:informations][@type.to_s.chomp('s')]['color_message']
-        /(\A[0-9A-F]{6}\z)|(\A[0-9A-F]{3}\z)/ =~ color
+        /(\A\#?[0-9A-F]{6}\z)|(\A\#?[0-9A-F]{3}\z)/ =~ color
       end
 
       def count
