@@ -21,10 +21,11 @@ module Jarvis
         Jarvis::API::Addons.all.each do |type, addons|
           addons.validated.each do |addon|
             type        = type.to_s.chomp('s')
+            version     = addon[:informations]['specs']['version']
             name_addon  = addon[:informations]['specs']['name']
             name_author = addon[:informations]['author']['name']
             directory   = addon[:informations]['directory']
-            menu_options[:for_user].push "[#{type.upcase}] #{name_addon} by #{name_author}"
+            menu_options[:for_user].push "[#{type.upcase}][v#{version}] #{name_addon} by #{name_author}"
             menu_options[:for_computer].push directory
           end
         end
