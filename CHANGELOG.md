@@ -1,3 +1,13 @@
+2.1.0
+-----
+### Improvements
+* [[Sources / Receivers / Handler] Add flexibility to call receivers : You can display a source and call another one. You can also create a dynamic sources : call some receivers according to your code (call A if B, call C if D...)](https://github.com/Jarvis-Bot/Jarvis-Core/commit/01734e95bf87e0e3e882ad5d779c67b37d1e2501)
+
+### Bug Fixes
+* [[Addons] Hexa color can have an '#' at the begin](https://github.com/Jarvis-Bot/Jarvis-Core/commit/3183b4a421efe9bad631542e7a518929c23bcc17)
+* [[Boot / Clients] Clients aren't required to start](https://github.com/Jarvis-Bot/Jarvis-Core/commit/e9c5b6e8426dc013151e4e761462a82d3bca80d1)
+* [[Addons] Improve color detection](https://github.com/Jarvis-Bot/Jarvis-Core/commit/d17b4a80e3dfbcb9feb85f08cb095a75d2b59d17)
+
 2.0.0
 -----
 ### New Features
