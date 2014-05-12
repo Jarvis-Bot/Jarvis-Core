@@ -4,7 +4,7 @@ module Jarvis
       attr_reader :timestamp, :from, :text, :message_object
       def initialize(service_name, message, message_object = nil)
         @timestamp = Time.now
-        @from = service_name.downcase.to_sym
+        @from = service_name
         @text = message
         @message_object = message_object
         Handler.new(self)
