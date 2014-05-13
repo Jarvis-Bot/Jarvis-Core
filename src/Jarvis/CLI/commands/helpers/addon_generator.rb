@@ -108,7 +108,7 @@ module Jarvis
       end
 
       def generate_files
-        @path = "../addons/#{@type}s/#{@specs.retrieve(:name)}/"
+        @path = File.join(JARVIS[:root], 'addons', "#{@type}s", "#{@specs.retrieve(:name)}/")
         generate_from_templates
         generate_from_specs
       end
