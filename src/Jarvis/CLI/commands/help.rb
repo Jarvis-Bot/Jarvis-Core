@@ -18,6 +18,7 @@ Usage: jarvis [OPTIONS] [ARGS]
 
   ARGS:
     --debug                       Launch Jarvis in debug mode
+    --update                      Update Jarvis to the latest version
 EOS
 
 # NOTE Keep the lenth of vanilla help less than 25 lines!
