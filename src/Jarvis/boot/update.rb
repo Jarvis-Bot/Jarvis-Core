@@ -82,7 +82,9 @@ module Jarvis
       end
 
       def git(command)
-        %x(git #{command})
+        Dir.chdir(JARVIS[:root]) do
+          %x(git #{command})
+        end
         if $?.success?
           Jarvis::CLI::Stdio.done('Jarvis has been successfully updated!')
         else
