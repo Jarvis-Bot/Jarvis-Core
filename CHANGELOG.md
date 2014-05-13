@@ -1,3 +1,9 @@
+2.1.1
+-----
+### Bug Fixes
+* [[Addons Menu] Add version in remove menu](https://github.com/Jarvis-Bot/Jarvis-Core/commit/5f9e1b921aeec27800fb031259788027a9f45430)
+* [[Addons Generator] Fix non relative path](https://github.com/Jarvis-Bot/Jarvis-Core/commit/1dc68270d0a7918810e5b1aeb97ea87e4d22cda8)
+
 2.1.0
 -----
 ### Improvements
