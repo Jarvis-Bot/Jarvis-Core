@@ -1,3 +1,8 @@
+2.1.2
+-----
+### Bug Fixes
+* [[Updater] Cd in jarvis root directory to update it](https://github.com/Jarvis-Bot/Jarvis-Core/commit/ac6a12ead92244fa789f613010c3de831236e28a)
+
 2.1.1
 -----
 ### Bug Fixes
