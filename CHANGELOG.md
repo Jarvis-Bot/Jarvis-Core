@@ -1,3 +1,9 @@
+2.2.0
+-----
+### Improvements
+* [[Help] Add --udpate in help](https://github.com/Jarvis-Bot/Jarvis-Core/commit/7474df9215b3166ef50190c0a4d6d716c8ac29ee)
+* [[Addonsfile] Add Monitools-receiver](https://github.com/Jarvis-Bot/Jarvis-Core/commit/9dcf6dc4159e0b3bb2498dc09e7328d472098a9d)
+
 2.1.2
 -----
 ### Bug Fixes
