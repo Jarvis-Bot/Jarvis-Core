@@ -8,7 +8,7 @@ task test: :spec
 begin
   require 'rubocop/rake_task'
   desc 'Run RuboCop'
-  Rubocop::RakeTask.new(:rubocop)do |task|
+  RuboCop::RakeTask.new(:rubocop)do |task|
     task.fail_on_error = false
   end
 rescue LoadError
